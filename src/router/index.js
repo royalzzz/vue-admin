@@ -77,12 +77,71 @@ export const constantRoutes = [
     path: '/',
     component: Layout,
     redirect: '/yuqingfenxi',
+    alwaysShow: true,
+    meta: {
+      title: '舆情分析',
+      icon: 'chart'
+    },
     children: [
       {
-        path: 'yuqingfenxi',
+        path: 'yuqingxinxichuli',
         component: () => import('@/views/dashboard/index'),
         name: 'yuqingfenxi',
-        meta: { title: '舆情分析', icon: 'chart', affix: true }
+        meta: { title: '舆情信息处理', icon: 'chart', affix: true },
+        alwaysShow: true,
+        children: [
+          {
+            path: 'huagongshigufenlei',
+            component: () => import('@/views/yuqingfenxi/index'),
+            name: 'yuqingfenxi',
+            meta: { title: '化工事故分类', icon: 'chart', affix: true }
+          },
+          {
+            path: 'wenzhangxiangsidupipei',
+            component: () => import('@/views/dashboard/index'),
+            name: 'yuqingfenxi',
+            meta: { title: '文章相似度匹配', icon: 'chart', affix: true }
+          },
+          {
+            path: 'qingganfenxi',
+            component: () => import('@/views/dashboard/index'),
+            name: 'yuqingfenxi',
+            meta: { title: '情感分析', icon: 'chart', affix: true }
+          },
+          {
+            path: 'zidongzhaiyao',
+            component: () => import('@/views/dashboard/index'),
+            name: 'yuqingfenxi',
+            meta: { title: '自动摘要', icon: 'chart', affix: true }
+          }
+        ]
+      },
+      {
+        path: 'yuqingxinxizhanshi',
+        component: () => import('@/views/dashboard/index'),
+        name: 'yuqingfenxi',
+        meta: { title: '舆情信息展示', icon: 'chart', affix: true },
+        alwaysShow: true,
+        children: [
+          {
+            path: 'yuqingredupaihangbang',
+            component: () => import('@/views/dashboard/index'),
+            name: 'yuqingfenxi',
+            meta: { title: '舆情热度排行榜', icon: 'chart', affix: true }
+          },
+          {
+            path: 'hongguanshujutongjizhanshi',
+            component: () => import('@/views/dashboard/index'),
+            name: 'yuqingfenxi',
+            meta: { title: '宏观数据统计展示', icon: 'chart', affix: true }
+          },
+          {
+            path: 'weiguanshujutongjizhanshi',
+            component: () => import('@/views/dashboard/index'),
+            name: 'yuqingfenxi',
+            meta: { title: '微观数据统计展示', icon: 'chart', affix: true }
+          }
+        ]
       }
     ]
   }
