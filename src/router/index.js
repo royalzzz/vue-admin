@@ -52,7 +52,7 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/zhinengwenda',
+    redirect: '/kbqa',
     alwaysShow: true,
     meta: {
       title: '智能问答',
@@ -63,13 +63,53 @@ export const constantRoutes = [
         path: 'zhinengwenda',
         component: () => import('@/views/dashboard/index'),
         name: 'zhinengwenda',
-        meta: { title: '智能问答1', icon: 'message', affix: true }
+        meta: { title: '智能问答', icon: 'message', affix: true }
       },
       {
-        path: 'zhinengwenda',
+        path: 'zhishiku',
+        component: Layout,
+        name: 'zhishiku',
+        meta: { title: '知识库管理', icon: 'excel', affix: true },
+        children: [
+          {
+            path: 'zhishiluru',
+            component: () => import('@/views/dashboard/index'),
+            name: 'zhishiluru',
+            meta: { title: '知识录入', icon: 'edit', affix: true }
+          },
+          {
+            path: 'zhishichaxun',
+            component: () => import('@/views/dashboard/index'),
+            name: 'zhishichaxun',
+            meta: { title: '知识查询', icon: 'search', affix: true }
+          }
+        ]
+      },
+      {
+        path: 'shujupaqu',
+        component: Layout,
+        name: 'shujupaqu',
+        meta: { title: '数据爬取', icon: 'international', affix: true },
+        children: [
+          {
+            path: 'paqucanshu',
+            component: () => import('@/views/dashboard/index'),
+            name: 'paqucanshu',
+            meta: { title: '爬取参数设置', icon: 'component', affix: true }
+          },
+          {
+            path: 'paqujieguo',
+            component: () => import('@/views/dashboard/index'),
+            name: 'paqujieguo',
+            meta: { title: '爬取结果浏览', icon: 'search', affix: true }
+          }
+        ]
+      },
+      {
+        path: 'moxingxunlian',
         component: () => import('@/views/dashboard/index'),
-        name: 'zhinengwenda',
-        meta: { title: '智能问答2', icon: 'message', affix: true }
+        name: 'moxingxunlian',
+        meta: { title: '模型训练', icon: 'language', affix: true }
       }
     ]
   },
