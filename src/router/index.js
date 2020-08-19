@@ -67,7 +67,7 @@ export const constantRoutes = [
       },
       {
         path: 'zhishiku',
-        component: Layout,
+        component: () => {},
         name: 'zhishiku',
         meta: { title: '知识库管理', icon: 'excel', affix: true },
         children: [
@@ -125,10 +125,9 @@ export const constantRoutes = [
     children: [
       {
         path: 'yuqingxinxichuli',
-        // component: Layout,
+        component: () => import('@/layout/components/Empty'),
         name: 'yuqingxinxichuli',
         meta: { title: '舆情信息处理', icon: 'chart', affix: true },
-        alwaysShow: true,
         children: [
           {
             path: 'huagongshigufenlei',
@@ -144,7 +143,7 @@ export const constantRoutes = [
           },
           {
             path: 'qingganfenxi',
-            component: () => import('@/views/dashboard/index'),
+            component: () => import('@/views/yuqingfenxi/index'),
             name: 'qingganfenxi',
             meta: { title: '情感分析', icon: 'chart', affix: true }
           },
@@ -161,7 +160,6 @@ export const constantRoutes = [
         component: () => import('@/views/dashboard/index'),
         name: 'yuqingxinxizhanshi',
         meta: { title: '舆情信息展示', icon: 'chart', affix: true },
-        alwaysShow: true,
         children: [
           {
             path: 'yuqingredupaihangbang',
