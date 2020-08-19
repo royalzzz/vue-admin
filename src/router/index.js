@@ -37,7 +37,7 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/',
+    path: '/shilitupu',
     component: Layout,
     redirect: '/shilitupu',
     children: [
@@ -50,7 +50,7 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/',
+    path: '/kbqa',
     component: Layout,
     redirect: '/kbqa',
     alwaysShow: true,
@@ -114,7 +114,7 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/',
+    path: '/yuqingfenxi',
     component: Layout,
     redirect: '/yuqingfenxi',
     alwaysShow: true,
@@ -125,33 +125,33 @@ export const constantRoutes = [
     children: [
       {
         path: 'yuqingxinxichuli',
-        component: () => import('@/views/dashboard/index'),
-        name: 'yuqingfenxi',
+        // component: Layout,
+        name: 'yuqingxinxichuli',
         meta: { title: '舆情信息处理', icon: 'chart', affix: true },
         alwaysShow: true,
         children: [
           {
             path: 'huagongshigufenlei',
             component: () => import('@/views/yuqingfenxi/index'),
-            name: 'yuqingfenxi',
+            name: 'huagongshigufenlei',
             meta: { title: '化工事故分类', icon: 'chart', affix: true }
           },
           {
             path: 'wenzhangxiangsidupipei',
             component: () => import('@/views/dashboard/index'),
-            name: 'yuqingfenxi',
+            name: 'wenzhangxiangsidupipei',
             meta: { title: '文章相似度匹配', icon: 'chart', affix: true }
           },
           {
             path: 'qingganfenxi',
             component: () => import('@/views/dashboard/index'),
-            name: 'yuqingfenxi',
+            name: 'qingganfenxi',
             meta: { title: '情感分析', icon: 'chart', affix: true }
           },
           {
             path: 'zidongzhaiyao',
             component: () => import('@/views/dashboard/index'),
-            name: 'yuqingfenxi',
+            name: 'zidongzhaiyao',
             meta: { title: '自动摘要', icon: 'chart', affix: true }
           }
         ]
@@ -159,26 +159,26 @@ export const constantRoutes = [
       {
         path: 'yuqingxinxizhanshi',
         component: () => import('@/views/dashboard/index'),
-        name: 'yuqingfenxi',
+        name: 'yuqingxinxizhanshi',
         meta: { title: '舆情信息展示', icon: 'chart', affix: true },
         alwaysShow: true,
         children: [
           {
             path: 'yuqingredupaihangbang',
             component: () => import('@/views/dashboard/index'),
-            name: 'yuqingfenxi',
+            name: 'yuqingredupaihangbang',
             meta: { title: '舆情热度排行榜', icon: 'chart', affix: true }
           },
           {
             path: 'hongguanshujutongjizhanshi',
             component: () => import('@/views/dashboard/index'),
-            name: 'yuqingfenxi',
+            name: 'hongguanshujutongjizhanshi',
             meta: { title: '宏观数据统计展示', icon: 'chart', affix: true }
           },
           {
             path: 'weiguanshujutongjizhanshi',
             component: () => import('@/views/dashboard/index'),
-            name: 'yuqingfenxi',
+            name: 'weiguanshujutongjizhanshi',
             meta: { title: '微观数据统计展示', icon: 'chart', affix: true }
           }
         ]
