@@ -2,14 +2,14 @@
 
 import Layout from '@/layout'
 
-const nestedRouter = {
+const eventEvolutionaryGraph = {
   path: '/nested',
   component: Layout,
   redirect: '/nested/menu1/menu1-1',
   name: 'Nested',
   meta: {
-    title: 'Nested Routes',
-    icon: 'nested'
+    title: '事理图谱',
+    icon: 'tree'
   },
   children: [
     {
@@ -63,4 +63,4 @@ const nestedRouter = {
   ]
 }
 
-export default nestedRouter
+export default eventEvolutionaryGraph

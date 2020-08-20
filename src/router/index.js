@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import eventEvolutionaryGraph from './modules/eventEvolutionaryGraph'
 
 Vue.use(Router)
 
@@ -36,19 +37,7 @@ export const constantRoutes = [
       }
     ]
   },
-  {
-    path: '/shilitupu',
-    component: Layout,
-    redirect: '/shilitupu',
-    children: [
-      {
-        path: 'shilitupu',
-        component: () => import('@/views/dashboard/index'),
-        name: 'shilitupu',
-        meta: { title: '事理图谱', icon: 'tree', affix: true }
-      }
-    ]
-  },
+  eventEvolutionaryGraph,
   {
     path: '/kbqa',
     component: Layout,
