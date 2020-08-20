@@ -127,19 +127,35 @@ export const constantRoutes = [
         path: 'yuqingxinxichuli',
         component: () => import('@/layout/components/Empty'),
         name: 'yuqingxinxichuli',
+        alwaysShow: true,
         meta: { title: '舆情信息处理', icon: 'chart', affix: true },
         children: [
           {
             path: 'huagongshigufenlei',
             component: () => import('@/views/yuqingfenxi/index'),
             name: 'huagongshigufenlei',
-            meta: { title: '化工事故分类', icon: 'chart', affix: true }
+            meta: { title: '事故报道分类', icon: 'chart', affix: true }
           },
           {
             path: 'wenzhangxiangsidupipei',
-            component: () => import('@/views/yuqingfenxi/xiangsidupipei'),
+            component: () => import('@/layout/components/Empty'),
             name: 'wenzhangxiangsidupipei',
-            meta: { title: '文章相似度匹配', icon: 'chart', affix: true }
+            alwaysShow: true,
+            meta: { title: '文章相似度匹配', icon: 'chart', affix: true },
+            children: [
+              {
+                path: 'xiangsidupipei',
+                component: () => import('@/views/yuqingfenxi/xiangsidupipei'),
+                name: 'xiangsidupipei',
+                meta: { title: '相似文章合并', icon: 'chart', affix: true }
+              },
+              {
+                path: 'shigupipei',
+                component: () => import('@/views/yuqingfenxi/shigupipei'),
+                name: 'shigupipei',
+                meta: { title: '事故匹配展示', icon: 'chart', affix: true }
+              }
+            ]
           },
           {
             path: 'qingganfenxi',
@@ -196,7 +212,7 @@ const createRouter = () => new Router({
 const router = createRouter()
 
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
-export function resetRouter () {
+export function resetRouter() {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher // reset router
 }
