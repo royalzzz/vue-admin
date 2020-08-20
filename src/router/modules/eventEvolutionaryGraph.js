@@ -3,16 +3,16 @@
 import Layout from '@/layout'
 
 const eventEvolutionaryGraph = {
-  path: '/nested',
+  path: '/eventEvolutionaryGraph',
   component: Layout,
-  redirect: '/nested/menu1/menu1-1',
-  name: 'Nested',
+  redirect: '/eventEvolutionaryGraph',
+  name: 'eventEvolutionaryGraph',
   meta: {
     title: '事理图谱',
     icon: 'tree'
   },
   children: [
-    {
+    /* {
       path: 'menu1',
       component: () => import('@/views/nested/menu1/index'), // Parent router-view
       name: 'Menu1',
@@ -59,6 +59,46 @@ const eventEvolutionaryGraph = {
       name: 'Menu2',
       component: () => import('@/views/nested/menu2/index'),
       meta: { title: 'Menu 2' }
+    },*/
+    { /* 第一个*/
+      path: 'baoGaoGuanLi',
+      name: 'baoGaoGuanLi',
+      component: () => import('@/views/eventEvolutionary/baoGaoGuanLi'),
+      meta: { title: '事故报告管理' }
+    },
+    { /* 第二个*/
+      path: '事件演化标注管理',
+      component: () => import('@/views/eventEvolutionary/yanHuaGuanLi/index'), // Parent router-view
+      name: 'yanHuaGuanLi',
+      meta: { title: '事件演化标注管理' },
+      redirect: '/views/eventEvolutionary/yanHuaGuanLi/index',
+      children: [
+        {
+          path: 'yanHuaBiaoZhu',
+          component: () => import('@/views/eventEvolutionary/yanHuaGuanLi/yanHuaBiaoZhu'),
+          name: '事件演化标注',
+          meta: { title: '事件演化标注' }
+        },
+        {
+          path: 'yanHuaZhanShi',
+          component: () => import('@/views/eventEvolutionary/yanHuaGuanLi/yanHuaZhanShi'),
+          name: 'yanHuaZhanShi',
+          redirect: '/views/eventEvolutionary/yanHuaGuanLi/yanHuaZhanShi',
+          meta: { title: '事件演化展示' }
+        }
+      ]
+    },
+    { /* 第三个*/
+      path: 'tuPuZhanShi',
+      name: '事故的事理图谱展示',
+      component: () => import('@/views/eventEvolutionary/tuPuZhanShi'),
+      meta: { title: '事故的事理图谱展示' }
+    },
+    { /* 第四个*/
+      path: 'shiJianTuiLi',
+      name: 'shiJianTuiLi',
+      component: () => import('@/views/eventEvolutionary/shiJianTuiLi'),
+      meta: { title: '事件的预测推理' }
     }
   ]
 }
