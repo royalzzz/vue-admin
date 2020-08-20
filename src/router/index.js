@@ -128,32 +128,32 @@ export const constantRoutes = [
         component: () => import('@/layout/components/Empty'),
         name: 'yuqingxinxichuli',
         alwaysShow: true,
-        meta: { title: '舆情信息处理', icon: 'chart', affix: true },
+        meta: { title: '舆情信息处理', icon: 'el-icon-magic-stick', affix: true },
         children: [
           {
             path: 'huagongshigufenlei',
             component: () => import('@/views/yuqingfenxi/index'),
             name: 'huagongshigufenlei',
-            meta: { title: '事故报道分类', icon: 'chart', affix: true }
+            meta: { title: '事故报道分类', icon: 'el-icon-s-flag', affix: true }
           },
           {
             path: 'wenzhangxiangsidupipei',
             component: () => import('@/layout/components/Empty'),
             name: 'wenzhangxiangsidupipei',
             alwaysShow: true,
-            meta: { title: '文章相似度匹配', icon: 'chart', affix: true },
+            meta: { title: '文章相似度匹配', icon: 'el-icon-search', affix: true },
             children: [
               {
                 path: 'xiangsidupipei',
                 component: () => import('@/views/yuqingfenxi/xiangsidupipei'),
                 name: 'xiangsidupipei',
-                meta: { title: '相似文章合并', icon: 'chart', affix: true }
+                meta: { title: '相似文章合并', icon: 'el-icon-document-copy', affix: true }
               },
               {
                 path: 'shigupipei',
                 component: () => import('@/views/yuqingfenxi/shigupipei'),
                 name: 'shigupipei',
-                meta: { title: '事故匹配展示', icon: 'chart', affix: true }
+                meta: { title: '事故匹配展示', icon: 'el-icon-collection', affix: true }
               }
             ]
           },
@@ -161,13 +161,13 @@ export const constantRoutes = [
             path: 'qingganfenxi',
             component: () => import('@/views/yuqingfenxi/index'),
             name: 'qingganfenxi',
-            meta: { title: '情感分析', icon: 'chart', affix: true }
+            meta: { title: '情感分析', icon: 'el-icon-odometer', affix: true }
           },
           {
             path: 'zidongzhaiyao',
             component: () => import('@/views/dashboard/index'),
             name: 'zidongzhaiyao',
-            meta: { title: '自动摘要', icon: 'chart', affix: true }
+            meta: { title: '自动摘要', icon: 'el-icon-chat-line-round', affix: true }
           }
         ]
       },
@@ -175,25 +175,25 @@ export const constantRoutes = [
         path: 'yuqingxinxizhanshi',
         component: () => import('@/views/dashboard/index'),
         name: 'yuqingxinxizhanshi',
-        meta: { title: '舆情信息展示', icon: 'chart', affix: true },
+        meta: { title: '舆情信息展示', icon: 'el-icon-data-line', affix: true },
         children: [
           {
             path: 'yuqingredupaihangbang',
             component: () => import('@/views/dashboard/index'),
             name: 'yuqingredupaihangbang',
-            meta: { title: '舆情热度排行榜', icon: 'chart', affix: true }
+            meta: { title: '舆情热度排行榜', icon: 'el-icon-medal', affix: true }
           },
           {
             path: 'hongguanshujutongjizhanshi',
             component: () => import('@/views/dashboard/index'),
             name: 'hongguanshujutongjizhanshi',
-            meta: { title: '宏观数据统计展示', icon: 'chart', affix: true }
+            meta: { title: '宏观数据统计展示', icon: 'el-icon-pie-chart', affix: true }
           },
           {
             path: 'weiguanshujutongjizhanshi',
             component: () => import('@/views/dashboard/index'),
             name: 'weiguanshujutongjizhanshi',
-            meta: { title: '微观数据统计展示', icon: 'chart', affix: true }
+            meta: { title: '微观数据统计展示', icon: 'el-icon-aim', affix: true }
           }
         ]
       }
