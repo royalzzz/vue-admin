@@ -137,7 +137,7 @@ export const constantRoutes = [
           },
           {
             path: 'wenzhangxiangsidupipei',
-            component: () => import('@/views/dashboard/index'),
+            component: () => import('@/views/yuqingfenxi/xiangsidupipei'),
             name: 'wenzhangxiangsidupipei',
             meta: { title: '文章相似度匹配', icon: 'chart', affix: true }
           },
