@@ -45,7 +45,7 @@ export const constantRoutes = [
         path: 'shilitupu',
         component: () => import('@/views/dashboard/index'),
         name: 'shilitupu',
-        meta: { title: '事例图谱', icon: 'tree', affix: true }
+        meta: { title: '事理图谱', icon: 'tree', affix: true }
       }
     ]
   },
@@ -137,7 +137,7 @@ export const constantRoutes = [
           },
           {
             path: 'wenzhangxiangsidupipei',
-            component: () => import('@/views/dashboard/index'),
+            component: () => import('@/views/yuqingfenxi/xiangsidupipei'),
             name: 'wenzhangxiangsidupipei',
             meta: { title: '文章相似度匹配', icon: 'chart', affix: true }
           },
