@@ -41,18 +41,58 @@
           <el-checkbox label="默认展示字段" name="type" />
         </el-checkbox-group>
       </el-form-item>
-      <el-form-item label="特殊资源">
+      <el-form-item label="实体关系">
         <el-radio-group v-model="form.resource">
-          <el-radio label="线上品牌商赞助" />
-          <el-radio label="线下场地免费" />
+          <el-radio label="有" />
+          <el-radio label="无" />
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="活动形式">
-        <el-input v-model="form.desc" type="textarea" />
+      <el-form-item label="关联关系">
+        <el-row>
+          <el-col :span="5">
+            <el-select v-model="form.region" placeholder="请选择录入实体的概念">
+              <el-option label="区域一" value="shanghai" />
+              <el-option label="区域二" value="beijing" />
+            </el-select>
+          </el-col>
+
+          <el-col :span="5">
+            <el-select v-model="form.region" placeholder="请选择实体">
+              <el-option label="区域一" value="shanghai" />
+              <el-option label="区域二" value="beijing" />
+            </el-select>
+          </el-col>
+
+          <el-col :span="5">
+            <el-input v-model="form.name" placeholder="关系名" />
+          </el-col>
+        </el-row>
+        <el-row style="margin-top:10px;">
+          <el-col :span="5">
+            <el-select v-model="form.region" placeholder="请选择录入实体的概念">
+              <el-option label="区域一" value="shanghai" />
+              <el-option label="区域二" value="beijing" />
+            </el-select>
+          </el-col>
+
+          <el-col :span="5">
+            <el-select v-model="form.region" placeholder="请选择实体">
+              <el-option label="区域一" value="shanghai" />
+              <el-option label="区域二" value="beijing" />
+            </el-select>
+          </el-col>
+
+          <el-col :span="5">
+            <el-input v-model="form.name" placeholder="关系名" />
+          </el-col>
+        </el-row>
+        <el-row style="margin-top:10px;">
+          <el-button type="success" icon="el-icon-plus">添加关系</el-button>
+        </el-row>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
-        <el-button>取消</el-button>
+        <el-button>重置</el-button>
       </el-form-item>
     </el-form>
   </div>
