@@ -1,215 +1,116 @@
 <template>
   <div style="padding:20px;">
-    <el-row :gutter="20">
-      <el-col :span="16">
-        <el-card>
-          <el-row :gutter="20">
-            <div style="height:400px;border-radius:3px;padding:20px;overflow:auto">
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url" />
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
-                    <div>请问有什么可以帮到您？</div>
-                  </div>
-                </el-col>
-              </el-row>
+    <el-form ref="form" :model="form" label-width="80px">
+      <el-form-item label="概念选择">
+        <el-select v-model="form.region" placeholder="请选择录入实体的概念">
+          <el-option label="区域一" value="shanghai" />
+          <el-option label="区域二" value="beijing" />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="实体属性">
+        <el-row>
+          <el-col :span="8">
+            <el-input v-model="form.name" placeholder="属性名" />
+          </el-col>
+          <el-col :span="1" style="text-align:center;">:</el-col>
+          <el-col :span="8">
+            <el-input v-model="form.name" placeholder="属性值" />
+          </el-col>
+        </el-row>
+        <el-row style="margin-top:10px;">
+          <el-col :span="8">
+            <el-input v-model="form.name" placeholder="属性名" />
+          </el-col>
+          <el-col :span="1" style="text-align:center;">:</el-col>
+          <el-col :span="8">
+            <el-input v-model="form.name" placeholder="属性值" />
+          </el-col>
+        </el-row>
+        <el-row style="margin-top:10px;">
+          <el-button type="success" icon="el-icon-plus">添加属性</el-button>
+        </el-row>
+      </el-form-item>
+      <el-form-item label="是否覆盖">
+        <el-switch v-model="form.delivery" />
+      </el-form-item>
+      <el-form-item label="存储设置">
+        <el-checkbox-group v-model="form.type">
+          <el-checkbox label="自动生成ID" name="type" />
+          <el-checkbox label="新属性增加" name="type" />
+          <el-checkbox label="遇到错误停止" name="type" />
+          <el-checkbox label="默认展示字段" name="type" />
+        </el-checkbox-group>
+      </el-form-item>
+      <el-form-item label="实体关系">
+        <el-radio-group v-model="form.resource">
+          <el-radio label="有" />
+          <el-radio label="无" />
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item label="关联关系">
+        <el-row>
+          <el-col :span="5">
+            <el-select v-model="form.region" placeholder="请选择录入实体的概念">
+              <el-option label="区域一" value="shanghai" />
+              <el-option label="区域二" value="beijing" />
+            </el-select>
+          </el-col>
 
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <div style="height:40px;"></div>
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">您</div>
-                    <div>苯是什么？</div>
-                  </div>
-                </el-col>
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2" />
-                </el-col>
-              </el-row>
+          <el-col :span="5">
+            <el-select v-model="form.region" placeholder="请选择实体">
+              <el-option label="区域一" value="shanghai" />
+              <el-option label="区域二" value="beijing" />
+            </el-select>
+          </el-col>
 
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url" />
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
-                    <div>苯（Benzene，C₆H₆）一种碳氢化合物即最简单的芳烃，在常温下是甜味、可燃、有致癌毒性的无色透明液体，并带有强烈的芳香气味。</div>
-                  </div>
-                </el-col>
-              </el-row>
+          <el-col :span="5">
+            <el-input v-model="form.name" placeholder="关系名" />
+          </el-col>
+        </el-row>
+        <el-row style="margin-top:10px;">
+          <el-col :span="5">
+            <el-select v-model="form.region" placeholder="请选择录入实体的概念">
+              <el-option label="区域一" value="shanghai" />
+              <el-option label="区域二" value="beijing" />
+            </el-select>
+          </el-col>
 
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <div style="height:40px;"></div>
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">您</div>
-                    <div>苯有毒吗？</div>
-                  </div>
-                </el-col>
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2" />
-                </el-col>
-              </el-row>
+          <el-col :span="5">
+            <el-select v-model="form.region" placeholder="请选择实体">
+              <el-option label="区域一" value="shanghai" />
+              <el-option label="区域二" value="beijing" />
+            </el-select>
+          </el-col>
 
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url" />
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
-                    <div>苯具有毒性。</div>
-                  </div>
-                </el-col>
-              </el-row>
-
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <div style="height:40px;"></div>
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">您</div>
-                    <div>人体吸入苯有什么危害</div>
-                  </div>
-                </el-col>
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2" />
-                </el-col>
-              </el-row>
-
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url" />
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
-                    <div>由于苯的挥发性大，暴露于空气中很容易扩散。人和动物吸入或皮肤接触大量苯进入体内，会引起急性和慢性苯中毒。</div>
-                  </div>
-                </el-col>
-              </el-row>
-
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <div style="height:40px;"></div>
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">您</div>
-                    <div>苯用来做什么？</div>
-                  </div>
-                </el-col>
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2" />
-                </el-col>
-              </el-row>
-
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url" />
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
-                    <div>苯经取代反应、加成反应、氧化反应等生成的一系列化合物可以作为制取塑料、橡胶、纤维、染料、去污剂、杀虫剂等的原料。大约10%的苯用于制造苯系中间体的基本原料。</div>
-                  </div>
-                </el-col>
-              </el-row>
-
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <div style="height:40px;"></div>
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">您</div>
-                    <div>具有致癌性的化学品有哪些？</div>
-                  </div>
-                </el-col>
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2" />
-                </el-col>
-              </el-row>
-
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url" />
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
-                    <div>甲醇、甲醛、氟气、氢氟酸、钋、钚...</div>
-                  </div>
-                </el-col>
-              </el-row>
-            </div>
-          </el-row>
-          <el-row :gutter="20" style="margin-top:10px;">
-            <el-input v-model="textarea" placeholder="请输入您的问题" :rows="3" type="textarea" />
-          </el-row>
-          <el-row style="float:right;margin-top:10px;margin-bottom:10px;">
-            <el-button type="primary" plain>发送</el-button>
-          </el-row>
-        </el-card>
-      </el-col>
-      <el-col :span="8">
-        <el-card class="box-card-component" style="margin-left:8px;">
-          <div slot="header" class="box-card-header">
-            <el-image shape="square" :size="100" :fit="fit" :src="url" />
-          </div>
-          <div style="position:relative;">
-            <div>
-              <el-tag>危化品</el-tag>
-              <el-tag type="success">理化性质</el-tag>
-              <el-tag type="info">防护</el-tag>
-              <el-tag type="warning">应急</el-tag>
-              <el-tag type="danger">危险性</el-tag>
-            </div>
-            <div style="margin-top:20px;">
-              <span>危化品知识</span>
-              <el-progress :percentage="70" />
-            </div>
-            <div class="progress-item">
-              <span>危险性知识</span>
-              <el-progress :percentage="58" />
-            </div>
-            <div class="progress-item">
-              <span>防护知识</span>
-              <el-progress :percentage="42" />
-            </div>
-            <div class="progress-item">
-              <span>应急处理</span>
-              <el-progress :percentage="30" />
-            </div>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
+          <el-col :span="5">
+            <el-input v-model="form.name" placeholder="关系名" />
+          </el-col>
+        </el-row>
+        <el-row style="margin-top:10px;">
+          <el-button type="success" icon="el-icon-plus">添加关系</el-button>
+        </el-row>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="onSubmit">立即创建</el-button>
+        <el-button>重置</el-button>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Zhinengwenda',
+  name: 'Zhishikuadd',
   data() {
     return {
-      formInline: {
-        user: '',
-        region: ''
-      },
-      textarea: '',
-      url: 'https://pic4.zhimg.com/v2-9b1be1d9c2ffc173297fa7562ccb0b12_1200x500.jpg',
-      url2: 'http://www.shejiye.com/uploadfile/icon/2017/0203/shejiyeicondc4fz0bubgs.png',
-      fit: 'scale-down'
+      form: {
+        name: '',
+        region: '',
+        delivery: false,
+        type: [],
+        resource: '',
+        desc: ''
+      }
     }
   },
   methods: {
@@ -219,10 +120,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.el-tag {
-  margin-right: 10px;
-}
-</style>
-
