@@ -45,7 +45,7 @@ export const constantRoutes = [
         path: 'shilitupu',
         component: () => import('@/views/dashboard/index'),
         name: 'shilitupu',
-        meta: { title: '事例图谱', icon: 'tree', affix: true }
+        meta: { title: '事理图谱', icon: 'tree', affix: true }
       }
     ]
   },
