@@ -2,7 +2,7 @@
   <div style="padding:20px;">
     <el-row :gutter="20">
       <el-col :span="16">
-        <el-card>
+        <!-- <el-card>
           <el-row :gutter="20">
             <div style="height:400px;border-radius:3px;padding:20px;overflow:auto">
               <el-row :gutter="20" style="margin-bottom: 20px;">
@@ -159,15 +159,16 @@
           <el-row style="float:right;margin-top:10px;margin-bottom:10px;">
             <el-button type="primary" plain>发送</el-button>
           </el-row>
-        </el-card>
+        </el-card> -->
       </el-col>
+
       <el-col :span="8">
         <el-card class="box-card-component" style="margin-left:8px;">
           <div slot="header" class="box-card-header">
-            <el-image shape="square" :size="100" :fit="fit" :src="url" />
+            <el-image shape="square" :size="200" :fit="fit" :src="url" />
           </div>
           <div style="position:relative;">
-            <div>
+            <!-- <div>
               <el-tag>危化品</el-tag>
               <el-tag type="success">理化性质</el-tag>
               <el-tag type="info">防护</el-tag>
@@ -189,7 +190,7 @@
             <div class="progress-item">
               <span>应急处理</span>
               <el-progress :percentage="30" />
-            </div>
+            </div> -->
           </div>
         </el-card>
       </el-col>
@@ -207,7 +208,7 @@ export default {
         region: ''
       },
       textarea: '',
-      url: 'https://pic4.zhimg.com/v2-9b1be1d9c2ffc173297fa7562ccb0b12_1200x500.jpg',
+      url: 'http://chuantu.xyz/t6/740/1597944552x1700340450.png',
       url2: 'http://www.shejiye.com/uploadfile/icon/2017/0203/shejiyeicondc4fz0bubgs.png',
       fit: 'scale-down'
     }
