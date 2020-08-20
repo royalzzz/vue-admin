@@ -55,13 +55,13 @@ export const constantRoutes = [
     redirect: '/kbqa',
     alwaysShow: true,
     meta: {
-      title: '智能问答',
+      title: '知识库问答',
       icon: 'message'
     },
     children: [
       {
         path: 'zhinengwenda',
-        component: () => import('@/views/dashboard/index'),
+        component: () => import('@/views/kbqa/zhinengwenda'),
         name: 'zhinengwenda',
         meta: { title: '智能问答', icon: 'message', affix: true }
       },
@@ -73,13 +73,13 @@ export const constantRoutes = [
         children: [
           {
             path: 'zhishiluru',
-            component: () => import('@/views/dashboard/index'),
+            component: () => import('@/views/kbqa/zhishiku/add'),
             name: 'zhishiluru',
             meta: { title: '知识录入', icon: 'edit', affix: true }
           },
           {
             path: 'zhishichaxun',
-            component: () => import('@/views/dashboard/index'),
+            component: () => import('@/views/kbqa/zhishiku/search'),
             name: 'zhishichaxun',
             meta: { title: '知识查询', icon: 'search', affix: true }
           }
@@ -87,19 +87,19 @@ export const constantRoutes = [
       },
       {
         path: 'shujupaqu',
-        component: Layout,
+        component: () => import('@/layout/components/Empty'),
         name: 'shujupaqu',
         meta: { title: '数据爬取', icon: 'international', affix: true },
         children: [
           {
             path: 'paqucanshu',
-            component: () => import('@/views/dashboard/index'),
+            component: () => import('@/views/kbqa/shujupaqu/canshu'),
             name: 'paqucanshu',
             meta: { title: '爬取参数设置', icon: 'component', affix: true }
           },
           {
             path: 'paqujieguo',
-            component: () => import('@/views/dashboard/index'),
+            component: () => import('@/views/kbqa/shujupaqu/result'),
             name: 'paqujieguo',
             meta: { title: '爬取结果浏览', icon: 'search', affix: true }
           }
@@ -107,7 +107,7 @@ export const constantRoutes = [
       },
       {
         path: 'moxingxunlian',
-        component: () => import('@/views/dashboard/index'),
+        component: () => import('@/views/kbqa/training'),
         name: 'moxingxunlian',
         meta: { title: '模型训练', icon: 'language', affix: true }
       }
