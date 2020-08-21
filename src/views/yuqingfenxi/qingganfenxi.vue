@@ -38,8 +38,8 @@
         </div>
       </el-col>
     </el-row>
-    <el-dialog title="新闻评论情感倾向" :visible.sync="dialogTimeLineVisible" class="”pub_dialog”">
-      <div style="overflow:auto;height:380px;overflow-x:hidden">
+    <el-dialog title="新闻评论情感倾向" :visible.sync="dialogTimeLineVisible" class="pub_dialog" top="-20px" width="60%">
+      <div style="overflow:auto;height:420px;overflow-x:hidden">
         <el-row :gutter="3">
           <el-card shadow="hover">
             <p>又是化工爆炸，这几年多少起了，监管何在</p>
