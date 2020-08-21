@@ -164,14 +164,14 @@ export const constantRoutes = [
       },
       {
         path: 'yuqingxinxizhanshi',
-        component: () => import('@/views/dashboard/index'),
+        component: () => import('@/layout/components/Empty'),
         name: 'yuqingxinxizhanshi',
         meta: { title: '舆情信息展示', icon: 'el-icon-data-line', affix: true },
         children: [
           {
-            path: 'yuqingredupaihangbang',
-            component: () => import('@/views/dashboard/index'),
-            name: 'yuqingredupaihangbang',
+            path: 'redubang',
+            component: () => import('@/views/yuqingfenxi/redubang'),
+            name: 'redubang',
             meta: { title: '舆情热度排行榜', icon: 'el-icon-medal', affix: true }
           },
           {
