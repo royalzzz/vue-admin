@@ -76,23 +76,23 @@ export const constantRoutes = [
       },
       {
         path: 'shujupaqu',
-        component: () => import('@/layout/components/Empty'),
+        component: () => import('@/views/kbqa/shujupaqu/result'),
         name: 'shujupaqu',
-        meta: { title: '数据爬取', icon: 'international', affix: true },
-        children: [
-          {
-            path: 'paqucanshu',
-            component: () => import('@/views/kbqa/shujupaqu/canshu'),
-            name: 'paqucanshu',
-            meta: { title: '爬取参数设置', icon: 'component', affix: true }
-          },
-          {
-            path: 'paqujieguo',
-            component: () => import('@/views/kbqa/shujupaqu/result'),
-            name: 'paqujieguo',
-            meta: { title: '爬取结果浏览', icon: 'search', affix: true }
-          }
-        ]
+        meta: { title: '数据爬取', icon: 'international', affix: true }
+        // children: [
+        //   {
+        //     path: 'paqucanshu',
+        //     component: () => import('@/views/kbqa/shujupaqu/canshu'),
+        //     name: 'paqucanshu',
+        //     meta: { title: '爬取参数设置', icon: 'component', affix: true }
+        //   },
+        //   {
+        //     path: 'paqujieguo',
+        //     component: () => import('@/views/kbqa/shujupaqu/result'),
+        //     name: 'paqujieguo',
+        //     meta: { title: '爬取结果浏览', icon: 'search', affix: true }
+        //   }
+        // ]
       },
       {
         path: 'moxingxunlian',
@@ -201,7 +201,7 @@ const createRouter = () => new Router({
 const router = createRouter()
 
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
-export function resetRouter() {
+export function resetRouter () {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher // reset router
 }
