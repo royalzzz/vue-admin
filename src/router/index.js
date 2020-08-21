@@ -75,24 +75,26 @@ export const constantRoutes = [
         ]
       },
       {
-        path: 'shujupaqu',
-        component: () => import('@/views/kbqa/shujupaqu/result'),
-        name: 'shujupaqu',
-        meta: { title: '数据爬取', icon: 'international', affix: true }
-        // children: [
-        //   {
-        //     path: 'paqucanshu',
-        //     component: () => import('@/views/kbqa/shujupaqu/canshu'),
-        //     name: 'paqucanshu',
-        //     meta: { title: '爬取参数设置', icon: 'component', affix: true }
-        //   },
-        //   {
-        //     path: 'paqujieguo',
-        //     component: () => import('@/views/kbqa/shujupaqu/result'),
-        //     name: 'paqujieguo',
-        //     meta: { title: '爬取结果浏览', icon: 'search', affix: true }
-        //   }
-        // ]
+        path: 'shujulaiyuan',
+        component: () => import('@/layout/components/Empty'),
+        name: 'shujulaiyuan',
+        meta: { title: '数据来源', icon: 'international', affix: true },
+        children: [
+          {
+            path: 'paqu',
+            component: () => import('@/views/kbqa/shujulaiyuan/paqu'),
+            name: 'paqu',
+            meta: { title: '数据爬取', icon: 'tree-table', affix: true }
+          },
+          {
+            path: 'sds',
+            component: () => import('@/views/kbqa/shujulaiyuan/sds'),
+            name: 'sds',
+            meta: {
+              title: 'SDS文档', icon: 'documentation', affix: true
+            }
+          }
+        ]
       },
       {
         path: 'moxingxunlian',
