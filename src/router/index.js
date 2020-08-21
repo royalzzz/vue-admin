@@ -154,7 +154,7 @@ export const constantRoutes = [
           },
           {
             path: 'zidongzhaiyao',
-            component: () => import('@/views/dashboard/index'),
+            component: () => import('@/views/yuqingfenxi/zidongzhaiyao'),
             name: 'zidongzhaiyao',
             meta: { title: '自动摘要', icon: 'el-icon-chat-line-round', affix: true }
           }

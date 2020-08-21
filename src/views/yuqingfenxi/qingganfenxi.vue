@@ -38,8 +38,8 @@
         </div>
       </el-col>
     </el-row>
-    <el-dialog title="新闻评论情感倾向" :visible.sync="dialogTimeLineVisible" class="pub_dialog" top="-20px" width="60%">
-      <div style="overflow:auto;height:420px;overflow-x:hidden">
+    <el-dialog title="新闻评论情感倾向" :visible.sync="dialogTimeLineVisible" top="60px" width="60%">
+      <div style="overflow:auto;height:450px;overflow-x:hidden">
         <el-row :gutter="3">
           <el-card shadow="hover">
             <p>又是化工爆炸，这几年多少起了，监管何在</p>
@@ -183,27 +183,5 @@ export default {
 .row-bg {
   padding: 10px 0;
   background-color: #f9fafc;
-}
-.pub_dialog {
-  display: flex;
-  justify-content: center;
-  align-items: Center;
-  overflow: hidden;
-  .el-dialog {
-    margin: 0 auto !important;
-    height: 90%;
-    overflow: hidden;
-    .el-dialog__body {
-      position: absolute;
-      left: 0;
-      top: 54px;
-      bottom: 0;
-      right: 0;
-      padding: 0;
-      z-index: 1;
-      overflow: hidden;
-      overflow-y: auto;
-    }
-  }
 }
 </style>
