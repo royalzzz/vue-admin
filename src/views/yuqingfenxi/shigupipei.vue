@@ -31,7 +31,7 @@
         </div>
       </el-col>
     </el-row>
-    <el-dialog title="事故详情" :visible.sync="dialogTimeLineVisible">
+    <el-dialog title="事故相关报道" :visible.sync="dialogTimeLineVisible">
       <el-timeline :reverse="reverse">
         <el-timeline-item v-for="(activity, index) in activities" :key="index" :timestamp="activity.timestamp">
           {{ activity.content }}

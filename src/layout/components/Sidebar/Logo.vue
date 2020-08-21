@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      title: '智能工程',
+      title: '危险化学品公共信息服务',
       logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
     }
   }

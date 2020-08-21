@@ -148,7 +148,7 @@ export const constantRoutes = [
           },
           {
             path: 'qingganfenxi',
-            component: () => import('@/views/yuqingfenxi/index'),
+            component: () => import('@/views/yuqingfenxi/qingganfenxi'),
             name: 'qingganfenxi',
             meta: { title: '情感分析', icon: 'el-icon-odometer', affix: true }
           },
