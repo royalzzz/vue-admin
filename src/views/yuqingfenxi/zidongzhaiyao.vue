@@ -27,24 +27,19 @@
       </el-col>
     </el-row>
     <el-dialog title="新闻报道自动摘要查看修改" :visible.sync="dialogTimeLineVisible" top="60px" width="60%">
-      <div style="overflow:auto;height:450px;overflow-x:hidden">
+      <div style="overflow:auto;height:400px;overflow-x:hidden;padding:20px">
         <el-form ref="form" :model="form" label-width="80px">
           <el-form-item label="新闻标题">
-            <el-input v-model="form.name" />
+            <el-input v-model="form.news_title" />
           </el-form-item>
           <el-form-item label="新闻链接">
-            <el-input v-model="form.name" />
+            <el-input v-model="form.news_link" />
           </el-form-item>
           <el-form-item label="摘要文本">
-            <el-input v-model="form.desc" type="textarea" rows="10" />
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="onSubmit">立即创建</el-button>
-            <el-button>取消</el-button>
+            <el-input v-model="form.news_abstract" type="textarea" rows="10" />
           </el-form-item>
         </el-form>
       </div>
-
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">关 闭</el-button>
         <el-button type="primary" @click="dialogFormVisible = false">保 存</el-button>
@@ -59,26 +54,6 @@ export default {
   data() {
     return {
       reverse: false,
-      activities: [
-        {
-          content: '江苏盐城市响水陈家港天嘉宜化工厂（生产农药）发生爆炸。',
-          timestamp: '2019年3月21日14时48分'
-        },
-        {
-          content:
-            '国家应急管理部党组书记黄明抵达盐城，深入现场指导事故抢险和应急救援工作，并召开事故处置会议。',
-          timestamp: '2019年3月22日02时00分'
-        },
-        {
-          content:
-            '事故现场指挥部召开第一次新闻发布会，盐城市长曹路宝通报基本情况。',
-          timestamp: '2019年3月22日09时00分'
-        },
-        {
-          content: '事故现场搜救工作正式结束。',
-          timestamp: '2019年3月25日00时00分'
-        }
-      ],
       // value: '全部',
       tableData: [
         {
@@ -108,14 +83,9 @@ export default {
       ],
       dialogTimeLineVisible: false,
       form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
+        news_title: '江苏化工厂爆炸致6死30重伤部分民众受轻伤',
+        news_link: 'https://news.163.com/19/0321/19/EAQK9V8G0001899O.html',
+        news_abstract: '事故发生后，江苏省、盐城市、响水县立即启动应急预案，相关人员第一时间赶赴现场，开展事故救援、秩序维护等工作'
       }
     }
   },
