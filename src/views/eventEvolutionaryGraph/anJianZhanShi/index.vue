@@ -4,7 +4,7 @@
       <el-input v-model="formInline.user" placeholder="关键字搜索" style="width: 1000px;"></el-input>
       <el-form-item>
         <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
-          概念事理图谱展示
+          案件事理图谱展示
         </el-button>
       </el-form-item>
     </el-form>
