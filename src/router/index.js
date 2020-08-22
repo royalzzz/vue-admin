@@ -175,15 +175,15 @@ export const constantRoutes = [
             meta: { title: '舆情热度排行榜', icon: 'el-icon-medal', affix: true }
           },
           {
-            path: 'hongguanshujutongjizhanshi',
-            component: () => import('@/views/dashboard/index'),
-            name: 'hongguanshujutongjizhanshi',
+            path: 'hongguanlist',
+            component: () => import('@/views/yuqingfenxi/hongguanlist'),
+            name: 'hongguanlist',
             meta: { title: '宏观数据统计展示', icon: 'el-icon-pie-chart', affix: true }
           },
           {
-            path: 'weiguanshujutongjizhanshi',
-            component: () => import('@/views/dashboard/index'),
-            name: 'weiguanshujutongjizhanshi',
+            path: 'weiguanlist',
+            component: () => import('@/views/yuqingfenxi/weiguanlist'),
+            name: 'weiguanlist',
             meta: { title: '微观数据统计展示', icon: 'el-icon-aim', affix: true }
           }
         ]

@@ -5,8 +5,7 @@
       <p style="font-size: 13px;" align="right">——每三小时更新一次</p>
       <hr style="width:100%; #909399">
       <el-table :data="tableData" style="width: 100%">
-        <el-table-column prop="accident_title" label="事故名称" width="300">
-        </el-table-column>
+        <el-table-column prop="accident_title" label="事故名称" width="300"></el-table-column>
         <el-table-column prop="accident_class" label="类型" width="200"></el-table-column>
         <el-table-column label="热度">
           <template slot-scope="scope">
@@ -75,7 +74,7 @@ export default {
 }
 .bg-purple-dark {
   /* background: #99a9bf; */
-  padding: 80px;
+  padding: 40px;
 }
 .bg-purple {
   background: #d3dce6;
