@@ -13,13 +13,13 @@ const eventEvolutionaryGraph = {
   },
   children: [
 
-    { /* 第一个*/
+    { /* 第一个,报告管理*/
       path: 'baoGaoGuanLi',
       name: 'baoGaoGuanLi',
       component: () => import('@/views/eventEvolutionaryGraph/baoGaoGuanLi'),
       meta: { title: '事故报告管理' }
     },
-    { /* 第二个*/
+    { /* 第二个，演化管理*/
       path: '事件演化标注管理',
       component: () => import('@/layout/components/Empty'),
       // component: () => import('@/views/eventEvolutionaryGraph/yanHuaGuanLi'), // Parent router-view
@@ -42,17 +42,29 @@ const eventEvolutionaryGraph = {
         }
       ]
     },
-    { /* 第三个*/
-      path: 'tuPuZhanShi',
-      name: '事故的事理图谱展示',
-      component: () => import('@/views/eventEvolutionaryGraph/tuPuZhanShi'),
-      meta: { title: '事故的事理图谱展示' }
+    { /* 第三个，概念事理展示*/
+      path: 'gaiNianZhanShi',
+      name: 'gaiNianZhanShi',
+      component: () => import('@/views/eventEvolutionaryGraph/gaiNianZhanShi'),
+      meta: { title: '概念事理图谱' }
     },
-    { /* 第四个*/
-      path: 'shiJianTuiLi',
-      name: 'shiJianTuiLi',
-      component: () => import('@/views/eventEvolutionaryGraph/shiJianTuiLi'),
-      meta: { title: '事件的预测推理' }
+    { /* 第四个，案件事理展示*/
+      path: 'anJianZhanShi',
+      name: 'anJianZhanShi',
+      component: () => import('@/views/eventEvolutionaryGraph/anJianZhanShi'),
+      meta: { title: '案件事理图谱' }
+    },
+    { /* 第五个，防护措施*/
+      path: 'fangHuCuoShi',
+      name: 'fangHuCuoShi',
+      component: () => import('@/views/eventEvolutionaryGraph/fangHuCuoShi'),
+      meta: { title: '防护措施' }
+    },
+    { /* 第六个，模型训练*/
+      path: 'moXingXunLian',
+      name: 'moXingXunLian',
+      component: () => import('@/views/eventEvolutionaryGraph/moXingXunLian'),
+      meta: { title: '模型训练' }
     }
   ]
 }
