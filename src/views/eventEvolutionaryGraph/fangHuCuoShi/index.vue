@@ -1,20 +1,24 @@
 <template>
   <div style="padding: 20px;">
     <el-form :inline="true" :model="formInline" class="demo-form-inline">
-      <el-form-item label="关键字">
-        <el-input v-model="formInline.user" placeholder="关键字搜索"></el-input>
-      </el-form-item>
+      <el-input v-model="formInline.user" placeholder="关键字搜索" style="width: 850px;"></el-input>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">查询</el-button>
+        <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
+          搜索事故报告
+        </el-button>
+        <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
+          事故报告导入
+        </el-button>
+        <!-- <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
+          事故报告下载
+        </el-button> -->
       </el-form-item>
     </el-form>
 
     <el-table :data="tableData" border style="width: 100%">
-      <el-table-column fixed prop="ID" label="编号" width="100"></el-table-column>
-      <el-table-column prop="cas" label="CAS编号" width="120"></el-table-column>
-      <el-table-column prop="chemical" label="化学品" width="120"></el-table-column>
-      <el-table-column prop="content" label="爬取内容"></el-table-column>
-      <el-table-column prop="from" label="爬取来源"></el-table-column>
+      <el-table-column fixed prop="ID" label="编号" width="60"></el-table-column>
+      <el-table-column prop="date" label="日期" width="120"></el-table-column>
+      <el-table-column prop="content" label="事故报告内容" width="840"></el-table-column>
       <el-table-column fixed="right" label="操作">
         <template slot-scope="scope">
           <el-button type="primary" size="small" @click="handleClick(scope.row)">编辑</el-button>
@@ -27,7 +31,7 @@
 
 <script>
 export default {
-  name: 'Paqu',
+  name: '',
   data() {
     return {
       formInline: {
@@ -35,53 +39,45 @@ export default {
         region: ''
       },
       tableData: [{
-        ID: '1000',
-        cas: '1310-73-2',
-        chemical: '氢氧化钠',
-        from: 'http://www.hgmsds.com/hg-ehs-index',
-        content: 'CAS	名称	分子式	分子量	熔点℃	沸点℃	危险性	··1310-73-2	氢氧化钠	NaOH	40.00	318	1388	腐蚀性'
+        ID: '1',
+        date: '1997-02-03',
+        content: ' 一、违反纪律踩断管，氨气泄漏中毒亡　　1.事故经过　　某化肥厂合成车间4名女工在清扫完卫生后，到冷冻器，下罐将四人救起，送到厂医救。经医生'
       }, {
-        ID: '1001',
-        cas: '50-0-0',
-        chemical: '甲醛',
-        from: 'http://www.hgmsds.com/hg-ehs-index',
-        content: '50-0-0	甲醛	CH 2O	30.03	-92	-20	毒性'
+        ID: '2',
+        date: '1994-04-08',
+        content: '一、事故概况及经过   1991年4月8日，广州市某县的一家个体中新精细化工厂搪玻璃反应锅发生爆炸。该厂首次进行对苯二甲酸二甲脂的试生产，所用设'
       }, {
-        ID: '1002',
-        cas: '141-78-6',
-        chemical: '乙酸乙酯',
-        from: 'http://www.hgmsds.com/hg-ehs-index',
-        content: '141-78-6	乙酸乙酯	C 4H 8O 2CHO	88.1	-84	77	易燃性'
+        ID: '3',
+        date: '1994-04-08',
+        content: '【案情】某市化工厂新录用了一批工人，但厂里目前暂时没有住宿用房。有人提出，可以先到外面去租用住房。厂长认为，到外面租房成本太高。厂里一'
       }, {
-        ID: '1003',
-        cas: '1310-73-2',
-        chemical: '氢氧化钠',
-        from: 'http://www.hgmsds.com/hg-ehs-index',
-        content: 'CAS	名称	分子式	分子量	熔点℃	沸点℃	危险性	··1310-73-2	氢氧化钠	NaOH	40.00	318	1388	腐蚀性'
+        ID: '4',
+        date: '1994-04-08',
+        content: '伤事故不在少数。   　　在企业生产检修中，有限空间作业比较频繁，是一项危险性很大的作业，通常作业空间通风不畅，照明不良；'
       }, {
-        ID: '1004',
-        cas: '108-95-2',
-        chemical: '苯酚',
-        from: 'http://www.hgmsds.com/hg-ehs-index',
-        content: '108-95-2	苯酚	C 6H 6O	94.11	43	182	腐蚀性'
+        ID: '5',
+        date: '1994-04-08',
+        content: '　1）事故概况  　　1988年8月28日1:00左右，停放在得克萨斯州迪尔帕克的EMP AK公司停车线上的一节UTLX-96283号环氧乙烷槽车爆炸。'
       }, {
-        ID: '1005',
-        cas: '7789-12-0',
-        chemical: '重铬酸钠',
-        from: 'http://www.hgmsds.com/hg-ehs-index',
-        content: '略有吸湿性。100℃时失去结晶水，约400℃时开始分解。易溶于水，不溶于乙醇，水溶液呈酸性。1%水溶液的pH为4，10%水溶液的pH为3.5。相对密度2.348。熔点356.7℃'
+        ID: '6',
+        date: '1994-04-08',
+        content: '1）事故概况  　　美军海漂联合企业1#EO蒸馏塔于1991年3月12日发生爆炸，爆炸碎片击坏甲烷和其他易燃'
       }, {
-        ID: '1006',
-        cas: '74-82-8',
-        chemical: '甲烷',
-        from: 'http://www.hgmsds.com/hg-ehs-index',
-        content: '甲烷（系统名为“碳烷”，但只在介绍系统命名法时会出现，一般用习惯名“甲烷”）在自然界的分布很广，甲烷是最简单的有机物，是天然气，沼气，坑气等的主要成分，俗称瓦斯。'
+        ID: '7',
+        date: '1994-04-08',
+        content: '烷1#计量槽属非法自制压力容器，制造质量低劣，焊缝、钢板存在着严重缺陷；  　　②合成车间属甲类易燃'
       }, {
-        ID: '1007',
-        cas: '6484-52-2',
-        chemical: '硝酸铵',
-        from: 'http://www.hgmsds.com/hg-ehs-index',
-        content: '硝酸铵（NH4NO3）是一种铵盐，NH4NO3，呈无色无臭的透明晶体或呈白色的晶体，极易溶于水，易吸湿结块，溶解时吸收大量热。受猛烈撞击或受热爆炸性分解，遇碱分解。是氧化剂，用于化肥和化工原料。'
+        ID: '8',
+        date: '1994-04-08',
+        content: '一、事故概况及经过   1991年4月8日，广州市某县的一家个体中新精细化工厂搪玻璃反应锅发生爆炸。该厂首次进行对苯二甲酸二甲脂的试生产，所用设'
+      }, {
+        ID: '9',
+        date: '1994-04-08',
+        content: '发生时间：1988年7月9日  　　发生单位：大连某拆船厂   　　原因类别：管理(气瓶腐蚀、超期使用)  　　事故发生经过：  　　大连某拆船厂将一批气瓶送某制氧厂'
+      }, {
+        ID: '10',
+        date: '1994-04-08',
+        content: '一、事故概况及经过   1991年4月8日，广州市某县的一家个体中新精细化工厂搪玻璃反应锅发生爆炸。该厂首次进行对苯二甲酸二甲脂的试生产，所用设'
       }]
     }
   },

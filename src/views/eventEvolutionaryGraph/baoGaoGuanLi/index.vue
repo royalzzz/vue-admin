@@ -1,7 +1,7 @@
 <template>
   <div style="padding: 20px;">
     <el-form :inline="true" :model="formInline" class="demo-form-inline">
-      <el-input v-model="formInline.user" placeholder="关键字搜索" style="width: 800px;"></el-input>
+      <el-input v-model="formInline.user" placeholder="关键字搜索" style="width: 850px;"></el-input>
       <el-form-item>
         <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
           搜索事故报告
@@ -9,16 +9,16 @@
         <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
           事故报告导入
         </el-button>
-        <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
+        <!-- <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
           事故报告下载
-        </el-button>
+        </el-button> -->
       </el-form-item>
     </el-form>
 
     <el-table :data="tableData" border style="width: 100%">
-      <el-table-column fixed prop="ID" label="编号" width="100"></el-table-column>
+      <el-table-column fixed prop="ID" label="编号" width="60"></el-table-column>
       <el-table-column prop="date" label="日期" width="120"></el-table-column>
-      <el-table-column prop="content" label="事故报告内容" width="800"></el-table-column>
+      <el-table-column prop="content" label="事故报告内容" width="840"></el-table-column>
       <el-table-column fixed="right" label="操作">
         <template slot-scope="scope">
           <el-button type="primary" size="small" @click="handleClick(scope.row)">编辑</el-button>
