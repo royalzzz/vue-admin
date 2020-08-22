@@ -123,56 +123,56 @@ export default {
         desc: ''
       },
       tableData: [{
-        ID: '10001',
+        ID: '1',
         name: '2020第一次测试配置',
         lr: '0.001',
         epoch: 2000,
         batch: 2,
         window: 3
       }, {
-        ID: '10002',
-        name: 'H算法配置',
+        ID: '2',
+        name: 'A算法',
         lr: '0.002',
         epoch: 50000,
         batch: 4,
         window: 3
       }, {
-        ID: '10003',
-        name: 'Test Config',
+        ID: '3',
+        name: 'B算法',
         lr: '0.001',
         epoch: 1000,
         batch: 2,
         window: 3
       }, {
-        ID: '10004',
-        name: 'TextCNN',
+        ID: '4',
+        name: '超参设置',
         lr: '0.001',
         epoch: 100,
         batch: 2,
         window: 2
       }, {
-        ID: '10005',
-        name: 'RNN Attention',
+        ID: '5',
+        name: 'C算法',
         lr: '0.001',
         epoch: 2000,
         batch: 2,
         window: 3
       }, {
-        ID: '10006',
+        ID: '6',
         name: '综合模型超参',
         lr: '0.001',
         epoch: 1000,
         batch: 2,
         window: 3
       }, {
-        ID: '10007',
+        ID: '7',
         name: '正式上线前配置测试',
         lr: '0.001',
         epoch: 200,
         batch: 2,
         window: 3
       }, {
-        ID: '10008',
+        ID: '8',
         name: '正式环境配置',
         lr: '0.001',
         epoch: 500,
@@ -180,56 +180,56 @@ export default {
         window: 3
       }],
       tableData2: [{
-        ID: '10001',
+        ID: '1',
         name: '2020第一次测试配置',
         train: '98%',
         test: '83%',
         val: '48%',
         time: '2.5h'
       }, {
-        ID: '10002',
+        ID: '2',
         name: 'H算法配置',
         train: '98%',
         test: '83%',
         val: '48%',
         time: '1.5h'
       }, {
-        ID: '10003',
+        ID: '3',
         name: 'Test Config',
         train: '98%',
         test: '83%',
         val: '48%',
         time: '2.5h'
       }, {
-        ID: '10004',
+        ID: '4',
         name: 'TextCNN',
         train: '98%',
         test: '76%',
         val: '35%',
         time: '4.5h'
       }, {
-        ID: '10005',
+        ID: '5',
         name: 'RNN Attention',
         train: '98%',
         test: '89%',
         val: '63%',
         time: '2.5h'
       }, {
-        ID: '10006',
+        ID: '6',
         name: '综合模型超参',
         train: '91%',
         test: '77%',
         val: '41%',
         time: '4.5h'
       }, {
-        ID: '10007',
+        ID: '7',
         name: '正式上线前配置测试',
         train: '98%',
         test: '83%',
         val: '44%',
         time: '1h'
       }, {
-        ID: '10008',
+        ID: '8',
         name: '正式环境配置',
         train: '99%',
         test: '87%',
