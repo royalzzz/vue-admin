@@ -1,6 +1,6 @@
 <template>
   <div class="grid-content bg-purple-dark">
-    <el-row>
+    <el-row :gutter="20">
       <el-col :span="12">
         <div class="grid-content">
           按事故分类查看：
@@ -12,7 +12,7 @@
               :value="item.value"
             />
           </el-select>
-          <el-button type="success">显示</el-button>
+          <el-button icon="el-icon-search" type="primary">搜索</el-button>
         </div>
       </el-col>
       <el-col :span="12">
@@ -31,9 +31,9 @@
             <el-table-column prop="news_class" label="分类" width="50" />
             <el-table-column label="操作">
               <template>
-                <el-button type="text" size="small" @click="dialogFormVisible = true">查看详情</el-button>
-                <el-button type="text" size="small">编辑</el-button>
-                <el-button type="text" size="small">删除</el-button>
+                <el-button type="primary" size="small" @click="dialogFormVisible = true">查看详情</el-button>
+                <el-button type="success" size="small">编辑</el-button>
+                <el-button type="danger" size="small">删除</el-button>
               </template>
             </el-table-column>
           </el-table>

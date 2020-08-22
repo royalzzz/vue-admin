@@ -1,17 +1,13 @@
 <template>
   <div class="grid-content bg-purple-dark">
-    <el-row>
+    <el-row :gutter="20">
       <el-col :span="12">
         <div class="grid-content">
-          <div style="margin-top: 15px;">
-            <el-input v-model="input3" placeholder="请输入要搜索的新闻" class="input-with-select">
-              <el-button slot="append" icon="el-icon-search"></el-button>
-            </el-input>
-          </div>
+          <el-col :span="12">
+            <el-input v-model="input3" placeholder="请输入要搜索的新闻" class="input-with-select" />
+          </el-col>
+          <el-button icon="el-icon-search" type="primary">搜索</el-button>
         </div>
-      </el-col>
-      <el-col :span="12">
-        <div class="grid-content"></div>
       </el-col>
     </el-row>
     <el-row>
@@ -26,8 +22,8 @@
             <el-table-column prop="news_class" label="分类" width="50"></el-table-column>
             <el-table-column label="操作">
               <template>
-                <el-button type="text" size="small" @click="dialogFormVisible = true">编辑</el-button>
-                <el-button type="text" size="small">删除</el-button>
+                <el-button type="success" size="small" @click="dialogFormVisible = true">编辑</el-button>
+                <el-button type="danger" size="small">删除</el-button>
               </template>
             </el-table-column>
           </el-table>
