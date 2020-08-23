@@ -40,6 +40,7 @@
                   <div style="background:whitesmoke;padding:10px;border-radius:3px;">
                     <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
                     <div>苯（Benzene，C₆H₆）一种碳氢化合物即最简单的芳烃，在常温下是甜味、可燃、有致癌毒性的无色透明液体，并带有强烈的芳香气味。</div>
+                    <div style="margin-top:5px;"><el-link @click="dialogVisible = true"> >>推理依据 </el-link></div>
                   </div>
                 </el-col>
               </el-row>
@@ -67,6 +68,7 @@
                   <div style="background:whitesmoke;padding:10px;border-radius:3px;">
                     <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
                     <div>苯具有毒性。</div>
+                    <div style="margin-top:5px;"><el-link @click="dialogVisible2 = true"> >>推理依据 </el-link></div>
                   </div>
                 </el-col>
               </el-row>
@@ -94,6 +96,7 @@
                   <div style="background:whitesmoke;padding:10px;border-radius:3px;">
                     <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
                     <div>由于苯的挥发性大，暴露于空气中很容易扩散。人和动物吸入或皮肤接触大量苯进入体内，会引起急性和慢性苯中毒。</div>
+                    <div style="margin-top:5px;"><el-link> >>推理依据 </el-link></div>
                   </div>
                 </el-col>
               </el-row>
@@ -194,6 +197,14 @@
         </el-card>
       </el-col>
     </el-row>
+    <el-dialog title="推理依据" :visible.sync="dialogVisible">
+      <div style="width:100%;text-align:center;"><img src="@/assets/kbqa/ben.png" alt=""></div>
+      <div style="margin-top:10px;">苯（Benzene，C₆H₆）一种碳氢化合物即最简单的芳烃，在常温下是甜味、可燃、有致癌毒性的无色透明液体，并带有强烈的芳香气味。</div>
+    </el-dialog>
+    <el-dialog title="推理依据" :visible.sync="dialogVisible2">
+      <div style="width:100%;text-align:center;"><img src="@/assets/kbqa/youdu.png" alt=""></div>
+      <div style="margin-top:10px;">苯（Benzene，C₆H₆）- 毒性 => 有毒。</div>
+    </el-dialog>
   </div>
 </template>
 
@@ -206,6 +217,8 @@ export default {
         user: '',
         region: ''
       },
+      dialogVisible: false,
+      dialogVisible2: false,
       textarea: '',
       url: 'https://pic4.zhimg.com/v2-9b1be1d9c2ffc173297fa7562ccb0b12_1200x500.jpg',
       url2: 'http://www.shejiye.com/uploadfile/icon/2017/0203/shejiyeicondc4fz0bubgs.png',

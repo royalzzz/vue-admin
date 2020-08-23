@@ -71,6 +71,12 @@ export const constantRoutes = [
             component: () => import('@/views/kbqa/zhishiku/search'),
             name: 'zhishichaxun',
             meta: { title: '知识查询', icon: 'search', affix: true }
+          },
+          {
+            path: 'shigu',
+            component: () => import('@/views/kbqa/zhishiku/shigu'),
+            name: 'shigu',
+            meta: { title: '事故管理', icon: 'el-icon-magic-stick', affix: true }
           }
         ]
       },
