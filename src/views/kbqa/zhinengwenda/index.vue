@@ -123,6 +123,18 @@
                 <el-col :span="20">
                   <div style="background:whitesmoke;padding:10px;border-radius:3px;">
                     <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
+                    <div>对不起，此问题我还不会答案。<el-link @click="dialogVisible3 = true">[问答反馈]</el-link></div>
+                  </div>
+                </el-col>
+              </el-row>
+
+              <el-row :gutter="20" style="margin-bottom: 20px;">
+                <el-col :span="2">
+                  <el-avatar shape="square" :size="40" :fit="fit" :src="url" />
+                </el-col>
+                <el-col :span="20">
+                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
+                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
                     <div>苯经取代反应、加成反应、氧化反应等生成的一系列化合物可以作为制取塑料、橡胶、纤维、染料、去污剂、杀虫剂等的原料。大约10%的苯用于制造苯系中间体的基本原料。</div>
                   </div>
                 </el-col>
@@ -205,6 +217,20 @@
       <div style="width:100%;text-align:center;"><img src="@/assets/kbqa/youdu.png" alt=""></div>
       <div style="margin-top:10px;">苯（Benzene，C₆H₆）- 毒性 => 有毒。</div>
     </el-dialog>
+    <el-dialog title="问题反馈" :visible.sync="dialogVisible3">
+      <h1>苯用来做什么？</h1>
+      <el-form>
+        <el-form-item label="相似问法">
+          <el-input v-model="text" type="textarea" rows="5"></el-input>
+        </el-form-item>
+        <el-form-item label="答案">
+          <el-input v-model="text2" type="text"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary">提交</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
   </div>
 </template>
 
@@ -217,8 +243,11 @@ export default {
         user: '',
         region: ''
       },
+      text: '',
+      text2: '',
       dialogVisible: false,
       dialogVisible2: false,
+      dialogVisible3: false,
       textarea: '',
       url: 'https://pic4.zhimg.com/v2-9b1be1d9c2ffc173297fa7562ccb0b12_1200x500.jpg',
       url2: 'http://www.shejiye.com/uploadfile/icon/2017/0203/shejiyeicondc4fz0bubgs.png',

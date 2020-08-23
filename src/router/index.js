@@ -50,9 +50,23 @@ export const constantRoutes = [
     children: [
       {
         path: 'zhinengwenda',
-        component: () => import('@/views/kbqa/zhinengwenda'),
+        component: () => import('@/layout/components/Empty'),
         name: 'zhinengwenda',
-        meta: { title: '智能问答', icon: 'message', affix: true }
+        meta: { title: '智能问答', icon: 'message', affix: true },
+        children: [
+          {
+            path: 'wendajiqiren',
+            component: () => import('@/views/kbqa/zhinengwenda/index'),
+            name: 'wendajiqiren',
+            meta: { title: '问答机器人', icon: 'message', affix: true }
+          },
+          {
+            path: 'yuliaoku',
+            component: () => import('@/views/kbqa/zhinengwenda/yuliao'),
+            name: 'yuliaoku',
+            meta: { title: '问答语料库', icon: 'language', affix: true }
+          }
+        ]
       },
       {
         path: 'zhishiku',
