@@ -65,6 +65,27 @@ const eventEvolutionaryGraph = {
       name: 'moXingXunLian',
       component: () => import('@/views/eventEvolutionaryGraph/moXingXunLian'),
       meta: { title: '模型训练' }
+    },
+    { /* 第七个，test*/
+      path: 'test',
+      name: 'test',
+      component: () => import('@/layout/components/Empty'),
+      meta: { title: '测试', icon: 'message', affix: true },
+      children: [
+        {
+          path: 'test',
+          component: () => import('@/views/eventEvolutionaryGraph/test/test'),
+          name: 'test',
+          meta: { title: 'test', icon: 'el-icon-edit', affix: true }
+        },
+        {
+          path: 'test1',
+          component: () => import('@/views/eventEvolutionaryGraph/test/test1'),
+          name: 'test1',
+          // redirect: '/views/eventEvolutionaryGraph/yanHuaGuanLi/yanHuaZhanShi/index',
+          meta: { title: 'test1', icon: 'el-icon-edit', affix: true }
+        }
+      ]
     }
   ]
 }
