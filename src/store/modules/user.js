@@ -34,9 +34,9 @@ const actions = {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
-        const { data } = response
-        commit('SET_TOKEN', data.token)
-        setToken(data.token)
+        const { token } = response
+        commit('SET_TOKEN', token)
+        setToken(token)
         resolve()
       }).catch(error => {
         reject(error)
@@ -49,7 +49,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
         const { data } = response
-
+        console.log(response)
         if (!data) {
           reject('Verification failed, please Login again.')
         }
@@ -104,7 +104,8 @@ const actions = {
 
   // dynamically modify permissions
   async changeRoles ({ commit, dispatch }, role) {
-    const token = role + '-token'
+    // const token = role + '-token'
+    const token = 'token'
 
     commit('SET_TOKEN', token)
     setToken(token)
