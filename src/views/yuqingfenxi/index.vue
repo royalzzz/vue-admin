@@ -40,38 +40,38 @@
         </div>
       </el-col>
     </el-row>
-    <el-dialog title="事故报道详情" :visible.sync="dialogFormVisible">
+    <el-dialog title="事故报道编辑" :visible.sync="dialogFormVisible">
       <el-form :model="form">
         <el-form-item label="报道名称和分类：" :label-width="formLabelWidth">
           <el-col :span="16">
-            <el-input v-model="form.news_title" autocomplete="off" :disabled="true" />
+            <el-input v-model="form.news_title" autocomplete="off"  />
           </el-col>
           <el-col :span="6">
-            <el-input v-model="form.news_class" autocomplete="off" :disabled="true" />
+            <el-input v-model="form.news_class" autocomplete="off"  />
           </el-col>
         </el-form-item>
         <el-form-item label="发布时间和来源：" :label-width="formLabelWidth">
           <el-col :span="16">
-            <el-date-picker v-model="form.news_date" autocomplete="off" type="date" value="form.news_data" :disabled="true" />
+            <el-date-picker v-model="form.news_date" autocomplete="off" type="date" value="form.news_data" />
           </el-col>
           <el-col :span="6">
-            <el-input v-model="form.news_site" autocomplete="off" :disabled="true" />
+            <el-input v-model="form.news_site" autocomplete="off" />
           </el-col>
         </el-form-item>
         <el-form-item label="报道链接：" :label-width="formLabelWidth">
           <el-col :span="22">
-            <el-input v-model="form.news_link" autocomplete="off" :disabled="true" />
+            <el-input v-model="form.news_link" autocomplete="off"  />
           </el-col>
         </el-form-item>
         <el-form-item label="详细内容：" :label-width="formLabelWidth">
           <el-col :span="22">
-            <el-input v-model="form.news_content" autocomplete="off" type="textarea" :rows="10" :disabled="true" />
+            <el-input v-model="form.news_content" autocomplete="off" type="textarea" :rows="10" />
           </el-col>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">关 闭</el-button>
-        <!-- <el-button type="primary" @click="dialogFormVisible = false">保 存</el-button> -->
+        <el-button type="primary" @click="dialogFormVisible = false">保 存</el-button>
       </div>
     </el-dialog>
   </div>
