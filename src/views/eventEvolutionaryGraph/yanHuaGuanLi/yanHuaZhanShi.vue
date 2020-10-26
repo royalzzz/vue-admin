@@ -1,5 +1,5 @@
 <template>
   <div>
-    <img src="@/assets/eventEvolutionaryGraph/事故要素展示.png" width="90%">
+    <img src="@/assets/eventEvolutionaryGraph/yaosuzhanshi.png" width="90%">
   </div>
 </template>

@@ -20,7 +20,7 @@ const eventEvolutionaryGraph = {
       meta: { title: '事故报告管理' }
     },
     { /* 第二个，演化管理*/
-      path: '事件演化标注管理',
+      path: 'shijianyanhuabiaozhu',
       component: () => import('@/layout/components/Empty'),
       // component: () => import('@/views/eventEvolutionaryGraph/yanHuaGuanLi'), // Parent router-view
       name: 'yanHuaGuanLi',

@@ -9,7 +9,7 @@
       </el-form-item>
     </el-form>
     <el-card style="height:650px;" align="center">
-      <img src="@/assets/eventEvolutionaryGraph/案件事理图谱截图.png" width="80%" align="center">
+      <img src="@/assets/eventEvolutionaryGraph/anjianshilitupu.png" width="80%" align="center">
     </el-card>
   </div>
 </template>
