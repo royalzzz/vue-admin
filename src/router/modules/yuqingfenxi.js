@@ -13,6 +13,12 @@ const yuqingfenxi = {
   },
   children: [
     {
+      path: 'xinxicaiji',
+      component: () => import('@/views/yuqingfenxi/xinxicaiji'),
+      name: 'xinxicaiji',
+      meta: { title: '信息采集', icon: 'el-icon-coin', affix: true }
+    },
+    {
       path: 'yuqingxinxichuli',
       component: () => import('@/layout/components/Empty'),
       name: 'yuqingxinxichuli',

@@ -60,16 +60,16 @@
           <el-collapse-item title="事故舆情概况" name="2">
             <div style="float:left;padding:0px 50px">
               <h3>1. 舆情热词词云</h3>
-              <img src="@/assets/yuqingfenxi/shiguciyun.png" style="float:left; width:85%;margin-left:60px"></img>
+              <img src="@/assets/yuqingfenxi/shiguciyun.png" style="float:left; width:85%;margin-left:60px">
             </div>
             <div style="float:left;padding:50px">
               <h3>2. 舆情情感倾向</h3>
-              <img src="@/assets/yuqingfenxi/huanzhuangtu.png" style="float:left; width:80%;margin-left:60px"></img>
+              <img src="@/assets/yuqingfenxi/huanzhuangtu.png" style="float:left; width:80%;margin-left:60px">
               <p style="float:left; width:60%;">在所有发布信息中，关于响水爆炸案的负面舆情占主导地位，达到62.74%，其次是正面舆情，占比为22.79%，中性舆情占比14.47%。</p>
             </div>
             <div style="float:left;padding:50px 50px 150px">
               <h3>3. 事故舆情情感走势</h3>
-              <img src="@/assets/yuqingfenxi/zoushitu.png" style="float:left; width:80%;margin-left:60px"></img>
+              <img src="@/assets/yuqingfenxi/zoushitu.png" style="float:left; width:80%;margin-left:60px">
             </div>
           </el-collapse-item>
         </el-collapse>

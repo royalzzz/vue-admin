@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import eventEvolutionaryGraph from './modules/eventEvolutionaryGraph'
 import kbqa from './modules/kbqa'
 import yuqingfenxi from './modules/yuqingfenxi'
+import xitongguanli from './modules/xitongguanli'
 
 Vue.use(Router)
 
@@ -41,7 +42,8 @@ export const constantRoutes = [
   },
   eventEvolutionaryGraph,
   kbqa,
-  yuqingfenxi
+  yuqingfenxi,
+  xitongguanli
 ]
 
 export const asyncRoutes = []
