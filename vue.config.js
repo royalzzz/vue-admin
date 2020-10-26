@@ -2,7 +2,7 @@
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
 
-function resolve(dir) {
+function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
@@ -39,15 +39,15 @@ module.exports = {
     proxy: {
       //http://localhost:9527/isp/user/login
       '/isp': {     //这里最好有一个 /
-          target: 'http://localhost:8888',  // 后台接口域名
-          ws: true,        //如果要代理 websockets，配置这个参数
-          secure: false,  // 如果是https接口，需要配置这个参数
-          changeOrigin: true,  //是否跨域
-          pathRewrite:{
-              '^/isp':''
-          }
+        target: 'https://chem.qust.xin/api',  // 后台接口域名
+        ws: true,        //如果要代理 websockets，配置这个参数
+        secure: false,  // 如果是https接口，需要配置这个参数
+        changeOrigin: true,  //是否跨域
+        pathRewrite: {
+          '^/isp': ''
+        }
       }
-  }
+    }
     // before: require('./mock/mock-server.js')
   },
   configureWebpack: {
@@ -60,7 +60,7 @@ module.exports = {
       }
     }
   },
-  chainWebpack(config) {
+  chainWebpack (config) {
     // it can improve the speed of the first screen, it is recommended to turn on preload
     // it can improve the speed of the first screen, it is recommended to turn on preload
     config.plugin('preload').tap(() => [
@@ -100,7 +100,7 @@ module.exports = {
             .plugin('ScriptExtHtmlWebpackPlugin')
             .after('html')
             .use('script-ext-html-webpack-plugin', [{
-            // `runtime` must same as runtimeChunk name. default is `runtime`
+              // `runtime` must same as runtimeChunk name. default is `runtime`
               inline: /runtime\..*\.js$/
             }])
             .end()
