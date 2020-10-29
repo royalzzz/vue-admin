@@ -9,7 +9,7 @@
     </el-input>
     <el-button
       class="filter-item"
-      style="margin-left: 10px"
+      style="margin-left:89%"
       type="primary"
       icon="el-icon-edit"
       @click="handleCreate"
@@ -23,7 +23,7 @@
       <el-col :span="5">
         <el-card shadow="hover">
           <el-table :data="tableData" width="100" margin-top="10px" @cell-click="getTree">
-            <el-table-column prop="data" label="分词">
+            <el-table-column prop="data" label="分词" align="center">
             </el-table-column>
           </el-table>
         </el-card>
