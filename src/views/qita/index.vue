@@ -30,7 +30,8 @@
       </el-col>
       <el-col :span="17">
         <el-card shadow="always">
-          <img src="@/assets/eventEvolutionaryGraph/fanghucuoshi.png" width="100%">
+          <!-- <img src="@/assets/eventEvolutionaryGraph/fanghucuoshi.png" width="100%"> -->
+          <div id="mynetwork" style="height:400px;"></div>
         </el-card>
       </el-col>
     </el-row>
@@ -38,6 +39,8 @@
 </template>
 
 <script>
+import vis from 'vis'
+
 export default {
   name: '',
   data() {
@@ -72,7 +75,36 @@ export default {
       console.log('handleCreate!')
     },
     getTree() {
-      console.log('getTree!')
+      console.log(this.textarea)
+      var nodes = new vis.DataSet([
+        { id: 1, label: 'A' },
+        { id: 2, label: 'B' },
+        { id: 3, label: 'C' },
+        { id: 4, label: 'D' }
+      ])
+
+      // create an array with edges
+      var edges = new vis.DataSet([
+        { from: 1, to: 3 },
+        { from: 1, to: 2 },
+        { from: 2, to: 4 }
+      ])
+
+      // create a network
+      var container = document.getElementById('mynetwork')
+      console.log(container)
+
+      // provide the data in the vis format:
+      var data = {
+        nodes: nodes,
+        edges: edges
+      }
+
+      var options = {}
+
+      // initialize your network!
+      var network = new vis.Network(container, data, options)
+      console.log(network)
     }
   }
 }
