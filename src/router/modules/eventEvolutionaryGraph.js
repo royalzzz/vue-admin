@@ -73,15 +73,15 @@ const eventEvolutionaryGraph = {
       meta: { title: '测试', icon: 'message', affix: true },
       children: [
         {
-          path: 'test',
+          path: 'test1',
           component: () => import('@/views/eventEvolutionaryGraph/test/test'),
-          name: 'test',
+          name: 'test1',
           meta: { title: 'test', icon: 'el-icon-edit', affix: true }
         },
         {
-          path: 'test1',
+          path: 'test2',
           component: () => import('@/views/eventEvolutionaryGraph/test/test1'),
-          name: 'test1',
+          name: 'test2',
           // redirect: '/views/eventEvolutionaryGraph/yanHuaGuanLi/yanHuaZhanShi/index',
           meta: { title: 'test1', icon: 'el-icon-edit', affix: true }
         }

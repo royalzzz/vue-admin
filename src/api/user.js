@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export function login(data) {
+export function login (data) {
   return request({
     url: '/isp/loginByUserName',
     method: 'post',
@@ -8,7 +8,7 @@ export function login(data) {
   })
 }
 
-export function getInfo(token) {
+export function getInfo (token) {
   return request({
     url: '/isp/user/info',
     method: 'get',
@@ -16,9 +16,9 @@ export function getInfo(token) {
   })
 }
 
-export function logout() {
+export function logout () {
   return request({
-    url: '/isp/user/logout',
+    url: '/isp/logout',
     method: 'post'
   })
 }
