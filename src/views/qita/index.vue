@@ -67,7 +67,21 @@ export default {
           data: '处置措施',
           url: ''
         }
-      ]
+      ],
+      redirect: undefined,
+      otherQuery: {}
+    }
+  },
+  watch: {
+    $route: {
+      handler: function(route) {
+        const query = route.query
+        if (query) {
+          this.redirect = query.redirect
+          this.otherQuery = this.getOtherQuery(query)
+        }
+      },
+      immediate: true
     }
   },
   methods: {
@@ -75,36 +89,30 @@ export default {
       console.log('handleCreate!')
     },
     getTree() {
-      console.log(this.textarea)
-      var nodes = new vis.DataSet([
-        { id: 1, label: 'A' },
-        { id: 2, label: 'B' },
-        { id: 3, label: 'C' },
-        { id: 4, label: 'D' }
-      ])
 
-      // create an array with edges
-      var edges = new vis.DataSet([
-        { from: 1, to: 3 },
-        { from: 1, to: 2 },
-        { from: 2, to: 4 }
-      ])
+      this.$store.dispatch('tree/getBiaozhuTree')
+      .then(result=>{
+        console.log(result);
+        var nodes = new vis.DataSet(result.db_nodes)
+        var edges = new vis.DataSet(result.db_edges)
+        var container = document.getElementById('mynetwork')
+        var data = {
+          nodes: nodes,
+          edges: edges
+        }
+        var options = {}
+        var network = new vis.Network(container, data, options)
+      })
 
-      // create a network
-      var container = document.getElementById('mynetwork')
-      console.log(container)
 
-      // provide the data in the vis format:
-      var data = {
-        nodes: nodes,
-        edges: edges
-      }
-
-      var options = {}
-
-      // initialize your network!
-      var network = new vis.Network(container, data, options)
-      console.log(network)
+    },
+    getOtherQuery(query) {
+      return Object.keys(query).reduce((acc, cur) => {
+        if (cur !== 'redirect') {
+          acc[cur] = query[cur]
+        }
+        return acc
+      }, {})
     }
   }
 }
