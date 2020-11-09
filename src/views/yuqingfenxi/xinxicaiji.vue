@@ -1,50 +1,42 @@
 <template>
   <div class="grid-content bg-purple-dark">
+    <el-form :inline="true" :model="sform" class="demo-form-inline" ref="sform">
+      <el-form-item label="采集关键字">
+        <el-input v-model="sform.s_key" placeholder="以#分隔" />
+      </el-form-item>
+      <el-form-item label="启动时间">
+        <el-date-picker
+          v-model="sform.s_date"
+          type="datetime"
+          placeholder="选择日期时间"
+          default-time="12:00:00"
+        >
+        </el-date-picker>
+      </el-form-item>
+      <el-form-item label="时间间隔">
+        <el-select v-model="sform.s_time" placeholder="请选择">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          >
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="setCrawlerParams">设置</el-button>
+      </el-form-item>
+    </el-form>
     <el-row :gutter="20">
-      <el-col :span="24">
-        <div class="grid-content">
-          <el-form :inline="true" :model="sform" class="demo-form-inline">
-            <el-form-item label="启动时间">
-              <el-col :span="6">
-                <el-date-picker
-                  v-model="sform.s_date"
-                  type="datetime"
-                  placeholder="选择日期时间"
-                  default-time="12:00:00"
-                >
-                </el-date-picker>
-              </el-col>
-            </el-form-item>
-            <el-form-item label="时间间隔">
-              <el-select v-model="sform.s_time" placeholder="请选择">
-                <el-option
-                  v-for="item in options"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                >
-                </el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary">开始</el-button>
-            </el-form-item>
-          </el-form>
-        </div>
-      </el-col>
-      <el-col :span="12">
-        <div class="grid-content"></div>
-      </el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :span="18"><div class="grid-content bg-purple-light">
+      <el-col :span="24"><div class="grid-content bg-purple-light">
         <div class="grid-content">
           <el-table :data="tableData" border>
             <el-table-column fixed prop="id" label="id" width="80" />
-            <el-table-column fixed prop="date" label="日期" width="100" />
-            <el-table-column prop="news_title" label="报道标题" width="200" />
-            <el-table-column prop="news_site" label="来源" width="60" />
-            <el-table-column prop="news_link" label="来源链接" width="200" />
+            <el-table-column fixed prop="date" label="日期" width="150" />
+            <el-table-column prop="news_title" label="报道标题" width="350" />
+            <el-table-column prop="news_site" label="来源" width="100" />
+            <el-table-column prop="news_link" label="来源链接" width="350" />
             <el-table-column label="操作">
               <template>
                 <el-button type="primary" size="small" @click="dialogFormVisible = true">查看详情</el-button>
@@ -154,6 +146,7 @@ export default {
         news_content: '针对网传四川乐山五通桥区化工厂爆炸发生毒气泄漏事件，2020年8月20日上午，界面新闻从乐山市委宣传部获悉，该市五通桥区发生一起化工厂泄露事故，目前已经得到控制，暂无人员伤亡的报告。“是泄露，不是爆炸”，乐山市委宣传部人士对界面新闻强调，由于泄露气体存在异味，所以才引发部分当地居民担忧。目前，有关部门正在排查泄露原因，稍后将会详细通报。一位当地市民告诉界面新闻，今天早上，闻到气味后当地许多市民自发往更远的地方撤离，但是很多人被堵在路上，交通瘫痪。此前，@四川应急官方微博曾表示，8月20日上午，四川省乐山市五通桥区疑似发生化工厂气体泄漏。对此，20日9时56分，五通桥区发布情况通报称，目前，经应急、环保等部门现场勘察，该区危化品企业未发生爆炸，全区正在对区内危化品企业再次开展地毯式排查，请大家不信谣、不传谣，关注官方通报。随后@乐山应急也发布消息称，经排查，五通桥区内所有化工企业均未发生爆炸。10时26分，五通桥区又发布情况通报称，经排查，该区内所有化工企业均未发生爆炸。目前，五通桥中心城区产生异味浓雾的原因已经生态环境等部门快速监测，未发现氯化氢等气体超标情况。通过环保部门排查和企业自查，未发现泄露等异常现象，现正开展水、气取样检测，进一步开展深入排查。请市民不要恐慌。界面新闻注意到，8月18日，乐山市五通桥区官方微博也曾紧急辟谣称，经五通桥区应急管理和生态环境部门现场勘查，该区境内目前未发现和邦、永祥、福华等企业燃烧、爆炸和泄漏的情况，关于网友反映的烟雾产生的原因，为永祥股份安全系统正常泄压。公开资料显示，五通桥区工业发展历史悠久，是四川重要的工业基地，四川省化工基地，轻工部十大原料基地之一。目前，全区已有盐磷化工等规模以上工业企业达66户，其中5家企业为上市公司。'
       },
       sform: {
+        s_key:'123',
         s_date: '08/20/2019 12:00:00',
         s_time: '1'
       },
@@ -161,6 +154,16 @@ export default {
     }
   },
   methods: {
+    setCrawlerParams() {
+      console.log(this.sform);
+      this.$store.dispatch('yuqing/setCrawlerParams', this.sform)
+      .then(result => {
+        console.log(result);
+      })
+      .catch(() => {
+        this.loading = false
+      })
+    }
   }
 }
 </script>

@@ -15,9 +15,9 @@
           <el-button icon="el-icon-search" type="primary">搜索</el-button>
         </div>
       </el-col>
-      <el-col :span="12">
-        <div class="grid-content"></div>
-      </el-col>
+      <!-- <el-col :span="12">
+        <div class="grid-content">sdds</div>
+      </el-col> -->
     </el-row>
     <el-row>
       <el-col :span="24">
