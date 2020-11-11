@@ -1,4 +1,5 @@
 <template>
+
   <div style="padding: 20px">
     <el-input
       v-model="textarea"
@@ -12,10 +13,11 @@
       style="margin-left:89%"
       type="primary"
       icon="el-icon-edit"
-      @click="handleCreate"
+      @click="findByLabelLike"
     >
       添加事故报告
     </el-button>
+    <el-button v-for="(item, i) in keyNodes" :key="i">{{ item.label }}</el-button>
     <!-- <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
           事故报告下载
         </el-button> -->
@@ -46,6 +48,7 @@ export default {
   data() {
     return {
       textarea: '',
+      keyNodes: [],
       tableData: [
         {
           data: '节点',
@@ -89,22 +92,27 @@ export default {
       console.log('handleCreate!')
     },
     getTree() {
-
       this.$store.dispatch('tree/getBiaozhuTree')
-      .then(result=>{
-        console.log(result);
-        var nodes = new vis.DataSet(result.db_nodes)
-        var edges = new vis.DataSet(result.db_edges)
-        var container = document.getElementById('mynetwork')
-        var data = {
-          nodes: nodes,
-          edges: edges
-        }
-        var options = {}
-        var network = new vis.Network(container, data, options)
-      })
-
-
+        .then(result => {
+          console.log(result)
+          var nodes = new vis.DataSet(result.db_nodes)
+          var edges = new vis.DataSet(result.db_edges)
+          var container = document.getElementById('mynetwork')
+          var data = {
+            nodes: nodes,
+            edges: edges
+          }
+          var options = {}
+          // var network = new vis.Network(container, data, options)
+          vis.Network(container, data, options)
+        })
+    },
+    findByLabelLike() {
+      this.$store.dispatch('tree/findByLabelLike', this.textarea)
+        .then(result => {
+          var db_nodes = result
+          this.keyNodes = db_nodes
+        })
     },
     getOtherQuery(query) {
       return Object.keys(query).reduce((acc, cur) => {

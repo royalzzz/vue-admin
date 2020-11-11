@@ -1,6 +1,5 @@
-import { getBiaozhuTree } from '@/api/tree'
-import { getToken, setToken, removeToken } from '@/utils/auth'
-import router, { resetRouter } from '@/router'
+import { getBiaozhuTree, findByLabelLike } from '@/api/tree'
+import { getToken, removeToken } from '@/utils/auth'
 
 const state = {
   token: getToken(),
@@ -33,14 +32,30 @@ const actions = {
   // 获取标注树
   getBiaozhuTree ({ commit, state }) {
     return new Promise((resolve, reject) => {
-        getBiaozhuTree(state.token).then(response => {
-        console.log("进入store的获取标注树")
+      getBiaozhuTree(state.token).then(response => {
+        console.log('进入store的获取标注树')
         const { data } = response
         if (!data) {
           reject('Verification failed, please Login again.')
         }
 
-        const { db_nodes, db_edges } = data
+        // const { db_nodes, db_edges } = data
+        // console.log(nodes, edges)
+        // roles must be a non-empty array
+        resolve(data)
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+  findByLabelLike ({ commit, state }, keyword) {
+    return new Promise((resolve, reject) => {
+      findByLabelLike(keyword).then(response => {
+        const { data } = response
+        if (!data) {
+          reject('Verification failed, please Login again.')
+        }
+        // const { db_nodes } = data
         // console.log(nodes, edges)
         // roles must be a non-empty array
         resolve(data)
@@ -58,7 +73,7 @@ const actions = {
       removeToken()
       resolve()
     })
-  },
+  }
 }
 
 export default {
