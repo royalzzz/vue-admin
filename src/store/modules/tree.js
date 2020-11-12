@@ -49,9 +49,11 @@ const actions = {
     })
   },
   findByLabelLike ({ commit, state }, keyword) {
+    // console.log(keyword);
     return new Promise((resolve, reject) => {
       findByLabelLike(keyword).then(response => {
         const { data } = response
+        // console.log(data);
         if (!data) {
           reject('Verification failed, please Login again.')
         }

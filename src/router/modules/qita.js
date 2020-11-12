@@ -19,12 +19,18 @@ const qita = {
       meta: { title: '分词和分层', icon: 'el-icon-user', affix: true }
     },
     { // 等待添加
-      path: 'beitai',
-      component: () => import('@/views/qita/index'),
-      alwaysShow: true,
-      name: 'beitai',
-      meta: { title: '分词分层', icon: 'el-icon-loading', affix: true }
+      path: 'anlishu',
+      component: () => import('@/views/qita/anlishu'),
+      name: 'anlishu',
+      meta: { title: '案例树展示', icon: 'el-icon-loading', affix: true }
     }
+    // { // 等待添加
+    //   path: 'anlishu',
+    //   component: () => import('@/views/qita/anlishu'),
+    //   alwaysShow: true,
+    //   name: 'anlishu',
+    //   meta: { title: '案例树展示', icon: 'el-icon-loading', affix: true }
+    // }
   ]
 }
 
