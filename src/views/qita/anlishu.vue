@@ -1,13 +1,13 @@
 <template>
   <div style="padding: 20px">
-    <el-input
+    <!-- <el-input
       v-model="textarea"
       type="textarea"
       :rows="1"
       placeholder="请输入内容"
     >
-    </el-input>
-    <el-button
+    </el-input> -->
+    <!-- <el-button
       class="filter-item"
       style="margin-left: 89%"
       type="primary"
@@ -15,190 +15,189 @@
       @click="findByLabelLike"
     >
       添加事故报告
-    </el-button>
-    <el-button v-for="(item, i) in keyNodes" :key="i">{{
-      item.label
-    }}</el-button>
+    </el-button> -->
+
     <!-- <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
           事故报告下载
         </el-button> -->
     <el-row :gutter="12">
-      <el-col :span="17">
-        <el-card shadow="always">
-          <!-- <img src="@/assets/eventEvolutionaryGraph/fanghucuoshi.png" width="100%"> -->
-          <div id="mynetwork" style="height: 500px">
-            <TreeMenu :model="testdata" @re="childByValue1" />
+      <el-col :span="12">
+        <!-- <el-card shadow="always">
+          <div id="mynetwork">
+            <TreeMenu :model="testdata" ></TreeMenu>
+          </div>
+        </el-card> -->
+        <el-card shadow="always" style="height: 650px">
+          <span>案例树：</span><br /><br />
+          <div style="height: 580px; overflow: auto">
+            <el-tree
+              :data="testdata"
+              default-expand-all
+              :expand-on-click-node="false"
+              @node-click="findByLabelLike"
+            ></el-tree>
           </div>
         </el-card>
-        <el-button v-for="(item, i) in keyNodes" :key="i">{{
-          item.label
-        }}</el-button>
+      </el-col>
+      <el-col :span="12">
+        <el-card shadow="always" style="height: 650px">
+          <span> 当前事件推荐的标注节点： </span><br />
+          <el-button
+            v-for="(item, i) in keyNodes"
+            :key="i"
+            type="success"
+            plain
+            size="small"
+            style="margin-top: 10px; margin-left: 10px"
+            @click="addBiaozhuPair"
+            >{{ item.label }}</el-button
+          ><br /><br />
+          <span>标准树全部节点：</span><br /><br />
+          <div style="height: 600px; overflow: auto">
+            <el-button
+              v-for="(item, i) in Nodes"
+              :key="i"
+              type="primary"
+              plain
+              size="small"
+              style="margin-top: 10px; margin-left: 10px"
+              @click="addBiaozhuPair"
+              >{{ item.label }}</el-button
+            >
+          </div>
+        </el-card>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
-import vis from 'vis'
-import TreeMenu from './component/TreeMenu'
+import vis from "vis";
+import TreeMenu from "./component/TreeMenu";
 
 export default {
-  name: '',
+  name: "",
   components: { TreeMenu },
   data() {
     return {
-      textarea: '',
+      select: "",
+      Nodes: [],
       keyNodes: [],
       redirect: undefined,
       otherQuery: {},
       testdata: [
-        {
-          andor: 'and',
-          children: [
-            {
-              andor: 'or',
-              children: [
-                {
-                  andor: 'or',
-                  children: [
-                    {
-                      andor: '',
-                      children: [],
-                      gradeId: 'IA1',
-                      name: 'A1$物料输送速度过快引起挥发加剧'
-                    },
-                    {
-                      andor: '',
-                      children: [],
-                      gradeId: 'IA2',
-                      name: 'A2$输送油料温度过高引起挥发加剧'
-                    }
-                  ],
-                  gradeId: 'IA3',
-                  name: 'A3$容器内可燃物料轻质组分急剧挥发'
-                },
-                {
-                  andor: 'or',
-                  children: [
-                    {
-                      andor: 'undefined',
-                      children: [
-                        {
-                          andor: '',
-                          children: [],
-                          gradeId: 'IA4',
-                          name: 'A4$检修时阀门未加盲板'
-                        }
-                      ],
-                      gradeId: '',
-                      name: '爆炸'
-                    },
-                    {
-                      andor: '',
-                      children: [],
-                      gradeId: '',
-                      name: '误操作阀门'
-                    }
-                  ],
-                  gradeId: 'IA5',
-                  name: 'A5$容器外部可燃物料进入容器内并挥发'
-                }
-              ],
-              gradeId: 'IA6',
-              name: 'A6$容器内可燃物料挥发性组分积聚'
-            },
-            {
-              andor: 'or',
-              children: [
-                {
-                  andor: '',
-                  children: [],
-                  gradeId: '',
-                  name: '容器内部存在空气'
-                },
-                {
-                  andor: '',
-                  children: [],
-                  gradeId: '',
-                  name: '外界空气进入容器内部'
-                }
-              ],
-              gradeId: '',
-              name: '容器内存在空气'
-            }
-          ],
-          gradeId: 'IA7',
-          name: 'A7$容器内形成爆炸性混合气体空间'
-        }
-      ]
-    }
+{"andor":"undefined","children":[{"andor":"and","children":[{"andor":"and","children":[{"andor":"","children":[],"gradeId":"","label":"罐内碱渣上面浮着一层汽油，汽油挥发"},{"andor":"","children":[],"gradeId":"","label":"空气"}],"gradeId":"IA7","label":"A7$罐内气体达到爆炸极限"},{"andor":"and","children":[{"andor":"undefined","children":[{"andor":"and","children":[{"andor":"undefined","children":[{"andor":"","children":[],"gradeId":"","label":"开泵之前管内充满汽油"}],"gradeId":"","label":"装渣时需用碱渣将汽油顶出"},{"andor":"","children":[],"gradeId":"","label":"碱渣进口设在罐上部"}],"gradeId":"Ic1","label":"c1$汽油从罐上部喷洒下落，油品剧烈喷溅"}],"gradeId":"","label":"静电产生"},{"andor":"undefined","children":[{"andor":"undefined","children":[{"andor":"","children":[],"gradeId":"","label":"油、水、碱渣等混合物在冲击下，产生大量泡沫"}],"gradeId":"","label":"泡沫及其他浮游物收集静电"}],"gradeId":"","label":"静电积聚"},{"andor":"undefined","children":[{"andor":"","children":[],"gradeId":"","label":"罐壁"}],"gradeId":"","label":"放电部位"}],"gradeId":"Ic","label":"c$静电火花"}],"gradeId":"","label":"碱渣罐爆炸"}],"gradeId":"","label":"1977年某炼厂碱渣罐爆炸事故P37"}
+      ],
+    };
+  },
+  created() {
+    this.getAllNode();
   },
   watch: {
-    $route:
-    {
+    $route: {
       handler: function (route) {
-        const query = route.query
+        const query = route.query;
         if (query) {
-          this.redirect = query.redirect
-          this.otherQuery = this.getOtherQuery(query)
+          this.redirect = query.redirect;
+          this.otherQuery = this.getOtherQuery(query);
         }
       },
-      immediate: true
+      immediate: true,
     },
     keyNodes: {
-      handler: function(keyNodes) {
-        console.log('fhbdihsbf')
-        console.log(keyNodes)
-        console.log('fhbdihsbf')
+      handler: function (keyNodes) {
       },
-      immediate: true
+      immediate: true,
     },
     textarea: {
       handler: function (textarea) {
-        console.log(textarea)
+        console.log(textarea);
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   methods: {
     handleCreate() {
-      console.log('handleCreate!')
+      console.log("handleCreate!");
     },
     getTree() {
-      this.$store.dispatch('tree/getBiaozhuTree').then((result) => {
-        console.log(result)
-        var nodes = new vis.DataSet(result.db_nodes)
-        var edges = new vis.DataSet(result.db_edges)
-        var container = document.getElementById('mynetwork')
+      this.$store.dispatch("tree/getBiaozhuTree").then((result) => {
+        console.log(result);
+        var nodes = new vis.DataSet(result.db_nodes);
+        var edges = new vis.DataSet(result.db_edges);
+        var container = document.getElementById("mynetwork");
         var data = {
           nodes: nodes,
-          edges: edges
-        }
-        var options = {}
+          edges: edges,
+        };
+        var options = {};
         // var network = new vis.Network(container, data, options)
-        vis.Network(container, data, options)
+        vis.Network(container, data, options);
+      });
+    },
+    findByLabelLike(data) {
+      console.log(data.label);
+      this.select = data.label
+      this.$store
+        .dispatch("tree/findByLabelLike", data.label)
+        .then((result) => {
+          var db_nodes = result;
+          this.keyNodes = db_nodes;
+        });
+    },
+    //
+    addBiaozhuPair(event) {
+      console.log(this.select);
+      console.log(event.target.innerText);
+
+
+      this.$alert(this.select+"*****"+event.target.innerText, '是否提交标注', {
+        confirmButtonText: '提交',
+        callback: action => {
+          console.log(action);
+          if(action==='confirm'){
+            this.$store
+              .dispatch("tree/addBiaozhuPair", {anli:this.select,biaozhun:event.target.innerText})
+              .then((result) => {
+                var db_nodes = result;
+                this.keyNodes = db_nodes;
+              });
+          }
+        }
       })
     },
-    findByLabelLike() {
-      this.$store
-        .dispatch('tree/findByLabelLike', this.textarea)
-        .then((result) => {
-          var db_nodes = result
-          this.keyNodes = db_nodes
-        })
+    getAllNode() {
+      this.$store.dispatch("tree/findByLabelLike", "").then((result) => {
+        var db_nodes = result;
+        this.Nodes = db_nodes;
+      });
     },
-    childByValue1(data) {
-      this.keyNodes = data
-      console.log('parent', this.keyNodes)
-    },
+
     getOtherQuery(query) {
       return Object.keys(query).reduce((acc, cur) => {
-        if (cur !== 'redirect') {
-          acc[cur] = query[cur]
+        if (cur !== "redirect") {
+          acc[cur] = query[cur];
         }
-        return acc
-      }, {})
-    }
-  }
-}
+        return acc;
+      }, {});
+    },
+  },
+};
 </script>
+
+<style>
+.el-tree-node__content:hover {
+  background: rgba(255, 255, 255, 0.589);
+}
+
+.el-tree {
+  background: #84878a;
+
+  color: #050505;
+}
+
+.el-tree-node__content {
+  height: 50px;
+  background-color: rgb(255, 255, 255);
+}
+</style>

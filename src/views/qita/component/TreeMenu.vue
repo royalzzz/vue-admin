@@ -1,70 +1,73 @@
 <template>
   <div>
-    <ul class="l_tree">
-      <li v-for="item in model" :key="item.id" class="l_tree_branch">
-        <div class="l_tree_click">
-          <button
+    <div>
+      <ul class="l_tree">
+        <li v-for="item in model" :key="item.id" class="l_tree_branch">
+          <div class="l_tree_click">
+            <button
+              v-if="item.children"
+              type="button"
+              class="l_tree_children_btn"
+              @click="toggle(item)"
+            >
+              {{ !item.show ? "-" : "+" }}
+            </button>
+            <button
+              v-if="item.children"
+              type="button"
+              class="l_folder"
+              @click="getText(item)"
+            >
+              {{ item.name }}
+            </button>
+          </div>
+          <tree-menu
+            v-show="!item.show"
             v-if="item.children"
-            type="button"
-            class="l_tree_children_btn"
-            @click="toggle(item)"
-          >
-            {{ !item.show ? "-" : "+" }}
-          </button>
-          <button
-            v-if="item.children"
-            type="button"
-            class="l_folder"
-            @click="getText(item)"
-          >
-            {{ item.name }}
-          </button>
-        </div>
-        <tree-menu
-          v-show="!item.show"
-          v-if="item.children"
-          :model="item.children"
-        ></tree-menu>
-      </li>
-    </ul>
+            :model="item.children"
+          ></tree-menu>
+          <div>
+            <el-button v-for="(item, i) in keyNodes" :key="i">{{item.label}}</el-button>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
+import Vue from "vue";
 
 export default {
-  name: 'TreeMenu',
+  name: "TreeMenu",
   props: {
-    model: {}
+    model: {},
   },
   data() {
     return {
-      keyNodes: ['sds']
-    }
+      keyNodes: ["sds"],
+    };
   },
   methods: {
     toggle: function (item) {
-      var idx = this.model.indexOf(item)
-      Vue.set(this.model[idx], 'show', !item.show)
+      var idx = this.model.indexOf(item);
+      Vue.set(this.model[idx], "show", !item.show);
     },
     // getText: function (item) {
     //   console.log(item.name);
     // },
     getText: function (item) {
-      var self = this
-      this.$emit('re', this.keyNodes)
-      this.$store.dispatch('tree/findByLabelLike', item.name)
-        .then((result) => {
-          var db_nodes = result
-          this.keyNodes = db_nodes
-          console.log('uiuui')
-          console.log(this.keyNodes)
-          self.$emit('re', this.keyNodes)
-        })
-    }
-  }
-}
+      var self = this;
+      this.$store.dispatch("tree/findByLabelLike", item.name).then((result) => {
+        var db_nodes = result;
+        this.keyNodes = db_nodes;
+        console.log("uiuui");
+        console.log(this.keyNodes);
+        this.$emit("re", this.keyNodes);
+      });
+    },
+  },
+};
 </script>
 
 <style>

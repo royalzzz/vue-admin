@@ -1,4 +1,4 @@
-import { getBiaozhuTree, findByLabelLike } from '@/api/tree'
+import { getBiaozhuTree, findByLabelLike, addBiaozhuPair } from '@/api/tree'
 import { getToken, removeToken } from '@/utils/auth'
 
 const state = {
@@ -66,7 +66,24 @@ const actions = {
       })
     })
   },
-
+  addBiaozhuPair ({ commit, state }, {anli,biaozhun}) {
+    console.log(anli,biaozhun);
+    return new Promise((resolve, reject) => {
+      addBiaozhuPair({anli:anli,biaozhun:biaozhun}).then(response => {
+        const { data } = response
+        // console.log(data);
+        if (!data) {
+          reject('Verification failed, please Login again.')
+        }
+        // const { db_nodes } = data
+        // console.log(nodes, edges)
+        // roles must be a non-empty array
+        resolve(data)
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
   // remove token
   resetToken ({ commit }) {
     return new Promise(resolve => {

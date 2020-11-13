@@ -37,7 +37,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       console.log("进入action！")
       console.log(s_key)
-      setCrawlerParams({ s_key: s_key, s_date: s_date, s_time:s_time, token:state.token }).then(response => {
+      setCrawlerParams({ s_key: s_key, s_date: s_date, s_time:s_time}).then(response => {
 
       console.log("已经设置舆情爬虫参数")
       const { data } = response

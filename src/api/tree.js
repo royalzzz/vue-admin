@@ -13,3 +13,12 @@ export function findByLabelLike (keyword) {
     params: { keyword }
   })
 }
+export function addBiaozhuPair (data) {
+  const {anli, biaozhun} = data
+  console.log("进入req");
+  return request({
+    url: '/isp/tree/addBiaozhuPair',
+    method: 'get',
+    params: { anli: anli, biaozhun: biaozhun }
+  })
+}
