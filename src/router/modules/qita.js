@@ -18,15 +18,21 @@ const qita = {
       name: 'fencifenceng',
       meta: { title: '分词和分层', icon: 'el-icon-user', affix: true }
     },
-    { // 等待添加
+    {
       path: 'anlishu',
       component: () => import('@/views/qita/anlishu'),
       name: 'anlishu',
       meta: { title: '案例树展示', icon: 'el-icon-loading', affix: true }
+    },
+    {
+      path: 'shigubaogaoshu',
+      component: () => import('@/views/qita/shigubaogaoshu'),
+      name: 'anlishu',
+      meta: { title: '事故报告树展示', icon: 'el-icon-loading', affix: true }
     }
     // { // 等待添加
-    //   path: 'anlishu',
-    //   component: () => import('@/views/qita/anlishu'),
+    //   path: 'shigubaogaoshu',
+    //   component: () => import('@/views/qita/shigubaogaoshu'),
     //   alwaysShow: true,
     //   name: 'anlishu',
     //   meta: { title: '案例树展示', icon: 'el-icon-loading', affix: true }

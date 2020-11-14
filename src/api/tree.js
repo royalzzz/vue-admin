@@ -14,11 +14,24 @@ export function findByLabelLike (keyword) {
   })
 }
 export function addBiaozhuPair (data) {
-  const {anli, biaozhun} = data
-  console.log("进入req");
+  const { anli, biaozhun } = data
+  console.log('进入req')
   return request({
     url: '/isp/tree/addBiaozhuPair',
     method: 'get',
     params: { anli: anli, biaozhun: biaozhun }
+  })
+}
+
+export function getEventTft() {
+  return request({
+    url: '/isp/tree/getEventTft',
+    method: 'get'
+  })
+}
+export function getAccidentReport() {
+  return request({
+    url: '/isp/tree/getAccidentReport',
+    method: 'get'
   })
 }

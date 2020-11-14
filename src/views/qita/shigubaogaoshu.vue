@@ -3,23 +3,23 @@
     <el-row :gutter="12">
       <el-col :span="12">
         <el-card shadow="always" style="height: 650px">
-          <el-button type="text" @click="table = true">选择案例树</el-button><br><br>
+          <el-button type="text" @click="table = true">选择事故报告</el-button><br><br>
           <el-drawer
-            title="选择案例树"
+            title="选择事故报告"
             :visible.sync="table"
             direction="rtl"
             size="50%"
             style="height: auto; overflow-x: auto"
           >
-            <el-table :data="eventtft">
+            <el-table :data="accidentreport">
               <el-table-column
-                property="_id"
+                property="id"
                 label="id"
                 width="150"
               ></el-table-column>
               <el-table-column
-                property="_events"
-                label="案例内容"
+                property="title"
+                label="事故标题"
               ></el-table-column>
               <el-table-column fixed="right" label="操作" width="100">
                 <template slot-scope="scope">
@@ -33,17 +33,28 @@
             </el-table>
           </el-drawer>
           <div style="height: 580px; overflow: auto">
-            <el-tree
-              :data="testdata"
-              default-expand-all
-              :expand-on-click-node="false"
-              @node-click="findByLabelLike"
-            ></el-tree>
+            <el-input
+              v-model="textarea"
+              type="textarea"
+              :rows="25"
+              :placeholder="textarea"
+            >
+            </el-input>
           </div>
         </el-card>
       </el-col>
       <el-col :span="12">
         <el-card shadow="always" style="height: 650px">
+          <div style="overflow: auto">
+            <span> 选中事件为： </span><br>
+            <el-button
+              type="warning"
+              plain
+              size="small"
+              style="margin-top: 10px; margin-left: 10px"
+              @click="findByLabelLike"
+            >{{ this.selectionText }}</el-button><br><br>
+          </div>
           <span> 当前事件推荐的标注节点： </span><br>
           <el-button
             v-for="(item, i) in keyNodes"
@@ -55,7 +66,7 @@
             @click="addBiaozhuPair"
           >{{ item.label }}</el-button><br><br>
           <span>标准树全部节点：</span><br><br>
-          <div style="height: 600px; overflow: auto">
+          <div style="height: 300px; overflow: auto">
             <el-button
               v-for="(item, i) in Nodes"
               :key="i"
@@ -79,124 +90,31 @@ export default {
   name: '',
   data() {
     return {
+      // 标记事件
+      selectionText: '',
+      selectionStart: 0,
+      selectionEnd: 0,
+      //
       select: '',
       Nodes: [],
       keyNodes: [],
       redirect: undefined,
       otherQuery: {},
-      testdata: [
-        {
-          andor: 'undefined',
-          children: [
-            {
-              andor: 'and',
-              children: [
-                {
-                  andor: 'and',
-                  children: [
-                    {
-                      andor: '',
-                      children: [],
-                      gradeId: '',
-                      label: '罐内碱渣上面浮着一层汽油，汽油挥发'
-                    },
-                    { andor: '', children: [], gradeId: '', label: '空气' }
-                  ],
-                  gradeId: 'IA7',
-                  label: 'A7$罐内气体达到爆炸极限'
-                },
-                {
-                  andor: 'and',
-                  children: [
-                    {
-                      andor: 'undefined',
-                      children: [
-                        {
-                          andor: 'and',
-                          children: [
-                            {
-                              andor: 'undefined',
-                              children: [
-                                {
-                                  andor: '',
-                                  children: [],
-                                  gradeId: '',
-                                  label: '开泵之前管内充满汽油'
-                                }
-                              ],
-                              gradeId: '',
-                              label: '装渣时需用碱渣将汽油顶出'
-                            },
-                            {
-                              andor: '',
-                              children: [],
-                              gradeId: '',
-                              label: '碱渣进口设在罐上部'
-                            }
-                          ],
-                          gradeId: 'Ic1',
-                          label: 'c1$汽油从罐上部喷洒下落，油品剧烈喷溅'
-                        }
-                      ],
-                      gradeId: '',
-                      label: '静电产生'
-                    },
-                    {
-                      andor: 'undefined',
-                      children: [
-                        {
-                          andor: 'undefined',
-                          children: [
-                            {
-                              andor: '',
-                              children: [],
-                              gradeId: '',
-                              label:
-                                '油、水、碱渣等混合物在冲击下，产生大量泡沫'
-                            }
-                          ],
-                          gradeId: '',
-                          label: '泡沫及其他浮游物收集静电'
-                        }
-                      ],
-                      gradeId: '',
-                      label: '静电积聚'
-                    },
-                    {
-                      andor: 'undefined',
-                      children: [
-                        { andor: '', children: [], gradeId: '', label: '罐壁' }
-                      ],
-                      gradeId: '',
-                      label: '放电部位'
-                    }
-                  ],
-                  gradeId: 'Ic',
-                  label: 'c$静电火花'
-                }
-              ],
-              gradeId: '',
-              label: '碱渣罐爆炸'
-            }
-          ],
-          gradeId: '',
-          label: '1977年某炼厂碱渣罐爆炸事故P37'
-        }
-      ],
+      textarea: '',
       table: false,
       loading: false,
-      eventtft: [
+      accidentreport: [
         {
-          _id: '2016-05-04',
-          _events: '上海市普陀区金沙江路 1518 弄'
+          id: '2016-05-04',
+          title: '上海市普陀区金沙江路 1518 弄'
         },
         {
-          _id: '2016-05-04',
-          _events: '上海市普陀区金沙江路 1518 弄'
+          id: '2016-05-04',
+          title: '上海市普陀区金沙江路 1518 弄'
         },
         {
-          _id: '2016-05-04',
-          _events: '上海市普陀区金沙江路 1518 弄'
+          id: '2016-05-04',
+          title: '上海市普陀区金沙江路 1518 弄'
         }
       ],
       timer: null
@@ -219,14 +137,17 @@ export default {
     },
     textarea: {
       handler: function (textarea) {
-        console.log(textarea)
+        // console.log(textarea);
       },
       immediate: true
     }
   },
   created() {
     this.getAllNode()
-    this.getEventTft()
+    this.getAccidentReport()
+  },
+  mounted() {
+    window.addEventListener('click', this.selecttext)
   },
   methods: {
     handleCreate() {
@@ -248,10 +169,10 @@ export default {
       })
     },
     findByLabelLike(data) {
-      console.log(data.label)
-      this.select = data.label
+      // console.log(data.label);
+      this.select = this.selectionText
       this.$store
-        .dispatch('tree/findByLabelLike', data.label)
+        .dispatch('tree/findByLabelLike', this.selectionText)
         .then((result) => {
           var db_nodes = result
           this.keyNodes = db_nodes
@@ -290,10 +211,10 @@ export default {
         this.Nodes = db_nodes
       })
     },
-    getEventTft() {
-      this.$store.dispatch('tree/getEventTft').then((result) => {
-        var db_EventTft = result
-        this.eventtft = db_EventTft
+    getAccidentReport() {
+      this.$store.dispatch('tree/getAccidentReport').then((result) => {
+        var db_AccidentReport = result
+        this.accidentreport = db_AccidentReport
       })
     },
     handleClose(done) {
@@ -314,8 +235,29 @@ export default {
         .catch((_) => {})
     },
     handleClick(row) {
-      this.testdata = JSON.parse('[' + row._data + ']')
-      console.log(this.testdata)
+      // console.log(row.data);
+      this.textarea = row.content
+    },
+    selecttext() {
+      const selectionText = document.getSelection().toString()
+      if (
+        selectionText.length > 0
+        // &&this.accidentReport.content.indexOf(selectionText) >= 0
+      ) {
+        this.selectionText = selectionText
+        this.selectionStart = document.getSelection().anchorOffset
+        this.selectionEnd = document.getSelection().focusOffset
+        if (this.selectionEnd < this.selectionStart) {
+          const tmp = this.selectionEnd
+          this.selectionEnd = this.selectionStart
+          this.selectionStart = tmp
+        }
+      } else {
+        this.selectionText = ''
+        this.selectionStart = 0
+        this.selectionEnd = 0
+      }
+      // console.log(selectionText);
     },
     getOtherQuery(query) {
       return Object.keys(query).reduce((acc, cur) => {

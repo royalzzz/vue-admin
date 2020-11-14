@@ -1,4 +1,4 @@
-import { getBiaozhuTree, findByLabelLike, addBiaozhuPair } from '@/api/tree'
+import { getBiaozhuTree, findByLabelLike, addBiaozhuPair, getEventTft, getAccidentReport } from '@/api/tree'
 import { getToken, removeToken } from '@/utils/auth'
 
 const state = {
@@ -66,10 +66,46 @@ const actions = {
       })
     })
   },
-  addBiaozhuPair ({ commit, state }, {anli,biaozhun}) {
-    console.log(anli,biaozhun);
+  getEventTft({ commit, state }) {
+    // console.log(keyword);
     return new Promise((resolve, reject) => {
-      addBiaozhuPair({anli:anli,biaozhun:biaozhun}).then(response => {
+      getEventTft().then(response => {
+        const { data } = response
+        // console.log(data);
+        if (!data) {
+          reject('Verification failed, please Login again.')
+        }
+        // const { db_nodes } = data
+        // console.log(nodes, edges)
+        // roles must be a non-empty array
+        resolve(data)
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+  getAccidentReport({ commit, state }) {
+    // console.log('1111111');
+    return new Promise((resolve, reject) => {
+      getAccidentReport().then(response => {
+        const { data } = response
+        // console.log(data);
+        if (!data) {
+          reject('Verification failed, please Login again.')
+        }
+        // const { db_nodes } = data
+        // console.log(nodes, edges)
+        // roles must be a non-empty array
+        resolve(data)
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+  addBiaozhuPair ({ commit, state }, { anli, biaozhun }) {
+    console.log(anli, biaozhun)
+    return new Promise((resolve, reject) => {
+      addBiaozhuPair({ anli: anli, biaozhun: biaozhun }).then(response => {
         const { data } = response
         // console.log(data);
         if (!data) {
