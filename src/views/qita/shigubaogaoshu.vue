@@ -45,7 +45,7 @@
       </el-col>
       <el-col :span="12">
         <el-card shadow="always" style="height: 650px">
-          <div style="overflow: auto">
+          <div style="height:600px;overflow: auto">
             <span> 选中事件为： </span><br>
             <el-button
               type="warning"
@@ -54,7 +54,7 @@
               style="margin-top: 10px; margin-left: 10px"
               @click="findByLabelLike"
             >{{ this.selectionText }}</el-button><br><br>
-          </div>
+          
           <span> 当前事件推荐的标注节点： </span><br>
           <el-button
             v-for="(item, i) in keyNodes"
@@ -66,7 +66,7 @@
             @click="addBiaozhuPair"
           >{{ item.label }}</el-button><br><br>
           <span>标准树全部节点：</span><br><br>
-          <div style="height: 300px; overflow: auto">
+          <div>
             <el-button
               v-for="(item, i) in Nodes"
               :key="i"
@@ -76,6 +76,7 @@
               style="margin-top: 10px; margin-left: 10px"
               @click="addBiaozhuPair"
             >{{ item.label }}</el-button>
+          </div>
           </div>
         </el-card>
       </el-col>
@@ -236,6 +237,7 @@ export default {
     },
     handleClick(row) {
       // console.log(row.data);
+      this.table = false
       this.textarea = row.content
     },
     selecttext() {

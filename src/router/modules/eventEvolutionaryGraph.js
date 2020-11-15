@@ -28,6 +28,12 @@ const eventEvolutionaryGraph = {
       // redirect: '/views/eventEvolutionaryGraph/yanHuaGuanLi',
       children: [
         {
+          path: 'anLiShuBiaoZhu',
+          component: () => import('@/views/eventEvolutionaryGraph/yanHuaGuanLi/anLiShuBiaoZhu'),
+          name: '案例树标注',
+          meta: { title: '案例树标注' }
+        },
+        {
           path: 'yanHuaBiaoZhu',
           component: () => import('@/views/eventEvolutionaryGraph/yanHuaGuanLi/yanHuaBiaoZhu'),
           name: '事件演化标注',
