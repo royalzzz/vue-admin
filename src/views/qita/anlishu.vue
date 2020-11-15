@@ -20,7 +20,7 @@
               <el-table-column property="_events" label="案例内容">
                 <template slot-scope="scope">
                   <el-tooltip :content="scope.row._events" placement="left">
-                    <p class="_events_sty">{{scope.row._events}}</p>
+                    <p class="_events_sty">{{ scope.row._events }}</p>
                   </el-tooltip>
                 </template>
               </el-table-column>
