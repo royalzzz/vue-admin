@@ -42,6 +42,7 @@
 
 <script>
 import vis from 'vis'
+import {getBiaozhuTree} from '@/api/tree'
 
 export default {
   name: '',
@@ -92,19 +93,27 @@ export default {
       console.log('handleCreate!')
     },
     getTree() {
-      this.$store.dispatch('tree/getBiaozhuTree')
+      getBiaozhuTree()
         .then(result => {
-          console.log(result)
-          var nodes = new vis.DataSet(result.db_nodes)
-          var edges = new vis.DataSet(result.db_edges)
+          result.data.db_edges.forEach(item => {
+            item.from = item.fromNode
+            delete  item.fromNode
+            item.to = item.toNode
+            delete item.toNode
+          });
+          console.log(result.data.db_edges);
+
+          var nodes = new vis.DataSet(result.data.db_nodes)
+          var edges = new vis.DataSet(result.data.db_edges)
           var container = document.getElementById('mynetwork')
           var data = {
             nodes: nodes,
             edges: edges
           }
+          console.log(data);
           var options = {}
-          // var network = new vis.Network(container, data, options)
-          vis.Network(container, data, options)
+          var network = new vis.Network(container, data, options)
+          console.log(network);
         })
     },
     findByLabelLike() {
