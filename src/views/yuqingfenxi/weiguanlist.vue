@@ -3,7 +3,7 @@
     <el-row :gutter="20">
       <div class="grid-content">
         <el-col :span="12">
-          <el-input v-model="input3" placeholder="请输入要搜索的事故" class="input-with-select" />
+          <el-input v-model="input3" placeholder="请输入要搜索的事故" class="input-with-select"/>
         </el-col>
         <el-button icon="el-icon-search" type="primary">搜索</el-button>
       </div>
@@ -12,11 +12,11 @@
       <el-col :span="24">
         <div class="grid-content">
           <el-table :data="tableData" border>
-            <el-table-column fixed prop="id" label="事故id" width="80" />
-            <el-table-column prop="accident_title" label="事故名称" width="300" />
-            <el-table-column prop="accident_news_num" label="新闻数量" width="100" />
-            <el-table-column prop="accident_comments_num" label="评论数量" width="100" />
-            <el-table-column prop="accident_date" label="发生时间" width="100" />
+            <el-table-column fixed prop="id" label="事故id" width="80"/>
+            <el-table-column prop="accident_title" label="事故名称" width="300"/>
+            <el-table-column prop="accident_news_num" label="新闻数量" width="100"/>
+            <el-table-column prop="accident_comments_num" label="评论数量" width="100"/>
+            <el-table-column prop="accident_date" label="发生时间" width="100"/>
             <el-table-column label="操作">
               <template>
                 <el-button type="primary" size="small" @click="dialogTimeLineVisible = true">查看微观数据统计</el-button>
@@ -131,23 +131,29 @@ export default {
 .el-row {
   margin-bottom: 20px;
 }
+
 .el-col {
   border-radius: 4px;
 }
+
 .bg-purple-dark {
   /* background: #99a9bf; */
   padding: 20px;
 }
+
 .bg-purple {
   background: #d3dce6;
 }
+
 .bg-purple-light {
   background: #e5e9f2;
 }
+
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
 }
+
 .row-bg {
   padding: 10px 0;
   background-color: #f9fafc;

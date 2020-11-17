@@ -2,7 +2,8 @@
   <div class="user-activity">
     <div class="post">
       <div class="user-block">
-        <img class="img-circle" :src="'https://wpimg.wallstcn.com/57ed425a-c71e-4201-9428-68760c0537c4.jpg'+avatarPrefix">
+        <img class="img-circle"
+             :src="'https://wpimg.wallstcn.com/57ed425a-c71e-4201-9428-68760c0537c4.jpg'+avatarPrefix">
         <span class="username text-muted">Iron Man</span>
         <span class="description">Shared publicly - 7:30 PM today</span>
       </div>
@@ -16,13 +17,13 @@
       <ul class="list-inline">
         <li>
           <span class="link-black text-sm">
-            <i class="el-icon-share" />
+            <i class="el-icon-share"/>
             Share
           </span>
         </li>
         <li>
           <span class="link-black text-sm">
-            <svg-icon icon-class="like" />
+            <svg-icon icon-class="like"/>
             Like
           </span>
         </li>
@@ -30,7 +31,8 @@
     </div>
     <div class="post">
       <div class="user-block">
-        <img class="img-circle" :src="'https://wpimg.wallstcn.com/9e2a5d0a-bd5b-457f-ac8e-86554616c87b.jpg'+avatarPrefix">
+        <img class="img-circle"
+             :src="'https://wpimg.wallstcn.com/9e2a5d0a-bd5b-457f-ac8e-86554616c87b.jpg'+avatarPrefix">
         <span class="username text-muted">Captain American</span>
         <span class="description">Sent you a message - yesterday</span>
       </div>
@@ -44,13 +46,13 @@
       <ul class="list-inline">
         <li>
           <span class="link-black text-sm">
-            <i class="el-icon-share" />
+            <i class="el-icon-share"/>
             Share
           </span>
         </li>
         <li>
           <span class="link-black text-sm">
-            <svg-icon icon-class="like" />
+            <svg-icon icon-class="like"/>
             Like
           </span>
         </li>
@@ -58,7 +60,8 @@
     </div>
     <div class="post">
       <div class="user-block">
-        <img class="img-circle" :src="'https://wpimg.wallstcn.com/fb57f689-e1ab-443c-af12-8d4066e202e2.jpg'+avatarPrefix">
+        <img class="img-circle"
+             :src="'https://wpimg.wallstcn.com/fb57f689-e1ab-443c-af12-8d4066e202e2.jpg'+avatarPrefix">
         <span class="username">Spider Man</span>
         <span class="description">Posted 4 photos - 2 days ago</span>
       </div>
@@ -70,10 +73,10 @@
         </el-carousel>
       </div>
       <ul class="list-inline">
-        <li><span class="link-black text-sm"><i class="el-icon-share" /> Share</span></li>
+        <li><span class="link-black text-sm"><i class="el-icon-share"/> Share</span></li>
         <li>
           <span class="link-black text-sm">
-            <svg-icon icon-class="like" /> Like</span>
+            <svg-icon icon-class="like"/> Like</span>
         </li>
       </ul>
     </div>
@@ -111,7 +114,7 @@ export default {
       padding: 2px 0;
     }
 
-    .username{
+    .username {
       font-size: 16px;
       color: #000;
     }

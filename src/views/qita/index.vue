@@ -78,7 +78,7 @@ export default {
   },
   watch: {
     $route: {
-      handler: function(route) {
+      handler: function (route) {
         const query = route.query
         if (query) {
           this.redirect = query.redirect
@@ -97,7 +97,7 @@ export default {
         .then(result => {
           result.data.db_edges.forEach(item => {
             item.from = item.fromNode
-            delete  item.fromNode
+            delete item.fromNode
             item.to = item.toNode
             delete item.toNode
           });

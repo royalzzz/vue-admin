@@ -6,7 +6,8 @@
         <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
           搜索事故报告
         </el-button>
-        <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
+        <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit"
+                   @click="handleCreate">
           事故报告导入
         </el-button>
         <!-- <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">

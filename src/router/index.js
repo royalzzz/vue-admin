@@ -5,6 +5,7 @@ import kbqa from './modules/kbqa'
 import yuqingfenxi from './modules/yuqingfenxi'
 import xitongguanli from './modules/xitongguanli'
 import qita from './modules/qita'
+
 Vue.use(Router)
 
 /* Layout */
@@ -36,7 +37,7 @@ export const constantRoutes = [
         path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
         name: 'Dashboard',
-        meta: { title: '首页', icon: 'dashboard', affix: true }
+        meta: {title: '首页', icon: 'dashboard', affix: true}
       }
     ]
   },
@@ -50,13 +51,13 @@ export const constantRoutes = [
 export const asyncRoutes = []
 
 const createRouter = () => new Router({
-  scrollBehavior: () => ({ y: 0 }),
+  scrollBehavior: () => ({y: 0}),
   routes: constantRoutes
 })
 
 const router = createRouter()
 
-export function resetRouter () {
+export function resetRouter() {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher // reset router
 }

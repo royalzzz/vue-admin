@@ -3,8 +3,10 @@
     <el-row :gutter="12">
       <el-col :span="12">
         <el-card shadow="always" style="height: 650px">
-          <el-button type="text" @click="table = true">选择事故报告</el-button
-          ><br /><br />
+          <el-button type="text" @click="table = true">选择事故报告
+          </el-button
+          >
+          <br/><br/>
           <el-drawer
             title="选择事故报告"
             :visible.sync="table"
@@ -28,7 +30,8 @@
                     type="text"
                     size="small"
                     @click="handleClick(scope.row)"
-                    >查看</el-button
+                  >查看
+                  </el-button
                   >
                 </template>
               </el-table-column>
@@ -48,17 +51,19 @@
       <el-col :span="12">
         <el-card shadow="always" style="height: 650px">
           <div style="height: 600px; overflow: auto">
-            <span> 选中事件为： </span><br />
+            <span> 选中事件为： </span><br/>
             <el-button
               type="warning"
               plain
               size="small"
               style="margin-top: 10px; margin-left: 10px"
               @click="findByLabelLike"
-              >{{ this.selectionText }}</el-button
-            ><br /><br />
+            >{{ this.selectionText }}
+            </el-button
+            >
+            <br/><br/>
 
-            <span> 当前事件推荐的标注节点： </span><br />
+            <span> 当前事件推荐的标注节点： </span><br/>
             <el-button
               v-for="(item, i) in keyNodes"
               :key="i"
@@ -67,9 +72,11 @@
               size="small"
               style="margin-top: 10px; margin-left: 10px"
               @click="addBiaozhuPair"
-              >{{ item.label }}</el-button
-            ><br /><br />
-            <span>标准树全部节点：</span><br /><br />
+            >{{ item.label }}
+            </el-button
+            >
+            <br/><br/>
+            <span>标准树全部节点：</span><br/><br/>
             <div>
               <el-button
                 v-for="(item, i) in Nodes"
@@ -79,7 +86,8 @@
                 size="small"
                 style="margin-top: 10px; margin-left: 10px"
                 @click="addBiaozhuPair"
-                >{{ item.label }}</el-button
+              >{{ item.label }}
+              </el-button
               >
             </div>
           </div>
@@ -138,7 +146,8 @@ export default {
       immediate: true,
     },
     keyNodes: {
-      handler: function (keyNodes) {},
+      handler: function (keyNodes) {
+      },
       immediate: true,
     },
     textarea: {
@@ -238,7 +247,8 @@ export default {
             }, 400);
           }, 2000);
         })
-        .catch((_) => {});
+        .catch((_) => {
+        });
     },
     handleClick(row) {
       // console.log(row.data);
@@ -293,6 +303,7 @@ export default {
   height: 50px;
   background-color: rgb(255, 255, 255);
 }
+
 .el-drawer.rtl {
   overflow: scroll;
 }

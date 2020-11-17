@@ -17,7 +17,7 @@
       </el-form-item>
     </el-form>
     <el-card style="height: 800px">
-      <TreeGraph :json-data="jsonData" />
+      <TreeGraph :json-data="jsonData"/>
     </el-card>
   </div>
 </template>
@@ -26,7 +26,7 @@
 import TreeGraph from '@/components/Graph/TreeGraph'
 
 export default {
-  components: { TreeGraph },
+  components: {TreeGraph},
   data() {
     return {
       jsonData: {

@@ -5,8 +5,8 @@
         <el-card shadow="always" style="height: 650px">
           <el-button type="text" @click="table = true">选择事故报告</el-button>
           <el-button type="text" @click="showTags = true">查看标注记录</el-button>
-          <br /><br />
-          
+          <br/><br/>
+
           <el-drawer
             title="选择事故报告"
             :visible.sync="table"
@@ -30,7 +30,8 @@
                     type="text"
                     size="small"
                     @click="handleClick(scope.row)"
-                    >选择</el-button
+                  >选择
+                  </el-button
                   >
                 </template>
               </el-table-column>
@@ -50,17 +51,19 @@
       <el-col :span="12">
         <el-card shadow="always" style="height: 650px">
           <div style="height: 600px; overflow: auto">
-            <span> 选中事件为： </span><br />
+            <span> 选中事件为： </span><br/>
             <el-button
               type="warning"
               plain
               size="small"
               style="margin-top: 10px; margin-left: 10px"
               @click="findByLabelLike"
-              >{{ selectionText }}</el-button
-            ><br /><br />
+            >{{ selectionText }}
+            </el-button
+            >
+            <br/><br/>
 
-            <span> 当前事件推荐的标注节点： </span><br />
+            <span> 当前事件推荐的标注节点： </span><br/>
             <el-button
               v-for="(item, i) in keyNodes"
               :key="i"
@@ -69,9 +72,11 @@
               size="small"
               style="margin-top: 10px; margin-left: 10px"
               @click="addBiaozhuPair"
-              >{{ item.label }}</el-button
-            ><br /><br />
-            <span>标准图全部节点：</span><br /><br />
+            >{{ item.label }}
+            </el-button
+            >
+            <br/><br/>
+            <span>标准图全部节点：</span><br/><br/>
             <div>
               <el-button
                 v-for="(item, i) in Nodes"
@@ -81,7 +86,8 @@
                 size="small"
                 style="margin-top: 10px; margin-left: 10px"
                 @click="addBiaozhuPair"
-                >{{ item.label }}</el-button
+              >{{ item.label }}
+              </el-button
               >
             </div>
           </div>
@@ -93,7 +99,11 @@
         <el-table-column property="id" label="ID" width="50"></el-table-column>
         <el-table-column property="anli" label="事件"></el-table-column>
         <el-table-column property="biaozhun" label="标准事件" width="200"></el-table-column>
-        <el-table-column width="70"><template slot-scope="scope"><el-button type="text" @click="deleteById(scope.row)">删除</el-button></template></el-table-column>
+        <el-table-column width="70">
+          <template slot-scope="scope">
+            <el-button type="text" @click="deleteById(scope.row)">删除</el-button>
+          </template>
+        </el-table-column>
       </el-table>
     </el-dialog>
   </div>
@@ -102,6 +112,7 @@
 <script>
 import vis from "vis";
 import * as treeApi from '@/api/tree';
+
 export default {
   name: "",
   data() {
@@ -143,7 +154,8 @@ export default {
       immediate: true,
     },
     keyNodes: {
-      handler: function (keyNodes) {},
+      handler: function (keyNodes) {
+      },
       immediate: true,
     },
     textarea: {
@@ -208,7 +220,7 @@ export default {
                   anli: this.select,
                   biaozhun: event.target.innerText,
                   source: 1,    //0代表案例树
-                  sourceid: this.sourceid  
+                  sourceid: this.sourceid
                 })
                 .then((result) => {
                   var db_nodes = result;
@@ -246,7 +258,8 @@ export default {
             }, 400);
           }, 2000);
         })
-        .catch((_) => {});
+        .catch((_) => {
+        });
     },
     handleClick(row) {
       // console.log(row.data);
@@ -254,7 +267,7 @@ export default {
       this.textarea = row.content;
       this.sourceid = row.id;
       console.log("sdfsdasd", this.sourceid);
-      treeApi.findBiaozhuPairBySourceid({source: 1 , sourceid: this.sourceid}).then(result => {
+      treeApi.findBiaozhuPairBySourceid({source: 1, sourceid: this.sourceid}).then(result => {
         console.log(result.data);
         this.gridData = result.data
       })
@@ -280,7 +293,7 @@ export default {
       }
       // console.log(selectionText);
     },
-    deleteById(row){
+    deleteById(row) {
       console.log("asdasfsdfjkbsdbsdhjb", row.id);
       // 删除标注对 通过id 的api
     },
@@ -311,6 +324,7 @@ export default {
   height: 50px;
   background-color: rgb(255, 255, 255);
 }
+
 .el-drawer.rtl {
   overflow: scroll;
 }

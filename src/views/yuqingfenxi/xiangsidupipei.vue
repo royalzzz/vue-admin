@@ -4,7 +4,7 @@
       <el-col :span="12">
         <div class="grid-content">
           <el-col :span="12">
-            <el-input v-model="input3" placeholder="请输入要搜索的新闻" class="input-with-select" />
+            <el-input v-model="input3" placeholder="请输入要搜索的新闻" class="input-with-select"/>
           </el-col>
           <el-button icon="el-icon-search" type="primary">搜索</el-button>
         </div>
@@ -85,12 +85,12 @@ export default {
   data() {
     return {
       options: [
-        { value: '选项1', label: '全部' },
-        { value: '选项2', label: '爆炸' },
-        { value: '选项3', label: '火灾' },
-        { value: '选项4', label: '中毒' },
-        { value: '选项5', label: '泄露' },
-        { value: '选项6', label: '其他' }
+        {value: '选项1', label: '全部'},
+        {value: '选项2', label: '爆炸'},
+        {value: '选项3', label: '火灾'},
+        {value: '选项4', label: '中毒'},
+        {value: '选项5', label: '泄露'},
+        {value: '选项6', label: '其他'}
       ],
       // value: '全部',
       tableData: [
@@ -148,8 +148,7 @@ export default {
       input3: ''
     }
   },
-  methods: {
-  }
+  methods: {}
 }
 </script>
 
@@ -157,23 +156,29 @@ export default {
 .el-row {
   margin-bottom: 20px;
 }
+
 .el-col {
   border-radius: 4px;
 }
+
 .bg-purple-dark {
   /* background: #99a9bf; */
   padding: 1% 1% 0% 1%;
 }
+
 .bg-purple {
   background: #d3dce6;
 }
+
 .bg-purple-light {
   background: #e5e9f2;
 }
+
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
 }
+
 .row-bg {
   padding: 10px 0;
   background-color: #f9fafc;

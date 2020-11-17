@@ -4,7 +4,7 @@
       <el-col :span="12">
         <div class="grid-content">
           <el-col :span="12">
-            <el-input v-model="input3" placeholder="请输入要搜索的任务" class="input-with-select" />
+            <el-input v-model="input3" placeholder="请输入要搜索的任务" class="input-with-select"/>
           </el-col>
           <el-button icon="el-icon-search" type="primary">搜索</el-button>
 
@@ -18,18 +18,20 @@
       <el-col :span="24">
         <div class="grid-content">
           <el-table :data="tableData" border>
-            <el-table-column fixed prop="id" label="id" width="80" />
-            <el-table-column fixed prop="date" label="日期" width="100" />
-            <el-table-column prop="news_title" label="名称" width="300" />
-            <el-table-column prop="news_site" label="类别" width="100" />
+            <el-table-column fixed prop="id" label="id" width="80"/>
+            <el-table-column fixed prop="date" label="日期" width="100"/>
+            <el-table-column prop="news_title" label="名称" width="300"/>
+            <el-table-column prop="news_site" label="类别" width="100"/>
             <el-table-column prop="news_link" label="进度" width="350">
               <template slot-scope="scope">
-                <el-progress :text-inside="true" :stroke-width="26" :percentage="scope.row.percentage" status="exception"></el-progress>
+                <el-progress :text-inside="true" :stroke-width="26" :percentage="scope.row.percentage"
+                             status="exception"></el-progress>
               </template>
             </el-table-column>
             <el-table-column label="操作" align="center">
               <template>
-                <el-button type="danger" icon="el-icon-delete" size="small" @click="dialogFormVisible = true"></el-button>
+                <el-button type="danger" icon="el-icon-delete" size="small"
+                           @click="dialogFormVisible = true"></el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -40,25 +42,26 @@
       <el-form :model="form">
         <el-form-item label="名称：" :label-width="formLabelWidth">
           <el-col :span="16">
-            <el-input v-model="form.news_title" autocomplete="off" />
+            <el-input v-model="form.news_title" autocomplete="off"/>
           </el-col>
         </el-form-item>
         <el-form-item label="发布时间和类别：" :label-width="formLabelWidth">
           <el-col :span="16">
-            <el-date-picker v-model="form.news_date" autocomplete="off" type="date" value="form.news_data" />
+            <el-date-picker v-model="form.news_date" autocomplete="off" type="date" value="form.news_data"/>
           </el-col>
           <el-col :span="6">
-            <el-input v-model="form.news_site" autocomplete="off" />
+            <el-input v-model="form.news_site" autocomplete="off"/>
           </el-col>
         </el-form-item>
         <el-form-item label="进度：" :label-width="formLabelWidth">
           <el-col :span="16">
-            <el-progress :text-inside="true" :stroke-width="26" :percentage="form.percentage" status="exception"></el-progress>
+            <el-progress :text-inside="true" :stroke-width="26" :percentage="form.percentage"
+                         status="exception"></el-progress>
           </el-col>
         </el-form-item>
         <el-form-item label="详细内容：" :label-width="formLabelWidth">
           <el-col :span="22">
-            <el-input v-model="form.news_content" autocomplete="off" type="textarea" :rows="10" />
+            <el-input v-model="form.news_content" autocomplete="off" type="textarea" :rows="10"/>
           </el-col>
         </el-form-item>
       </el-form>
@@ -120,8 +123,7 @@ export default {
       formLabelWidth: '150px'
     }
   },
-  methods: {
-  }
+  methods: {}
 }
 </script>
 
@@ -129,23 +131,29 @@ export default {
 .el-row {
   margin-bottom: 20px;
 }
+
 .el-col {
   border-radius: 4px;
 }
+
 .bg-purple-dark {
   /* background: #99a9bf; */
   padding: 1% 1% 0% 1%
 }
+
 .bg-purple {
   background: #d3dce6;
 }
+
 .bg-purple-light {
   background: #e5e9f2;
 }
+
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
 }
+
 .row-bg {
   padding: 10px 0;
   background-color: #f9fafc;

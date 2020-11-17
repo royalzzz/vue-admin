@@ -9,7 +9,7 @@
           </div>
           <div style="position:absolute;right:0px;">
             <span style="float: right ;margin-top: -20px;margin-right:5px;" @click="deleteEle(element)">
-              <i style="color:#ff4949" class="el-icon-delete" />
+              <i style="color:#ff4949" class="el-icon-delete"/>
             </span>
           </div>
         </div>
@@ -33,7 +33,7 @@ import draggable from 'vuedraggable'
 
 export default {
   name: 'DndList',
-  components: { draggable },
+  components: {draggable},
   props: {
     list1: {
       type: Array,
@@ -108,17 +108,21 @@ export default {
 .dndList {
   background: #fff;
   padding-bottom: 40px;
+
   &:after {
     content: "";
     display: table;
     clear: both;
   }
+
   .dndList-list {
     float: left;
     padding-bottom: 30px;
+
     &:first-of-type {
       margin-right: 2%;
     }
+
     .dragArea {
       margin-top: 15px;
       min-height: 50px;

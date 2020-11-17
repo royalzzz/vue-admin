@@ -3,7 +3,7 @@
     <el-row :gutter="20">
       <div class="grid-content">
         <el-col :span="12">
-          <el-input v-model="input3" placeholder="请输入要搜索的新闻报道" class="input-with-select" />
+          <el-input v-model="input3" placeholder="请输入要搜索的新闻报道" class="input-with-select"/>
         </el-col>
         <el-button icon="el-icon-search" type="primary">搜索</el-button>
       </div>
@@ -12,10 +12,10 @@
       <el-col :span="24">
         <div class="grid-content">
           <el-table :data="tableData" border>
-            <el-table-column fixed prop="id" label="新闻id" width="80" />
-            <el-table-column prop="news_title" label="新闻标题" width="380" />
-            <el-table-column prop="news_abstruct" label="摘要文本" width="300" />
-            <el-table-column prop="news_date" label="发布日期" width="200" />
+            <el-table-column fixed prop="id" label="新闻id" width="80"/>
+            <el-table-column prop="news_title" label="新闻标题" width="380"/>
+            <el-table-column prop="news_abstruct" label="摘要文本" width="300"/>
+            <el-table-column prop="news_date" label="发布日期" width="200"/>
             <el-table-column label="操作">
               <template>
                 <el-button type="primary" size="small" @click="dialogTimeLineVisible = true">查看编辑摘要</el-button>
@@ -30,13 +30,13 @@
       <div style="overflow:auto;height:400px;overflow-x:hidden;padding:20px">
         <el-form ref="form" :model="form" label-width="80px">
           <el-form-item label="新闻标题">
-            <el-input v-model="form.news_title" />
+            <el-input v-model="form.news_title"/>
           </el-form-item>
           <el-form-item label="新闻链接">
-            <el-input v-model="form.news_link" />
+            <el-input v-model="form.news_link"/>
           </el-form-item>
           <el-form-item label="摘要文本">
-            <el-input v-model="form.news_abstruct" type="textarea" rows="10" />
+            <el-input v-model="form.news_abstruct" type="textarea" rows="10"/>
           </el-form-item>
         </el-form>
       </div>
@@ -101,23 +101,29 @@ export default {
 .el-row {
   margin-bottom: 20px;
 }
+
 .el-col {
   border-radius: 4px;
 }
+
 .bg-purple-dark {
   /* background: #99a9bf; */
   padding: 20px;
 }
+
 .bg-purple {
   background: #d3dce6;
 }
+
 .bg-purple-light {
   background: #e5e9f2;
 }
+
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
 }
+
 .row-bg {
   padding: 10px 0;
   background-color: #f9fafc;

@@ -14,7 +14,7 @@
 
       <el-form-item prop="username">
         <span class="svg-container">
-          <svg-icon icon-class="user" />
+          <svg-icon icon-class="user"/>
         </span>
         <el-input
           ref="username"
@@ -30,7 +30,7 @@
       <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
         <el-form-item prop="password">
           <span class="svg-container">
-            <svg-icon icon-class="password" />
+            <svg-icon icon-class="password"/>
           </span>
           <el-input
             :key="passwordType"
@@ -46,7 +46,7 @@
             @keyup.enter.native="handleLogin"
           />
           <span class="show-pwd" @click="showPwd">
-            <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+            <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'"/>
           </span>
         </el-form-item>
       </el-tooltip>
@@ -56,7 +56,8 @@
         type="primary"
         style="width:100%;margin-bottom:30px;"
         @click.native.prevent="handleLogin"
-      >Login</el-button>
+      >Login
+      </el-button>
 
       <div style="position:relative">
         <div class="tips">
@@ -70,18 +71,18 @@
 
     <el-dialog title="Or connect with" :visible.sync="showDialog">
       Can not be simulated on local, so please combine you own business simulation! ! !
-      <social-sign />
+      <social-sign/>
     </el-dialog>
   </div>
 </template>
 
 <script>
-import { validUsername } from '@/utils/validate'
+import {validUsername} from '@/utils/validate'
 import SocialSign from './components/SocialSignin'
 
 export default {
   name: 'Login',
-  components: { SocialSign },
+  components: {SocialSign},
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!validUsername(value)) {
@@ -103,8 +104,8 @@ export default {
         password: ''
       },
       loginRules: {
-        username: [{ required: true, trigger: 'blur', validator: validateUsername }],
-        password: [{ required: true, trigger: 'blur', validator: validatePassword }]
+        username: [{required: true, trigger: 'blur', validator: validateUsername}],
+        password: [{required: true, trigger: 'blur', validator: validatePassword}]
       },
       passwordType: 'password',
       capsTooltip: false,
@@ -116,7 +117,7 @@ export default {
   },
   watch: {
     $route: {
-      handler: function(route) {
+      handler: function (route) {
         const query = route.query
         if (query) {
           this.redirect = query.redirect
@@ -141,7 +142,7 @@ export default {
   },
   methods: {
     checkCapslock(e) {
-      const { key } = e
+      const {key} = e
       this.capsTooltip = key && key.length === 1 && (key >= 'A' && key <= 'Z')
     },
     showPwd() {
@@ -160,7 +161,7 @@ export default {
           this.loading = true
           this.$store.dispatch('user/login', this.loginForm)
             .then(() => {
-              this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
+              this.$router.push({path: this.redirect || '/', query: this.otherQuery})
               this.loading = false
             })
             .catch(() => {

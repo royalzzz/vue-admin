@@ -3,7 +3,7 @@
     <el-row :gutter="20">
       <div class="grid-content">
         <el-col :span="12">
-          <el-input v-model="input3" placeholder="请输入要搜索的新闻报道" class="input-with-select" />
+          <el-input v-model="input3" placeholder="请输入要搜索的新闻报道" class="input-with-select"/>
         </el-col>
         <el-button icon="el-icon-search" type="primary">搜索</el-button>
       </div>
@@ -12,10 +12,10 @@
       <el-col :span="24">
         <div class="grid-content">
           <el-table :data="tableData" border>
-            <el-table-column fixed prop="id" label="新闻id" width="80" />
-            <el-table-column prop="news_title" label="新闻标题" width="300" />
-            <el-table-column prop="news_accident_title" label="所属事故" width="250" />
-            <el-table-column prop="news_comments_num" label="评论数量" width="100" />
+            <el-table-column fixed prop="id" label="新闻id" width="80"/>
+            <el-table-column prop="news_title" label="新闻标题" width="300"/>
+            <el-table-column prop="news_accident_title" label="所属事故" width="250"/>
+            <el-table-column prop="news_comments_num" label="评论数量" width="100"/>
             <el-table-column label="评论舆论倾向" width="200">
               <template slot-scope="scope">
                 <el-tooltip
@@ -44,7 +44,9 @@
           <el-card shadow="hover">
             <p>又是化工爆炸，这几年多少起了，监管何在</p>
             <p>
-              感情倾向： <el-link type="danger">消极评论</el-link>。 （<i>积极：0.0071 </i><i type="danger">消极：0.9929</i>）
+              感情倾向：
+              <el-link type="danger">消极评论</el-link>
+              。 （<i>积极：0.0071 </i><i type="danger">消极：0.9929</i>）
               <el-button type="danger" size="small" style="float:right">删除</el-button>
             </p>
           </el-card>
@@ -52,32 +54,45 @@
         <el-row :gutter="3">
           <el-card shadow="hover">
             <p>你永远不知明天和意外哪个先来！</p>
-            <p>感情倾向：<el-link type="success">积极评论</el-link>。（<i>积极：0.7474 </i><i type="danger">消极：0.2526</i>）
-              <el-button type="danger" size="small" style="float:right">删除</el-button></p>
+            <p>感情倾向：
+              <el-link type="success">积极评论</el-link>
+              。（<i>积极：0.7474 </i><i type="danger">消极：0.2526</i>）
+              <el-button type="danger" size="small" style="float:right">删除</el-button>
+            </p>
           </el-card>
         </el-row>
         <el-row :gutter="3">
           <el-card shadow="hover">
             <p>希望附近的小学的小朋友安好，虽然知道有些孩子都受伤了，还是希望他们能平安，我知道耳朵的重要性。</p>
-            <p>感情倾向：<el-link type="success">积极评论</el-link>。（<i>积极：0.934 </i><i type="danger">消极：0.066</i>）<el-button type="danger" size="small" style="float:right">删除</el-button></p>
+            <p>感情倾向：
+              <el-link type="success">积极评论</el-link>
+              。（<i>积极：0.934 </i><i type="danger">消极：0.066</i>）
+              <el-button type="danger" size="small" style="float:right">删除</el-button>
+            </p>
           </el-card>
         </el-row>
         <el-row :gutter="3">
           <el-card shadow="hover">
             <p>又是化工爆炸，这几年多少起了，监管何在</p>
-            <p>感情倾向：消极评论。（<i>积极：0.0071 </i><i type="danger">消极：0.9929</i>）<el-button type="danger" size="small" style="float:right">删除</el-button></p>
+            <p>感情倾向：消极评论。（<i>积极：0.0071 </i><i type="danger">消极：0.9929</i>）
+              <el-button type="danger" size="small" style="float:right">删除</el-button>
+            </p>
           </el-card>
         </el-row>
         <el-row :gutter="3">
           <el-card shadow="hover">
             <p>又是化工爆炸，这几年多少起了，监管何在</p>
-            <p>感情倾向：消极评论。（<i>积极：0.0071</i><i type="danger">消极：0.9929</i>）<el-button type="danger" size="small" style="float:right">删除</el-button></p>
+            <p>感情倾向：消极评论。（<i>积极：0.0071</i><i type="danger">消极：0.9929</i>）
+              <el-button type="danger" size="small" style="float:right">删除</el-button>
+            </p>
           </el-card>
         </el-row>
         <el-row :gutter="3">
           <el-card shadow="hover">
             <p>又是化工爆炸，这几年多少起了，监管何在</p>
-            <p>感情倾向：消极评论。（<i>积极：0.0071</i><i type="danger">消极：0.9929</i>）<el-button type="danger" size="small" style="float:right">删除</el-button></p>
+            <p>感情倾向：消极评论。（<i>积极：0.0071</i><i type="danger">消极：0.9929</i>）
+              <el-button type="danger" size="small" style="float:right">删除</el-button>
+            </p>
           </el-card>
         </el-row>
         <el-row :gutter="3">
@@ -163,23 +178,29 @@ export default {
 .el-row {
   margin-bottom: 20px;
 }
+
 .el-col {
   border-radius: 4px;
 }
+
 .bg-purple-dark {
   /* background: #99a9bf; */
   padding: 20px;
 }
+
 .bg-purple {
   background: #d3dce6;
 }
+
 .bg-purple-light {
   background: #e5e9f2;
 }
+
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
 }
+
 .row-bg {
   padding: 10px 0;
   background-color: #f9fafc;

@@ -3,7 +3,8 @@
     <el-row :gutter="12">
       <el-col :span="12">
         <el-card shadow="always" style="height: 650px">
-          <el-button type="text" @click="table = true">选择案例树</el-button><br><br>
+          <el-button type="text" @click="table = true">选择案例树</el-button>
+          <br><br>
           <el-drawer
             title="选择案例树"
             :visible.sync="table"
@@ -30,7 +31,8 @@
                     type="text"
                     size="small"
                     @click="handleClick(scope.row)"
-                  >选择</el-button>
+                  >选择
+                  </el-button>
                 </template>
               </el-table-column>
             </el-table>
@@ -58,8 +60,11 @@
                 size="small"
                 style="margin-top: 10px; margin-left: 10px"
                 @click="addBiaozhuPair"
-              >{{ item.label }}</el-button><br>
-            </div><br>
+              >{{ item.label }}
+              </el-button>
+              <br>
+            </div>
+            <br>
             <span>标准树全部节点：</span><br>
             <div>
               <el-button
@@ -70,7 +75,8 @@
                 size="small"
                 style="margin-top: 10px; margin-left: 10px"
                 @click="addBiaozhuPair"
-              >{{ item.label }}</el-button>
+              >{{ item.label }}
+              </el-button>
             </div>
 
           </div>
@@ -109,7 +115,7 @@ export default {
                       gradeId: '',
                       label: '罐内碱渣上面浮着一层汽油，汽油挥发'
                     },
-                    { andor: '', children: [], gradeId: '', label: '空气' }
+                    {andor: '', children: [], gradeId: '', label: '空气'}
                   ],
                   gradeId: 'IA7',
                   label: 'A7$罐内气体达到爆炸极限'
@@ -174,7 +180,7 @@ export default {
                     {
                       andor: 'undefined',
                       children: [
-                        { andor: '', children: [], gradeId: '', label: '罐壁' }
+                        {andor: '', children: [], gradeId: '', label: '罐壁'}
                       ],
                       gradeId: '',
                       label: '放电部位'
@@ -223,7 +229,8 @@ export default {
       immediate: true
     },
     keyNodes: {
-      handler: function (keyNodes) {},
+      handler: function (keyNodes) {
+      },
       immediate: true
     },
     textarea: {
@@ -320,7 +327,8 @@ export default {
             }, 400)
           }, 2000)
         })
-        .catch((_) => {})
+        .catch((_) => {
+        })
     },
     handleClick(row) {
       this.testdata = JSON.parse('[' + row._data + ']')
@@ -354,15 +362,18 @@ export default {
   height: 50px;
   background-color: rgb(255, 255, 255);
 }
+
 .el-drawer.rtl {
-        overflow: scroll
+  overflow: scroll
 }
-._events_sty{
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 5;
-	overflow: hidden;
+
+._events_sty {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
 }
+
 .el-tooltip__popper {
   max-width: 600px;
   line-height: 180%;

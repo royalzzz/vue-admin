@@ -9,7 +9,8 @@
         <el-table-column prop="accident_class" label="类型" width="200"></el-table-column>
         <el-table-column label="热度">
           <template slot-scope="scope">
-            <el-progress :text-inside="true" :stroke-width="26" :percentage="scope.row.percentage" status="exception"></el-progress>
+            <el-progress :text-inside="true" :stroke-width="26" :percentage="scope.row.percentage"
+                         status="exception"></el-progress>
           </template>
         </el-table-column>
       </el-table>
@@ -69,23 +70,29 @@ export default {
 .el-row {
   margin-bottom: 20px;
 }
+
 .el-col {
   border-radius: 4px;
 }
+
 .bg-purple-dark {
   /* background: #99a9bf; */
   padding: 40px;
 }
+
 .bg-purple {
   background: #d3dce6;
 }
+
 .bg-purple-light {
   background: #e5e9f2;
 }
+
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
 }
+
 .row-bg {
   padding: 10px 0;
   background-color: #f9fafc;

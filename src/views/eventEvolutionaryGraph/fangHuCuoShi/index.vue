@@ -33,8 +33,8 @@
       <el-col :span="7">
         <el-card shadow="hover">
           <el-table :data="tableData" width="100" margin-top="10px">
-            <el-table-column prop="date" label="属性名" width="80" />
-            <el-table-column prop="name" label="属性值" />
+            <el-table-column prop="date" label="属性名" width="80"/>
+            <el-table-column prop="name" label="属性值"/>
           </el-table>
         </el-card>
       </el-col>

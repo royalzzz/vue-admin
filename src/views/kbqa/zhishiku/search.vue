@@ -3,12 +3,12 @@
     <el-form :inline="true" :model="formInline" class="demo-form-inline">
       <el-form-item label="实体概念">
         <el-select v-model="formInline.region" placeholder="实体概念">
-          <el-option label="化学品" value="shanghai" />
-          <el-option label="危险性" value="beijing" />
+          <el-option label="化学品" value="shanghai"/>
+          <el-option label="危险性" value="beijing"/>
         </el-select>
       </el-form-item>
       <el-form-item label="实体">
-        <el-input v-model="formInline.user" placeholder="实体" />
+        <el-input v-model="formInline.user" placeholder="实体"/>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">查询</el-button>
@@ -17,7 +17,7 @@
     <el-card style="height:500px;">
       <el-row :gutter="10">
         <el-col :span="16" style="background:rgb(249,251,253)">
-          <img src="@/assets/kbqa/graph.png" style="width:700px;" />
+          <img src="@/assets/kbqa/graph.png" style="width:700px;"/>
         </el-col>
         <el-col :span="8">
           <span style="font-size: 14pt;">节点详情</span>
@@ -29,8 +29,8 @@
             <el-tag style="margin-left: 5px;" type="danger">健康危害</el-tag>
           </div>
           <el-table :data="tableData" style="width: 100%;margin-top:10px;">
-            <el-table-column prop="date" label="属性名" />
-            <el-table-column prop="name" label="属性值" />
+            <el-table-column prop="date" label="属性名"/>
+            <el-table-column prop="name" label="属性值"/>
           </el-table>
           <el-divider>
             <el-link type="primary">更多</el-link>

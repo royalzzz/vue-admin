@@ -23,12 +23,12 @@
       <el-col :span="24">
         <div class="grid-content">
           <el-table :data="tableData" border>
-            <el-table-column fixed prop="id" label="id" width="80" />
-            <el-table-column fixed prop="date" label="日期" width="100" />
-            <el-table-column prop="news_title" label="报道标题" width="300" />
-            <el-table-column prop="news_site" label="来源" width="100" />
-            <el-table-column prop="news_link" label="来源链接" width="350" />
-            <el-table-column prop="news_class" label="分类" width="50" />
+            <el-table-column fixed prop="id" label="id" width="80"/>
+            <el-table-column fixed prop="date" label="日期" width="100"/>
+            <el-table-column prop="news_title" label="报道标题" width="300"/>
+            <el-table-column prop="news_site" label="来源" width="100"/>
+            <el-table-column prop="news_link" label="来源链接" width="350"/>
+            <el-table-column prop="news_class" label="分类" width="50"/>
             <el-table-column label="操作">
               <template>
                 <el-button type="primary" size="small" @click="dialogFormVisible = true">查看详情</el-button>
@@ -44,28 +44,28 @@
       <el-form :model="form">
         <el-form-item label="报道名称和分类：" :label-width="formLabelWidth">
           <el-col :span="16">
-            <el-input v-model="form.news_title" autocomplete="off"  />
+            <el-input v-model="form.news_title" autocomplete="off"/>
           </el-col>
           <el-col :span="6">
-            <el-input v-model="form.news_class" autocomplete="off"  />
+            <el-input v-model="form.news_class" autocomplete="off"/>
           </el-col>
         </el-form-item>
         <el-form-item label="发布时间和来源：" :label-width="formLabelWidth">
           <el-col :span="16">
-            <el-date-picker v-model="form.news_date" autocomplete="off" type="date" value="form.news_data" />
+            <el-date-picker v-model="form.news_date" autocomplete="off" type="date" value="form.news_data"/>
           </el-col>
           <el-col :span="6">
-            <el-input v-model="form.news_site" autocomplete="off" />
+            <el-input v-model="form.news_site" autocomplete="off"/>
           </el-col>
         </el-form-item>
         <el-form-item label="报道链接：" :label-width="formLabelWidth">
           <el-col :span="22">
-            <el-input v-model="form.news_link" autocomplete="off"  />
+            <el-input v-model="form.news_link" autocomplete="off"/>
           </el-col>
         </el-form-item>
         <el-form-item label="详细内容：" :label-width="formLabelWidth">
           <el-col :span="22">
-            <el-input v-model="form.news_content" autocomplete="off" type="textarea" :rows="10" />
+            <el-input v-model="form.news_content" autocomplete="off" type="textarea" :rows="10"/>
           </el-col>
         </el-form-item>
       </el-form>
@@ -83,12 +83,12 @@ export default {
   data() {
     return {
       options: [
-        { value: '选项1', label: '全部' },
-        { value: '选项2', label: '爆炸' },
-        { value: '选项3', label: '火灾' },
-        { value: '选项4', label: '中毒' },
-        { value: '选项5', label: '泄露' },
-        { value: '选项6', label: '其他' }
+        {value: '选项1', label: '全部'},
+        {value: '选项2', label: '爆炸'},
+        {value: '选项3', label: '火灾'},
+        {value: '选项4', label: '中毒'},
+        {value: '选项5', label: '泄露'},
+        {value: '选项6', label: '其他'}
       ],
       // value: '全部',
       tableData: [
@@ -141,8 +141,7 @@ export default {
       formLabelWidth: '150px'
     }
   },
-  methods: {
-  }
+  methods: {}
 }
 </script>
 
@@ -150,23 +149,29 @@ export default {
 .el-row {
   margin-bottom: 20px;
 }
+
 .el-col {
   border-radius: 4px;
 }
+
 .bg-purple-dark {
   /* background: #99a9bf; */
   padding: 1% 1% 0% 1%
 }
+
 .bg-purple {
   background: #d3dce6;
 }
+
 .bg-purple-light {
   background: #e5e9f2;
 }
+
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
 }
+
 .row-bg {
   padding: 10px 0;
   background-color: #f9fafc;

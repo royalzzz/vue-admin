@@ -7,7 +7,7 @@
             <div style="height:400px;border-radius:3px;padding:20px;overflow:auto">
               <el-row :gutter="20" style="margin-bottom: 20px;">
                 <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url" />
+                  <el-avatar shape="square" :size="40" :fit="fit" :src="url"/>
                 </el-col>
                 <el-col :span="20">
                   <div style="background:whitesmoke;padding:10px;border-radius:3px;">
@@ -28,19 +28,21 @@
                   </div>
                 </el-col>
                 <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2" />
+                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2"/>
                 </el-col>
               </el-row>
 
               <el-row :gutter="20" style="margin-bottom: 20px;">
                 <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url" />
+                  <el-avatar shape="square" :size="40" :fit="fit" :src="url"/>
                 </el-col>
                 <el-col :span="20">
                   <div style="background:whitesmoke;padding:10px;border-radius:3px;">
                     <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
                     <div>苯（Benzene，C₆H₆）一种碳氢化合物即最简单的芳烃，在常温下是甜味、可燃、有致癌毒性的无色透明液体，并带有强烈的芳香气味。</div>
-                    <div style="margin-top:5px;"><el-link @click="dialogVisible = true"> >>推理依据 </el-link></div>
+                    <div style="margin-top:5px;">
+                      <el-link @click="dialogVisible = true"> >>推理依据</el-link>
+                    </div>
                   </div>
                 </el-col>
               </el-row>
@@ -56,19 +58,21 @@
                   </div>
                 </el-col>
                 <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2" />
+                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2"/>
                 </el-col>
               </el-row>
 
               <el-row :gutter="20" style="margin-bottom: 20px;">
                 <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url" />
+                  <el-avatar shape="square" :size="40" :fit="fit" :src="url"/>
                 </el-col>
                 <el-col :span="20">
                   <div style="background:whitesmoke;padding:10px;border-radius:3px;">
                     <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
                     <div>苯具有毒性。</div>
-                    <div style="margin-top:5px;"><el-link @click="dialogVisible2 = true"> >>推理依据 </el-link></div>
+                    <div style="margin-top:5px;">
+                      <el-link @click="dialogVisible2 = true"> >>推理依据</el-link>
+                    </div>
                   </div>
                 </el-col>
               </el-row>
@@ -84,19 +88,21 @@
                   </div>
                 </el-col>
                 <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2" />
+                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2"/>
                 </el-col>
               </el-row>
 
               <el-row :gutter="20" style="margin-bottom: 20px;">
                 <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url" />
+                  <el-avatar shape="square" :size="40" :fit="fit" :src="url"/>
                 </el-col>
                 <el-col :span="20">
                   <div style="background:whitesmoke;padding:10px;border-radius:3px;">
                     <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
                     <div>由于苯的挥发性大，暴露于空气中很容易扩散。人和动物吸入或皮肤接触大量苯进入体内，会引起急性和慢性苯中毒。</div>
-                    <div style="margin-top:5px;"><el-link> >>推理依据 </el-link></div>
+                    <div style="margin-top:5px;">
+                      <el-link> >>推理依据</el-link>
+                    </div>
                   </div>
                 </el-col>
               </el-row>
@@ -112,25 +118,27 @@
                   </div>
                 </el-col>
                 <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2" />
+                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2"/>
                 </el-col>
               </el-row>
 
               <el-row :gutter="20" style="margin-bottom: 20px;">
                 <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url" />
+                  <el-avatar shape="square" :size="40" :fit="fit" :src="url"/>
                 </el-col>
                 <el-col :span="20">
                   <div style="background:whitesmoke;padding:10px;border-radius:3px;">
                     <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
-                    <div>对不起，此问题我还不会答案。<el-link @click="dialogVisible3 = true">[问答反馈]</el-link></div>
+                    <div>对不起，此问题我还不会答案。
+                      <el-link @click="dialogVisible3 = true">[问答反馈]</el-link>
+                    </div>
                   </div>
                 </el-col>
               </el-row>
 
               <el-row :gutter="20" style="margin-bottom: 20px;">
                 <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url" />
+                  <el-avatar shape="square" :size="40" :fit="fit" :src="url"/>
                 </el-col>
                 <el-col :span="20">
                   <div style="background:whitesmoke;padding:10px;border-radius:3px;">
@@ -151,13 +159,13 @@
                   </div>
                 </el-col>
                 <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2" />
+                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2"/>
                 </el-col>
               </el-row>
 
               <el-row :gutter="20" style="margin-bottom: 20px;">
                 <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url" />
+                  <el-avatar shape="square" :size="40" :fit="fit" :src="url"/>
                 </el-col>
                 <el-col :span="20">
                   <div style="background:whitesmoke;padding:10px;border-radius:3px;">
@@ -169,7 +177,7 @@
             </div>
           </el-row>
           <el-row :gutter="20" style="margin-top:10px;">
-            <el-input v-model="textarea" placeholder="请输入您的问题" :rows="3" type="textarea" />
+            <el-input v-model="textarea" placeholder="请输入您的问题" :rows="3" type="textarea"/>
           </el-row>
           <el-row style="float:right;margin-top:10px;margin-bottom:10px;">
             <el-button type="primary" plain>发送</el-button>
@@ -179,7 +187,7 @@
       <el-col :span="8">
         <el-card class="box-card-component" style="margin-left:8px;">
           <div slot="header" class="box-card-header">
-            <el-image shape="square" :size="100" :fit="fit" :src="url" />
+            <el-image shape="square" :size="100" :fit="fit" :src="url"/>
           </div>
           <div style="position:relative;">
             <div>
@@ -191,19 +199,19 @@
             </div>
             <div style="margin-top:20px;">
               <span>危化品知识</span>
-              <el-progress :percentage="70" />
+              <el-progress :percentage="70"/>
             </div>
             <div class="progress-item">
               <span>危险性知识</span>
-              <el-progress :percentage="58" />
+              <el-progress :percentage="58"/>
             </div>
             <div class="progress-item">
               <span>防护知识</span>
-              <el-progress :percentage="42" />
+              <el-progress :percentage="42"/>
             </div>
             <div class="progress-item">
               <span>应急处理</span>
-              <el-progress :percentage="30" />
+              <el-progress :percentage="30"/>
             </div>
           </div>
         </el-card>

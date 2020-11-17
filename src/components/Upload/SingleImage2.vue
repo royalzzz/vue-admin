@@ -9,7 +9,7 @@
       drag
       action="https://httpbin.org/post"
     >
-      <i class="el-icon-upload" />
+      <i class="el-icon-upload"/>
       <div class="el-upload__text">
         Drag或<em>点击上传</em>
       </div>
@@ -18,7 +18,7 @@
       <div v-show="imageUrl.length>1" class="image-preview-wrapper">
         <img :src="imageUrl">
         <div class="image-preview-action">
-          <i class="el-icon-delete" @click="rmImage" />
+          <i class="el-icon-delete" @click="rmImage"/>
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { getToken } from '@/api/qiniu'
+import {getToken} from '@/api/qiniu'
 
 export default {
   name: 'SingleImageUpload2',
@@ -39,7 +39,7 @@ export default {
   data() {
     return {
       tempUrl: '',
-      dataObj: { token: '', key: '' }
+      dataObj: {token: '', key: ''}
     }
   },
   computed: {
@@ -81,9 +81,11 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
+
   .image-uploader {
     height: 100%;
   }
+
   .image-preview {
     width: 100%;
     height: 100%;
@@ -91,15 +93,18 @@ export default {
     left: 0px;
     top: 0px;
     border: 1px dashed #d9d9d9;
+
     .image-preview-wrapper {
       position: relative;
       width: 100%;
       height: 100%;
+
       img {
         width: 100%;
         height: 100%;
       }
     }
+
     .image-preview-action {
       position: absolute;
       width: 100%;
@@ -116,10 +121,12 @@ export default {
       cursor: pointer;
       text-align: center;
       line-height: 200px;
+
       .el-icon-delete {
         font-size: 36px;
       }
     }
+
     &:hover {
       .image-preview-action {
         opacity: 1;

@@ -27,7 +27,7 @@
             :model="item.children"
           ></tree-menu>
           <div>
-            <el-button v-for="(item, i) in keyNodes" :key="i">{{item.label}}</el-button>
+            <el-button v-for="(item, i) in keyNodes" :key="i">{{ item.label }}</el-button>
           </div>
         </li>
       </ul>

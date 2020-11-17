@@ -128,7 +128,7 @@
             <div style="width:100%;geight:1000px">
               <el-row>
                 <h3>每日新增新闻、评论数量</h3>
-                <line-chart :chart-data="lineChartData" />
+                <line-chart :chart-data="lineChartData"/>
               </el-row>
               <el-row>
                 <h3>新闻来源数量占比</h3>
@@ -151,8 +151,10 @@
             <p>监测时间段内:</p>
             <p>
               安全生产传播内容总量
-              <el-link type="danger">★★★★☆</el-link>（较高），舆情等级为
-              <el-link type="warning">橙色等级</el-link>（少量异常）。
+              <el-link type="danger">★★★★☆</el-link>
+              （较高），舆情等级为
+              <el-link type="warning">橙色等级</el-link>
+              （少量异常）。
             </p>
             <div align="center">
               <img src="@/assets/yuqingfenxi/jieshi.png" style="width:70%;padding:0px auto;">
@@ -166,7 +168,8 @@
                 <el-table-column prop="accident_sensitive" label="敏感指数" width="100"></el-table-column>
                 <el-table-column label="">
                   <template slot-scope="scope">
-                    <el-progress :text-inside="true" :stroke-width="26" :percentage="scope.row.accident_sensitive" status="exception"></el-progress>
+                    <el-progress :text-inside="true" :stroke-width="26" :percentage="scope.row.accident_sensitive"
+                                 status="exception"></el-progress>
                   </template>
                 </el-table-column>
               </el-table>
@@ -212,6 +215,7 @@
 
 <script>
 import LineChart from '../dashboard/admin/components/LineChart'
+
 const lineChartData = {
   newVisitis: {
     expectedData: [
@@ -483,7 +487,7 @@ export default {
     handleSetLineChartData(type) {
       this.lineChartData = lineChartData[type]
     },
-    tableRowClassName({ row, rowIndex }) {
+    tableRowClassName({row, rowIndex}) {
       if (rowIndex === 1) {
         return 'warning-row'
       } else if (rowIndex === 3) {
@@ -499,65 +503,83 @@ export default {
 .el-row {
   margin-bottom: 20px;
 }
+
 .el-col {
   border-radius: 4px;
 }
+
 .bg-purple-dark {
   /* background: #99a9bf; */
   padding: 20px;
 }
+
 .bg-purple {
   background: #d3dce6;
 }
+
 .bg-purple-light {
   background: #e5e9f2;
 }
+
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
 }
+
 .row-bg {
   padding: 10px 0;
   background-color: #f9fafc;
 }
+
 .text {
   font-size: 20px;
 }
+
 .item {
   padding: 10px 0;
 }
+
 .box-card {
   width: 100%;
   padding: -10px 0px 0px 0px;
 }
+
 #container {
   width: 100%;
 }
+
 #photo {
   float: left;
   width: 40%;
 }
+
 #content {
   float: right;
   width: 60%;
 }
+
 .el-table .warning-row {
   background: oldlace;
 }
+
 .el-table .success-row {
   background: #f0f9eb;
 }
+
 .text {
   font-size: 14px;
 }
+
 .item {
   margin-bottom: 18px;
 }
+
 .clearfix:before,
 .clearfix:after {
   display: table;
   content: "";
 }
+
 .clearfix:after {
   clear: both
 }

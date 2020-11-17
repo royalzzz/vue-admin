@@ -1,24 +1,27 @@
 import request from '@/utils/request'
-export function getBiaozhuTree () {
+
+export function getBiaozhuTree() {
   return request({
     url: '/isp/tree/getBiaozhuTree',
     method: 'get',
   })
 }
-export function findByLabelLike (keyword) {
+
+export function findByLabelLike(keyword) {
   return request({
     url: '/isp/tree/findByLabelLike',
     method: 'get',
-    params: { keyword }
+    params: {keyword}
   })
 }
-export function addBiaozhuPair (data) {
-  const { anli, biaozhun, source, sourceid } = data
+
+export function addBiaozhuPair(data) {
+  const {anli, biaozhun, source, sourceid} = data
   console.log('进入req')
   return request({
     url: '/isp/tree/addBiaozhuPair',
     method: 'get',
-    params: { anli: anli, biaozhun: biaozhun, source: source, sourceid: sourceid  }
+    params: {anli: anli, biaozhun: biaozhun, source: source, sourceid: sourceid}
   })
 }
 
@@ -28,6 +31,7 @@ export function getEventTft() {
     method: 'get'
   })
 }
+
 export function getAccidentReport() {
   return request({
     url: '/isp/tree/getAccidentReport',
