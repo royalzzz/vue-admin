@@ -13,12 +13,12 @@ export function findByLabelLike (keyword) {
   })
 }
 export function addBiaozhuPair (data) {
-  const { anli, biaozhun } = data
+  const { anli, biaozhun, source, sourceid } = data
   console.log('进入req')
   return request({
     url: '/isp/tree/addBiaozhuPair',
     method: 'get',
-    params: { anli: anli, biaozhun: biaozhun }
+    params: { anli: anli, biaozhun: biaozhun, source: source, sourceid: sourceid  }
   })
 }
 
@@ -32,5 +32,13 @@ export function getAccidentReport() {
   return request({
     url: '/isp/tree/getAccidentReport',
     method: 'get'
+  })
+}
+
+export function findBiaozhuPairBySourceid({source, sourceid}) {
+  return request({
+    url: '/isp/tree/findBiaozhuPairBySourceid',
+    method: 'get',
+    params: {source, sourceid}
   })
 }

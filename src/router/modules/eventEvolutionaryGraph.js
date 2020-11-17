@@ -12,6 +12,18 @@ const eventEvolutionaryGraph = {
     icon: 'tree'
   },
   children: [
+    { /* 第三个，概念事理展示*/
+      path: 'gaiNianZhanShi',
+      name: 'gaiNianZhanShi',
+      component: () => import('@/views/eventEvolutionaryGraph/gaiNianZhanShi'),
+      meta: { title: '概念事理图谱' }
+    },
+    { /* 第四个，案件事理展示*/
+      path: 'anJianZhanShi',
+      name: 'anJianZhanShi',
+      component: () => import('@/views/eventEvolutionaryGraph/anJianZhanShi'),
+      meta: { title: '案件事理图谱' }
+    },
 
     { /* 第一个,报告管理*/
       path: 'baoGaoGuanLi',
@@ -47,18 +59,6 @@ const eventEvolutionaryGraph = {
           meta: { title: '事件演化展示' }
         }
       ]
-    },
-    { /* 第三个，概念事理展示*/
-      path: 'gaiNianZhanShi',
-      name: 'gaiNianZhanShi',
-      component: () => import('@/views/eventEvolutionaryGraph/gaiNianZhanShi'),
-      meta: { title: '概念事理图谱' }
-    },
-    { /* 第四个，案件事理展示*/
-      path: 'anJianZhanShi',
-      name: 'anJianZhanShi',
-      component: () => import('@/views/eventEvolutionaryGraph/anJianZhanShi'),
-      meta: { title: '案件事理图谱' }
     },
     { /* 第五个，防护措施*/
       path: 'fangHuCuoShi',

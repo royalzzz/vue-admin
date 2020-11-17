@@ -3,8 +3,10 @@
     <el-row :gutter="12">
       <el-col :span="12">
         <el-card shadow="always" style="height: 650px">
-          <el-button type="text" @click="table = true">选择事故报告</el-button
-          ><br /><br />
+          <el-button type="text" @click="table = true">选择事故报告</el-button>
+          <el-button type="text" @click="showTags = true">查看标注记录</el-button>
+          <br /><br />
+          
           <el-drawer
             title="选择事故报告"
             :visible.sync="table"
@@ -69,7 +71,7 @@
               @click="addBiaozhuPair"
               >{{ item.label }}</el-button
             ><br /><br />
-            <span>标准树全部节点：</span><br /><br />
+            <span>标准图全部节点：</span><br /><br />
             <div>
               <el-button
                 v-for="(item, i) in Nodes"
@@ -86,12 +88,20 @@
         </el-card>
       </el-col>
     </el-row>
+    <el-dialog title="该事故报告的标注记录" :visible.sync="showTags">
+      <el-table :data="gridData">
+        <el-table-column property="id" label="ID" width="50"></el-table-column>
+        <el-table-column property="anli" label="事件"></el-table-column>
+        <el-table-column property="biaozhun" label="标准事件" width="200"></el-table-column>
+        <el-table-column width="70"><template slot-scope="scope"><el-button type="text" @click="deleteById(scope.row)">删除</el-button></template></el-table-column>
+      </el-table>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import vis from "vis";
-
+import * as treeApi from '@/api/tree';
 export default {
   name: "",
   data() {
@@ -102,12 +112,14 @@ export default {
       selectionEnd: 0,
       //
       select: "",
+      sourceid: 0,
       Nodes: [],
       keyNodes: [],
       redirect: undefined,
       otherQuery: {},
       textarea: "",
       table: false,
+      showTags: false,
       loading: false,
       accidentreport: [
         {
@@ -115,6 +127,7 @@ export default {
           title: "上海市普陀区金沙江路 1518 弄",
         },
       ],
+      gridData: [],
       timer: null,
     };
   },
@@ -175,6 +188,7 @@ export default {
           var db_nodes = result;
           this.keyNodes = db_nodes;
         });
+
     },
     //
     addBiaozhuPair(event) {
@@ -193,6 +207,8 @@ export default {
                 .dispatch("tree/addBiaozhuPair", {
                   anli: this.select,
                   biaozhun: event.target.innerText,
+                  source: 1,    //0代表案例树
+                  sourceid: this.sourceid  
                 })
                 .then((result) => {
                   var db_nodes = result;
@@ -236,6 +252,12 @@ export default {
       // console.log(row.data);
       this.table = false;
       this.textarea = row.content;
+      this.sourceid = row.id;
+      console.log("sdfsdasd", this.sourceid);
+      treeApi.findBiaozhuPairBySourceid({source: 1 , sourceid: this.sourceid}).then(result => {
+        console.log(result.data);
+        this.gridData = result.data
+      })
     },
     selecttext() {
       const selectionText = document.getSelection().toString();
@@ -257,6 +279,10 @@ export default {
         this.selectionEnd = 0;
       }
       // console.log(selectionText);
+    },
+    deleteById(row){
+      console.log("asdasfsdfjkbsdbsdhjb", row.id);
+      // 删除标注对 通过id 的api
     },
     getOtherQuery(query) {
       return Object.keys(query).reduce((acc, cur) => {

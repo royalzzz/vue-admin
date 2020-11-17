@@ -64,7 +64,7 @@
               ><br />
             </div>
             <br />
-            <span>标准树全部节点：</span><br />
+            <span>标准图全部节点：</span><br />
             <div>
               <el-button
                 v-for="(item, i) in Nodes"
@@ -195,6 +195,7 @@ export default {
           label: "1977年某炼厂碱渣罐爆炸事故P37",
         },
       ],
+      sourceid: 0,
       table: false,
       loading: false,
       eventtft: [
@@ -286,6 +287,8 @@ export default {
                 .dispatch("tree/addBiaozhuPair", {
                   anli: this.select,
                   biaozhun: event.target.innerText,
+                  source: 0,    //0代表案例树
+                  sourceid: this.sourceid  
                 })
                 .then((result) => {
                   var db_nodes = result;
@@ -328,6 +331,7 @@ export default {
     handleClick(row) {
       this.testdata = JSON.parse("[" + row._data + "]");
       this.table = false;
+      this.sourceid = row._id;
       //   console.log(this.testdata)
     },
     getOtherQuery(query) {

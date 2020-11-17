@@ -1,4 +1,6 @@
-import { getBiaozhuTree, findByLabelLike, addBiaozhuPair, getEventTft, getAccidentReport } from '@/api/tree'
+// import { getBiaozhuTree, findByLabelLike, addBiaozhuPair, getEventTft, getAccidentReport, findBiaozhuPairBySourceid } from '@/api/tree'
+import * as treeApi from '@/api/tree'
+
 import { getToken, removeToken } from '@/utils/auth'
 
 const state = {
@@ -33,7 +35,7 @@ const actions = {
   findByLabelLike ({ commit, state }, keyword) {
     // console.log(keyword);
     return new Promise((resolve, reject) => {
-      findByLabelLike(keyword).then(response => {
+      treeApi.findByLabelLike(keyword).then(response => {
         const { data } = response
         // console.log(data);
         if (!data) {
@@ -51,7 +53,7 @@ const actions = {
   getEventTft({ commit, state }) {
     // console.log(keyword);
     return new Promise((resolve, reject) => {
-      getEventTft().then(response => {
+      treeApi.getEventTft().then(response => {
         const { data } = response
         // console.log(data);
         if (!data) {
@@ -69,7 +71,7 @@ const actions = {
   getAccidentReport({ commit, state }) {
     // console.log('1111111');
     return new Promise((resolve, reject) => {
-      getAccidentReport().then(response => {
+      treeApi.getAccidentReport().then(response => {
         const { data } = response
         // console.log(data);
         if (!data) {
@@ -84,10 +86,10 @@ const actions = {
       })
     })
   },
-  addBiaozhuPair ({ commit, state }, { anli, biaozhun }) {
-    console.log(anli, biaozhun)
+  addBiaozhuPair ({ commit, state }, { anli, biaozhun, source, sourceid }) {
+    console.log(anli, biaozhun, source, sourceid )
     return new Promise((resolve, reject) => {
-      addBiaozhuPair({ anli: anli, biaozhun: biaozhun }).then(response => {
+      treeApi.addBiaozhuPair({ anli: anli, biaozhun: biaozhun, source: source, sourceid: sourceid }).then(response => {
         const { data } = response
         // console.log(data);
         if (!data) {
@@ -96,6 +98,21 @@ const actions = {
         // const { db_nodes } = data
         // console.log(nodes, edges)
         // roles must be a non-empty array
+        resolve(data)
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+  findBiaozhuPairBySourceid({commit,state},{source, sourceid}) {
+    console.log(source, sourceid);
+    return new Promise((resolve, reject) => {
+      treeApi.findBiaozhuPairBySourceid({ source: source, sourceid: sourceid }).then(response => {
+        const { data } = response
+        if (!data) {
+          reject('Verification failed, please Login again.')
+        }
+        console.log(data);
         resolve(data)
       }).catch(error => {
         reject(error)
