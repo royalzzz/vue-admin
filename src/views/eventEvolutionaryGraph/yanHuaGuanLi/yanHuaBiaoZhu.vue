@@ -98,7 +98,7 @@
       <el-table :data="gridData">
         <el-table-column property="id" label="ID" width="50"></el-table-column>
         <el-table-column property="anli" label="事件"></el-table-column>
-        <el-table-column property="biaozhun" label="标准事件" width="200"></el-table-column>
+        <el-table-column property="biaozhun" label="标准事件" width="250"></el-table-column>
         <el-table-column width="70">
           <template slot-scope="scope">
             <el-button type="text" @click="deleteById(scope.row)">删除</el-button>
@@ -208,7 +208,7 @@ export default {
       // console.log(event.target.innerText)
 
       this.$alert(
-        this.select + "*****" + event.target.innerText,
+        this.select + "&&" + event.target.innerText,
         "是否提交标注",
         {
           confirmButtonText: "提交",
@@ -266,7 +266,6 @@ export default {
       this.table = false;
       this.textarea = row.content;
       this.sourceid = row.id;
-      console.log("sdfsdasd", this.sourceid);
       treeApi.findBiaozhuPairBySourceid({source: 1, sourceid: this.sourceid}).then(result => {
         console.log(result.data);
         this.gridData = result.data
@@ -294,8 +293,29 @@ export default {
       // console.log(selectionText);
     },
     deleteById(row) {
-      console.log("asdasfsdfjkbsdbsdhjb", row.id);
-      // 删除标注对 通过id 的api
+      // console.log("asdasfsdfjkbsdbsdhjb", row.id);
+
+      this.$confirm('此操作将删除该标注, 是否继续?', '提示', {
+        confirmButtonText: '删除',
+        cancelButtonText: '不删除',
+        type: 'warning'
+      }).then(() => {
+        treeApi.deletePairById(row.id).then(res=>{
+          treeApi.findBiaozhuPairBySourceid({source: 0, sourceid: this.sourceid}).then(result => {
+            console.log(result.data);
+            this.gridData = result.data
+          });
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });
+      });
     },
     getOtherQuery(query) {
       return Object.keys(query).reduce((acc, cur) => {

@@ -6,6 +6,7 @@
           <el-button type="text" @click="table = true">
             选择案例树
           </el-button>
+          <el-button type="text" @click="showTags = true">查看标注记录</el-button>
           <br/>
           <br/>
           <el-drawer title="选择案例树" :visible.sync="table" direction="rtl" size="50%"
@@ -63,11 +64,24 @@
         </el-card>
       </el-col>
     </el-row>
+    <el-dialog title="该事故报告的标注记录" :visible.sync="showTags">
+      <el-table :data="gridData">
+        <el-table-column property="id" label="ID" width="50"></el-table-column>
+        <el-table-column property="anli" label="事件"></el-table-column>
+        <el-table-column property="biaozhun" label="标准事件" width="250"></el-table-column>
+        <el-table-column width="70">
+          <template slot-scope="scope">
+            <el-button type="text" @click="deleteById(scope.row)">删除</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import vis from "vis";
+import * as treeApi from "@/api/tree";
 
 export default {
   name: "",
@@ -179,6 +193,7 @@ export default {
       ],
       sourceid: 0,
       table: false,
+      showTags: false,
       loading: false,
       eventtft: [
         {
@@ -316,7 +331,37 @@ export default {
       this.testdata = JSON.parse("[" + row._data + "]");
       this.table = false;
       this.sourceid = row._id;
+      // source 0 为案例树
+      treeApi.findBiaozhuPairBySourceid({source: 0, sourceid: this.sourceid}).then(result => {
+        console.log(result.data);
+        this.gridData = result.data
+      })
       //   console.log(this.testdata)
+    },
+    deleteById(row) {
+      // console.log("asdasfsdfjkbsdbsdhjb", row.id);
+
+      this.$confirm('此操作将删除该标注, 是否继续?', '提示', {
+        confirmButtonText: '删除',
+        cancelButtonText: '不删除',
+        type: 'warning'
+      }).then(() => {
+        treeApi.deletePairById(row.id).then(res=>{
+          treeApi.findBiaozhuPairBySourceid({source: 0, sourceid: this.sourceid}).then(result => {
+            console.log(result.data);
+            this.gridData = result.data
+          });
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });
+      });
     },
     getOtherQuery(query) {
       return Object.keys(query).reduce((acc, cur) => {

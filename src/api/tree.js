@@ -46,3 +46,11 @@ export function findBiaozhuPairBySourceid({source, sourceid}) {
     params: {source, sourceid}
   })
 }
+
+export function deletePairById(id) {
+  return request({
+    url: '/isp/tree/deletePairById',
+    method: 'get',
+    params: { id }
+  })
+}
