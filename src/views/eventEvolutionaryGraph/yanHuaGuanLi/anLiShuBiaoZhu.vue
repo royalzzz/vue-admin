@@ -1,82 +1,82 @@
 <template>
-  <div style="padding: 20px">
-    <el-row :gutter="12">
-      <el-col :span="12">
-        <el-card shadow="always" style="height: 650px">
-          <el-button type="text" @click="table = true">
-            选择案例树
-          </el-button>
-          <el-button type="text" @click="showTags = true">查看标注记录</el-button>
-          <br/>
-          <br/>
-          <el-drawer title="选择案例树" :visible.sync="table" direction="rtl" size="50%"
-                     style="height: auto; overflow-x: auto">
-            <el-table :data="eventtft">
-              <el-table-column property="_id" label="id" width="100">
-              </el-table-column>
-              <el-table-column property="_events" label="案例内容">
-                <template slot-scope="scope">
-                  <el-tooltip :content="scope.row._events" placement="left">
-                    <p class="_events_sty">
-                      {{ scope.row._events }}
-                    </p>
-                  </el-tooltip>
-                </template>
-              </el-table-column>
-              <el-table-column fixed="right" label="操作" width="100">
-                <template slot-scope="scope">
-                  <el-button type="text" size="small" @click="handleClick(scope.row)">
-                    选择
-                  </el-button>
-                </template>
-              </el-table-column>
-            </el-table>
-          </el-drawer>
-          <div style="height: 580px; overflow: auto">
-            <el-tree :data="testdata" default-expand-all :expand-on-click-node="false"
-                     @node-click="findByLabelLike">
-            </el-tree>
-          </div>
-        </el-card>
-      </el-col>
-      <el-col :span="12">
-        <el-card shadow="always" style="height: 650px">
-          <div style="height: 600px; overflow: auto">
-            <span>当前事件推荐的标注节点：</span>
-            <br/>
-            <div>
-              <el-button v-for="(item, i) in keyNodes" :key="i" type="success" plain size="small"
-                         style="margin-top: 10px; margin-left: 10px" @click="addBiaozhuPair">
-                {{ item.label }}
-              </el-button>
-              <br/>
-            </div>
-            <br/>
-            <span>标准图全部节点：</span>
-            <br/>
-            <div>
-              <el-button v-for="(item, i) in Nodes" :key="i" type="primary" plain size="small"
-                         style="margin-top: 10px; margin-left: 10px" @click="addBiaozhuPair">
-                {{ item.label }}
-              </el-button>
-            </div>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
-    <el-dialog title="该事故报告的标注记录" :visible.sync="showTags">
-      <el-table :data="gridData">
-        <el-table-column property="id" label="ID" width="50"></el-table-column>
-        <el-table-column property="anli" label="事件"></el-table-column>
-        <el-table-column property="biaozhun" label="标准事件" width="250"></el-table-column>
-        <el-table-column width="70">
-          <template slot-scope="scope">
-            <el-button type="text" @click="deleteById(scope.row)">删除</el-button>
-          </template>
-        </el-table-column>
-      </el-table>
-    </el-dialog>
-  </div>
+	<div style="padding: 20px">
+		<el-row :gutter="12">
+			<el-col :span="12">
+				<el-card shadow="always" style="height: 650px">
+					<el-button type="text" @click="table = true">
+						选择案例树
+					</el-button>
+					<el-button type="text" @click="showTags = true">查看标注记录</el-button>
+					<br />
+					<br />
+					<el-drawer title="选择案例树" :visible.sync="table" direction="rtl" size="50%"
+						style="height: auto; overflow-x: auto">
+						<el-table :data="eventtft">
+							<el-table-column property="_id" label="id" width="100">
+							</el-table-column>
+							<el-table-column property="_events" label="案例内容">
+								<template slot-scope="scope">
+									<el-tooltip :content="scope.row._events" placement="left">
+										<p class="_events_sty">
+											{{ scope.row._events }}
+										</p>
+									</el-tooltip>
+								</template>
+							</el-table-column>
+							<el-table-column fixed="right" label="操作" width="100">
+								<template slot-scope="scope">
+									<el-button type="text" size="small" @click="handleClick(scope.row)">
+										选择
+									</el-button>
+								</template>
+							</el-table-column>
+						</el-table>
+					</el-drawer>
+					<div style="height: 580px; overflow: auto">
+						<el-tree :data="testdata" default-expand-all :expand-on-click-node="false"
+							@node-click="findByLabelLike">
+						</el-tree>
+					</div>
+				</el-card>
+			</el-col>
+			<el-col :span="12">
+				<el-card shadow="always" style="height: 650px">
+					<div style="height: 600px; overflow: auto">
+						<span>当前事件推荐的标注节点：</span>
+						<br />
+						<div>
+							<el-button v-for="(item, i) in keyNodes" :key="i" type="success" plain size="small"
+								style="margin-top: 10px; margin-left: 10px" @click="addBiaozhuPair">
+								{{ item.label }}
+							</el-button>
+							<br />
+						</div>
+						<br />
+						<span>标准图全部节点：</span>
+						<br />
+						<div>
+							<el-button v-for="(item, i) in Nodes" :key="i" type="primary" plain size="small"
+								style="margin-top: 10px; margin-left: 10px" @click="addBiaozhuPair">
+								{{ item.label }}
+							</el-button>
+						</div>
+					</div>
+				</el-card>
+			</el-col>
+		</el-row>
+		<el-dialog title="该事故报告的标注记录" :visible.sync="showTags">
+			<el-table :data="gridData">
+				<el-table-column property="id" label="ID" width="50"></el-table-column>
+				<el-table-column property="anli" label="事件"></el-table-column>
+				<el-table-column property="biaozhun" label="标准事件" width="250"></el-table-column>
+				<el-table-column width="70">
+					<template slot-scope="scope">
+						<el-button type="text" @click="deleteById(scope.row)">删除</el-button>
+					</template>
+				</el-table-column>
+			</el-table>
+		</el-dialog>
+	</div>
 </template>
 
 <script>
@@ -377,33 +377,33 @@ export default {
 
 <style>
 .el-tree-node__content:hover {
-  background: rgba(255, 255, 255, 0.589);
+	background: rgba(255, 255, 255, 0.589);
 }
 
 .el-tree {
-  background: #84878a;
+	background: #84878a;
 
-  color: #050505;
+	color: #050505;
 }
 
 .el-tree-node__content {
-  height: 50px;
-  background-color: rgb(255, 255, 255);
+	height: 50px;
+	background-color: rgb(255, 255, 255);
 }
 
 .el-drawer.rtl {
-  overflow: scroll;
+	overflow: scroll;
 }
 
 ._events_sty {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
-  overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 5;
+	overflow: hidden;
 }
 
 .el-tooltip__popper {
-  max-width: 600px;
-  line-height: 180%;
+	max-width: 600px;
+	line-height: 180%;
 }
 </style>
