@@ -65,6 +65,26 @@ service.interceptors.response.use(
           })
         })
       }
+
+      // 20006: token过期
+      if (res.code === 20006) {
+        // to re-login
+        MessageBox.confirm('你的登录已经过期', '用户cookie异常', {
+          confirmButtonText: '重新登录',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          store.dispatch('user/resetToken').then(() => {
+            location.reload()
+          })
+        })
+      }
+
+      if (res.code === 20001) {
+          store.dispatch('user/resetToken').then(() => {
+            location.reload()
+          })
+      }
       return Promise.reject(new Error(res.message || 'Error'))
     } else {
       return res

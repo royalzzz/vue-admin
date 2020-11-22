@@ -74,6 +74,7 @@ export default {
     },
     handleSizeChange(size) {
       this.page.pageSize = size;
+      this.page.pageNumber = 0;
       this.loadData();
     },
     handleCurrentChange(current) {
@@ -85,10 +86,10 @@ export default {
       findByPage(this.page).then(res => {
         this.tableData = res.data.content;
         this.page.total = res.data.totalElements;
-        this.page.pageSize = res.data.pageable.pageSize;
-        this.page.pageNumber = res.data.pageable.pageNumber;
+        // this.page.pageSize = res.data.pageable.pageSize;
+        // this.page.pageNumber = res.data.pageable.pageNumber;
         this.loading = false;
-        console.log(this.tableData);
+        console.log(res);
       });
     }
   },
