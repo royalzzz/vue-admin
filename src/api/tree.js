@@ -32,10 +32,27 @@ export function getEventTft() {
   })
 }
 
+export function getEventTftPageable(data) {
+  return request({
+    url: '/isp/tree/getEventTftPageable',
+    method: 'post',
+    data: data
+  })
+}
+
 export function getAccidentReport() {
   return request({
     url: '/isp/tree/getAccidentReport',
     method: 'get'
+  })
+}
+
+export function getAccidentReportPageable(data) {
+  console.log(data)
+  return request({
+    url: '/isp/tree/getAccidentReportPageable',
+    method: 'post',
+    data: data
   })
 }
 
@@ -50,6 +67,22 @@ export function findBiaozhuPairBySourceid({source, sourceid}) {
 export function deletePairById(id) {
   return request({
     url: '/isp/tree/deletePairById',
+    method: 'get',
+    params: { id }
+  })
+}
+
+export function saveReport(data){
+  return request(({
+    url: '/isp/tree/saveReport',
+    method: 'post',
+    data: data
+  }))
+}
+
+export function removeReport(id){
+  return request({
+    url: '/isp/tree/removeReport',
     method: 'get',
     params: { id }
   })
