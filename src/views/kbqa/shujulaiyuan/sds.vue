@@ -89,7 +89,6 @@ export default {
         // this.page.pageSize = res.data.pageable.pageSize;
         // this.page.pageNumber = res.data.pageable.pageNumber;
         this.loading = false;
-        console.log(res);
       });
     }
   },

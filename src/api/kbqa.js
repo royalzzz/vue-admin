@@ -7,3 +7,14 @@ export function findByPage (page) {
     data: page
   })
 }
+
+export function findByKeyAndValue (key, value) {
+  return request({
+    url: '/isp/kbqa/es_demo/search',
+    method: 'post',
+    params: {
+      key: key,
+      value: value
+    }
+  })
+}

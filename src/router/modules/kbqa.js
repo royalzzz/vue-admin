@@ -16,19 +16,25 @@ const kbqa = {
       path: 'zhinengwenda',
       component: () => import('@/layout/components/Empty'),
       name: 'zhinengwenda',
-      meta: {title: '智能问答', icon: 'message', affix: true},
+      meta: { title: '智能问答', icon: 'message', affix: true },
       children: [
         {
           path: 'wendajiqiren',
           component: () => import('@/views/kbqa/zhinengwenda/index'),
           name: 'wendajiqiren',
-          meta: {title: '问答机器人', icon: 'message', affix: true}
+          meta: { title: '问答机器人', icon: 'message', affix: true }
+        },
+        {
+          path: 'zhishichaxun',
+          component: () => import('@/views/kbqa/zhinengwenda/search'),
+          name: 'zhishichaxun',
+          meta: { title: '知识查询', icon: 'search', affix: true }
         },
         {
           path: 'yuliaoku',
           component: () => import('@/views/kbqa/zhinengwenda/yuliao'),
           name: 'yuliaoku',
-          meta: {title: '问答语料库', icon: 'language', affix: true}
+          meta: { title: '问答语料库', icon: 'language', affix: true }
         }
       ]
     },
@@ -36,25 +42,19 @@ const kbqa = {
       path: 'zhishiku',
       component: () => import('@/layout/components/Empty'),
       name: 'zhishiku',
-      meta: {title: '知识库管理', icon: 'excel', affix: true},
+      meta: { title: '知识库管理', icon: 'excel', affix: true },
       children: [
         {
           path: 'zhishiluru',
           component: () => import('@/views/kbqa/zhishiku/add'),
           name: 'zhishiluru',
-          meta: {title: '知识录入', icon: 'edit', affix: true}
-        },
-        {
-          path: 'zhishichaxun',
-          component: () => import('@/views/kbqa/zhishiku/search'),
-          name: 'zhishichaxun',
-          meta: {title: '知识查询', icon: 'search', affix: true}
+          meta: { title: '知识录入', icon: 'edit', affix: true }
         },
         {
           path: 'shigu',
           component: () => import('@/views/kbqa/zhishiku/shigu'),
           name: 'shigu',
-          meta: {title: '事故管理', icon: 'el-icon-magic-stick', affix: true}
+          meta: { title: '事故管理', icon: 'el-icon-magic-stick', affix: true }
         }
       ]
     },
@@ -62,13 +62,13 @@ const kbqa = {
       path: 'shujulaiyuan',
       component: () => import('@/layout/components/Empty'),
       name: 'shujulaiyuan',
-      meta: {title: '数据来源', icon: 'international', affix: true},
+      meta: { title: '数据来源', icon: 'international', affix: true },
       children: [
         {
           path: 'paqu',
           component: () => import('@/views/kbqa/shujulaiyuan/paqu'),
           name: 'paqu',
-          meta: {title: '数据爬取', icon: 'tree-table', affix: true}
+          meta: { title: '数据爬取', icon: 'tree-table', affix: true }
         },
         {
           path: 'sds',
@@ -84,7 +84,7 @@ const kbqa = {
       path: 'moxingxunlian',
       component: () => import('@/views/kbqa/training'),
       name: 'moxingxunlian',
-      meta: {title: '模型训练', icon: 'language', affix: true}
+      meta: { title: '模型训练', icon: 'language', affix: true }
     }
   ]
 }
