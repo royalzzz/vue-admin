@@ -149,7 +149,7 @@ export default {
       },
       sform: {
         s_key: '123',
-        s_date: '08/20/2019 12:00:00',
+        s_date: '12/1/2020 12:00:00',
         s_time: '1'
       },
       formLabelWidth: '150px'
