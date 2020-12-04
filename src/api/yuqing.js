@@ -11,3 +11,11 @@ export function setCrawlerParams(data) {
     // params: { data, token }
   })
 }
+
+export function getAllYuqingOriginnewsPageable(data) {
+  return request({
+    url: '/isp/yuqing/getAllYuqingOriginnewsPageable',
+    method: 'post',
+    data: data
+  })
+}

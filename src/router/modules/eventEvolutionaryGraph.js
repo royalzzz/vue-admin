@@ -60,7 +60,7 @@ const eventEvolutionaryGraph = {
         }
       ]
     },
-    { /* 第五个，训练数据管理*/
+    { /* 第五个，标准图节点标注*/
       path: 'gainiantupubiaozhu',
       name: 'gainiantupubiaozhu',
       component: () => import('@/views/eventEvolutionaryGraph/xunlianshujuguanli/gainiantupubiaozhu'),

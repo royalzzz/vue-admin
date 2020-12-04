@@ -17,7 +17,6 @@ export function findByLabelLike(keyword) {
 
 export function addBiaozhuPair(data) {
   const {anli, biaozhun, source, sourceid} = data
-  console.log('进入req')
   return request({
     url: '/isp/tree/addBiaozhuPair',
     method: 'get',
@@ -83,6 +82,40 @@ export function saveReport(data){
 export function removeReport(id){
   return request({
     url: '/isp/tree/removeReport',
+    method: 'get',
+    params: { id }
+  })
+}
+export function addEventNodeBiaozhuPair({ id, label, biaozhutext }){
+  return request({
+    url: '/isp/tree/addEventNodeBiaozhuPair',
+    method: 'get',
+    params: { id, label, biaozhutext }
+  })
+}
+export function findEventNodeBiaozhuPairbyNodeid(nodeid){
+  return request({
+    url: '/isp/tree/findEventNodeBiaozhuPairbyNodeid',
+    method: 'get',
+    params: { nodeid }
+  })
+}
+export function findAllEventNodeBiaozhuPair(){
+  return request({
+    url: '/isp/tree/findAllEventNodeBiaozhuPair',
+    method: 'get'
+  })
+}
+export function findAllEventNodeBiaozhuPairPageable(data){
+  return request({
+    url: '/isp/tree/findAllEventNodeBiaozhuPairPageable',
+    method: 'post',
+    data: data
+  })
+}
+export function deleteNodeBiaozhuPairById(id){
+  return request({
+    url: '/isp/tree/deleteNodeBiaozhuPairById',
     method: 'get',
     params: { id }
   })
