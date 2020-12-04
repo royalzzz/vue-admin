@@ -2,9 +2,9 @@
 	<div style="padding:20px;">
 		<el-form :inline="true" :model="formInline" class="demo-form-inline">
 			<el-form-item label="实体概念">
-				<el-select v-model="formInline.region" placeholder="实体概念">
-					<el-option label="化学品" value="shanghai" />
-					<el-option label="危险性" value="beijing" />
+				<el-select v-model="select_key" placeholder="实体概念">
+					<el-option label="Smart" value="smart_name" />
+					<el-option label="Standard" value="standard_name" />
 				</el-select>
 			</el-form-item>
 			<el-form-item label="实体">
@@ -48,63 +48,78 @@
 </template>
 
 <script>
-import { findByKeyAndValue } from '@/api/kbqa'
+import { findByKeyAndValue } from "@/api/kbqa";
 
 export default {
-  name: 'Shishikusearch',
-  data() {
-    return {
-      keyword: '',
-      formInline: {
-        user: '',
-        region: ''
-      },
-      tableData: [{
-        date: 'CAS编号',
-        name: '7789-12-0'
-      }, {
-        date: '化学分子式',
-        name: 'Cr2H4Na2O9'
-      }, {
-        date: '水溶性',
-        name: '730 g/L (20°C)'
-      }, {
-        date: '熔点',
-        name: '357°C'
-      }, {
-        date: '分子量',
-        name: '275.00833'
-      }, {
-        date: '英文名',
-        name: 'Sodium dichromate dihydrate'
-      }, {
-        date: '中文名',
-        name: '重铬酸钠'
-      }]
-    }
-  },
-  methods: {
-    onSubmit() {
-      findByKeyAndValue('name', this.keyword).then(res => {
-        console.log(res);
-      })
-    },
-    querySearchAsync(queryString, cb) {
-      findByKeyAndValue('name', queryString).then(res => {
-        let keywords = [];
-        res.data.hits.hits.forEach(function(item) {
-          let obj = {};
-          obj.value = item.sourceAsMap.name;
-          obj.score = item.score;
-          obj.chemical_id = item.sourceAsMap.chemical_id;
-          keywords.push(obj);
-        });
-        cb(keywords);
-      });
-    },
-    handleSelect(item) {
-      console.log(item);
-    }
-  }
-}
+	name: "Shishikusearch",
+	data() {
+		return {
+			keyword: "",
+			select_key: "smart_name",
+			formInline: {
+				user: "",
+				region: ""
+			},
+			tableData: [
+				{
+					date: "CAS编号",
+					name: "7789-12-0"
+				},
+				{
+					date: "化学分子式",
+					name: "Cr2H4Na2O9"
+				},
+				{
+					date: "水溶性",
+					name: "730 g/L (20°C)"
+				},
+				{
+					date: "熔点",
+					name: "357°C"
+				},
+				{
+					date: "分子量",
+					name: "275.00833"
+				},
+				{
+					date: "英文名",
+					name: "Sodium dichromate dihydrate"
+				},
+				{
+					date: "中文名",
+					name: "重铬酸钠"
+				}
+			]
+		};
+	},
+	methods: {
+		onSubmit() {
+			findByKeyAndValue(this.select_key, this.keyword).then(res => {
+				console.log(res);
+			});
+		},
+		querySearchAsync(queryString, cb) {
+			let self = this;
+			findByKeyAndValue(this.select_key, queryString).then(res => {
+				let keywords = [];
+				res.data.hits.hits.forEach(function(item) {
+					let obj = {};
+					if (self.select_key === "smart_name") {
+						obj.value = item.sourceAsMap.smart_name;
+					} else {
+						obj.value = item.sourceAsMap.standard_name;
+					}
+
+					obj.score = item.score;
+					obj.chemical_id = item.sourceAsMap.chemical_id;
+					keywords.push(obj);
+				});
+				cb(keywords);
+			});
+		},
+		handleSelect(item) {
+			console.log(item);
+		}
+	}
+};
 </script>
