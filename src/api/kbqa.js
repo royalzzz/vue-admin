@@ -18,3 +18,42 @@ export function findByKeyAndValue (key, value) {
     }
   })
 }
+
+export function findByTextLike (text) {
+  return request({
+    url: '/isp/kbqa/question/findByTextLike',
+    method: 'post',
+    params: {
+      text: text
+    }
+  })
+}
+
+export function findAllQuestionTypes () {
+  return request({
+    url: '/isp/kbqa/question/findAllQuestionTypes',
+    method: 'get'
+  })
+}
+
+export function findAllQuestionIntents () {
+  return request({
+    url: '/isp/kbqa/question/findAllQuestionIntents',
+    method: 'get'
+  })
+}
+
+export function tagInformation () {
+  return request({
+    url: '/isp/kbqa/question/tagInformation',
+    method: 'get'
+  })
+}
+
+export function tagQuestion (tag) {
+  return request({
+    url: '/isp/kbqa/question/tagQuestion',
+    method: 'post',
+    data: tag
+  })
+}
