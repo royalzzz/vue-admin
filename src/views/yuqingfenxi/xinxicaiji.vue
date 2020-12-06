@@ -41,7 +41,7 @@
           <div class="grid-content">
             <el-table :data="tableData" border max-height="585px" style="width: 100%" v-loading="loading">
               <el-table-column fixed prop="id" label="id" width="80"/>
-              <el-table-column fixed prop="news_timeStamp" label="日期" width="150"/>
+              <el-table-column fixed prop="news_date" label="日期" width="150"/>
               <el-table-column prop="news_title" label="报道标题" width="350"/>
               <el-table-column prop="news_site" label="来源" width="100"/>
               <el-table-column prop="news_link" label="来源链接" width="350">
@@ -218,9 +218,20 @@ export default {
     },
     loadData(){
       yuqingApi.getAllYuqingOriginnewsPageable(this.page).then((result)=>{
-        console.log(result.data)
+
+        for(var i in result.data.content){
+          var time = new Date(result.data.content[i].news_timeStamp);
+          var y = time.getFullYear(); //getFullYear方法以四位数字返回年份
+          var M = time.getMonth() + 1; // getMonth方法从 Date 对象返回月份 (0 ~ 11)，返回结果需要手动加一
+          var d = time.getDate(); // getDate方法从 Date 对象返回一个月中的某一天 (1 ~ 31)
+          var h = time.getHours(); // getHours方法返回 Date 对象的小时 (0 ~ 23)
+          var m = time.getMinutes(); // getMinutes方法返回 Date 对象的分钟 (0 ~ 59)
+          var s = time.getSeconds(); // getSeconds方法返回 Date 对象的秒数 (0 ~ 59)
+          result.data.content[i].news_date  = y + '-' + M + '-' + d + ' ' + h + ':' + m + ':' + s;
+        }
+        // console.log(result.data.content)
         this.tableData = result.data.content
-        this.page.total = result.data.totalPages
+        this.page.total = result.data.totalElements
       })
     }
   },
