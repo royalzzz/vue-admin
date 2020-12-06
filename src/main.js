@@ -18,6 +18,7 @@ import './permission' // permission control
 import './utils/error-log' // error log
 
 import * as filters from './filters' // global filters
+import Toast from './components/Toast'
 
 /**
  * If you don't want to use mock-server
@@ -31,6 +32,7 @@ import * as filters from './filters' // global filters
 //   const { mockXHR } = require('../mock')
 //   mockXHR()
 // }
+Vue.prototype.$toast = Toast.install
 
 Vue.use(Element, {
   size: Cookies.get('size') || 'medium', // set element-ui default size

@@ -1,5 +1,5 @@
 module.exports = {
-  title: '技术协议',
+  title: '危化品公共信息服务平台',
 
   /**
    * @type {boolean} true | false

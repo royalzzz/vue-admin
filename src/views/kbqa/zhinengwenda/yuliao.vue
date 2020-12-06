@@ -37,7 +37,8 @@
 			</el-form-item>
 
 			<el-form-item>
-				<el-button type="primary" round style="width: 480px;" @click="onSubmit" v-loading="loading">提交</el-button>
+				<el-button type="primary" round style="width: 480px;" @click="onSubmit" v-loading="loading">
+					提交</el-button>
 			</el-form-item>
 		</el-form>
 	</div>
@@ -47,9 +48,9 @@
 import {
 	findAllQuestionTypes,
 	tagInformation,
-  findAllQuestionIntents,
-  findByTextLike,
-  tagQuestion
+	findAllQuestionIntents,
+	findByTextLike,
+	tagQuestion,
 } from "@/api/kbqa";
 
 export default {
@@ -67,46 +68,51 @@ export default {
 			questionType: [],
 			questionTypes: [],
 			questionIntent: [],
-      questionIntents: [],
-      loading: false
+			questionIntents: [],
+			loading: false,
 		};
 	},
 	methods: {
 		onSubmit() {
-      this.loading = true;
-      let tagData = {
-        text: this.question,
-        questionTypes: this.questionType,
-        questionIntents: this.questionIntent
-      };
-      console.log(tagData);
-			tagQuestion(tagData).then(res => {
-        this.loadBasicData();
-        this.question = '';
-        this.questionType = [];
-        this.questionIntent = [];
-        this.loading = false;
-        const h = this.$createElement;
+			this.loading = true;
+			let tagData = {
+				text: this.question,
+				questionTypes: this.questionType,
+				questionIntents: this.questionIntent,
+			};
+			console.log(tagData);
+			tagQuestion(tagData).then((res) => {
+				this.loadBasicData();
+				this.question = "";
+				this.questionType = [];
+				this.questionIntent = [];
+				this.loading = false;
+				const h = this.$createElement;
 
-        this.$notify({
-          title: '标记成功',
-          message: h('i', { style: 'color: teal'}, '问题和标注信息已保存！')
-        });
-      });
-    },
-    querySearchAsync(queryString, cb) {
-      if (queryString !== '') {
-        findByTextLike(queryString).then(res => {
-          let keywords = [];
-          res.data.forEach(function(item) {
-            let obj = {};
-            obj.value = item.text;
-            obj.id = item.id;
-            keywords.push(obj);
-          });
-          cb(keywords);
-        });
-      }
+				this.$toast({
+					msg: "标记成功",
+					type: "success",
+					duration: 1000,
+				});
+				// this.$notify({
+				//   title: '标记成功',
+				//   message: h('i', { style: 'color: teal'}, '问题和标注信息已保存！')
+				// });
+			});
+		},
+		querySearchAsync(queryString, cb) {
+			if (queryString !== "") {
+				findByTextLike(queryString).then((res) => {
+					let keywords = [];
+					res.data.forEach(function (item) {
+						let obj = {};
+						obj.value = item.text;
+						obj.id = item.id;
+						keywords.push(obj);
+					});
+					cb(keywords);
+				});
+			}
 		},
 		loadBasicData() {
 			findAllQuestionTypes().then((res) => {
