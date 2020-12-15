@@ -19,3 +19,31 @@ export function getAllYuqingOriginnewsPageable(data) {
     data: data
   })
 }
+export function getYuqingOriginnewsWithClaPageable(data) {
+  return request({
+    url:'/isp/yuqing/getYuqingOriginnewsWithClaPageable',
+    method: 'post',
+    data: data
+  })
+}
+
+export function getYuqingOriginnewsWithoutClaPageable(data) {
+  return request({
+    url:'/isp/yuqing/getYuqingOriginnewsWithoutClaPageable',
+    method: 'post',
+    data: data
+  })
+}
+export function updateNewsData(data) {
+  return request({
+    url: '/isp/yuqing/updateOriginNewsData',
+    method: 'post',
+    data: data
+  })
+}
+export function chargeClass() {
+  return request({
+    url: '/isp/yuqing/chargeClass',
+    method: 'get'
+  })
+}

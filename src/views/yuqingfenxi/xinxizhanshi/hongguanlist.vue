@@ -214,7 +214,7 @@
 </template>
 
 <script>
-import LineChart from '../dashboard/admin/components/LineChart'
+import LineChart from '../../dashboard/admin/components/LineChart'
 
 const lineChartData = {
   newVisitis: {

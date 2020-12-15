@@ -14,7 +14,7 @@ const yuqingfenxi = {
   children: [
     {
       path: 'xinxicaiji',
-      component: () => import('@/views/yuqingfenxi/xinxicaiji'),
+      component: () => import('@/views/yuqingfenxi/caiji/xinxicaiji'),
       name: 'xinxicaiji',
       meta: {title: '信息采集', icon: 'el-icon-coin', affix: true}
     },
@@ -27,7 +27,7 @@ const yuqingfenxi = {
       children: [
         {
           path: 'huagongshigufenlei',
-          component: () => import('@/views/yuqingfenxi/index'),
+          component: () => import('@/views/yuqingfenxi/xinxichuli/index'),
           name: 'huagongshigufenlei',
           meta: {title: '事故报道分类', icon: 'el-icon-s-flag', affix: true}
         },
@@ -40,13 +40,13 @@ const yuqingfenxi = {
           children: [
             {
               path: 'xiangsidupipei',
-              component: () => import('@/views/yuqingfenxi/xiangsidupipei'),
+              component: () => import('@/views/yuqingfenxi/xinxichuli/xiangsidupipei'),
               name: 'xiangsidupipei',
               meta: {title: '相似文章合并', icon: 'el-icon-document-copy', affix: true}
             },
             {
               path: 'shigupipei',
-              component: () => import('@/views/yuqingfenxi/shigupipei'),
+              component: () => import('@/views/yuqingfenxi/xinxichuli/shigupipei'),
               name: 'shigupipei',
               meta: {title: '事故匹配展示', icon: 'el-icon-collection', affix: true}
             }
@@ -54,13 +54,13 @@ const yuqingfenxi = {
         },
         {
           path: 'qingganfenxi',
-          component: () => import('@/views/yuqingfenxi/qingganfenxi'),
+          component: () => import('@/views/yuqingfenxi/xinxichuli/qingganfenxi'),
           name: 'qingganfenxi',
           meta: {title: '情感分析', icon: 'el-icon-odometer', affix: true}
         },
         {
           path: 'zidongzhaiyao',
-          component: () => import('@/views/yuqingfenxi/zidongzhaiyao'),
+          component: () => import('@/views/yuqingfenxi/xinxichuli/zidongzhaiyao'),
           name: 'zidongzhaiyao',
           meta: {title: '自动摘要', icon: 'el-icon-chat-line-round', affix: true}
         }
@@ -74,19 +74,19 @@ const yuqingfenxi = {
       children: [
         {
           path: 'redubang',
-          component: () => import('@/views/yuqingfenxi/redubang'),
+          component: () => import('@/views/yuqingfenxi/xinxizhanshi/redubang'),
           name: 'redubang',
           meta: {title: '舆情热度排行榜', icon: 'el-icon-medal', affix: true}
         },
         {
           path: 'hongguanlist',
-          component: () => import('@/views/yuqingfenxi/hongguanlist'),
+          component: () => import('@/views/yuqingfenxi/xinxizhanshi/hongguanlist'),
           name: 'hongguanlist',
           meta: {title: '宏观数据统计展示', icon: 'el-icon-pie-chart', affix: true}
         },
         {
           path: 'weiguanlist',
-          component: () => import('@/views/yuqingfenxi/weiguanlist'),
+          component: () => import('@/views/yuqingfenxi/xinxizhanshi/weiguanlist'),
           name: 'weiguanlist',
           meta: {title: '微观数据统计展示', icon: 'el-icon-aim', affix: true}
         }
