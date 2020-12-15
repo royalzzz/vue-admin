@@ -99,9 +99,9 @@ export default {
       loading: false,
       options: [
         {value: '0', label: '全部'},
-        {value: '1', label: '爆炸'},
-        {value: '2', label: '火灾'},
-        {value: '3', label: '中毒'},
+        {value: '1', label: '火灾'},
+        {value: '2', label: '中毒'},
+        {value: '3', label: '爆炸'},
         {value: '4', label: '泄露'},
         {value: '5', label: '其他'}
       ],
