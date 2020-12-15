@@ -57,3 +57,19 @@ export function tagQuestion (tag) {
     data: tag
   })
 }
+
+export function tagBatchQuestion (tag) {
+  return request({
+    url: '/isp/kbqa/question/tagBatchQuestion',
+    method: 'post',
+    data: tag
+  })
+}
+
+export function findQuestionTextByPage(page) {
+  return request({
+    url: '/isp/kbqa/question/findQuestionTextByPage',
+    method: 'post',
+    data: page
+  })
+}

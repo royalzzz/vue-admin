@@ -4,7 +4,7 @@
 			<div class="toast" v-if="visible">
 				<!-- <div class="toast title">{{title}}</div>
 				<div class="toast msg">{{msg}}</div>-->
-				<i class="el-icon-circle-check" style="color: green;font-size: 50px;"></i>
+				<i v-bind:class="icon" v-bind:style="{ color: color, fontSize: 50 + 'px'}"></i>
 				<div class="msg">{{msg}}</div>
 			</div>
 		</transition>
@@ -20,16 +20,16 @@ export default {
 			type: "",
 			msg: "",
 			duration: 3000,
-			icon: "info circle",
+			icon: "el-icon-circle-check",
 			color: "grey",
 		};
 	},
 	mounted() {
 		if (this.type === "success") {
-			this.icon = "check circle";
+			this.icon = "el-icon-circle-check";
 			this.color = "green";
 		} else if (this.type === "error") {
-			this.icon = "close";
+			this.icon = "el-icon-circle-close";
 			this.color = "red";
 		} else if (this.type === "unlink") {
 			this.icon = "unlink";
