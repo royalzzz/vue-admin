@@ -79,7 +79,12 @@ export default {
             edges: edges
           }
           console.log(data);
-          var options = {}
+          var options = {
+            edges:{
+              arrows:'to',
+              color:'red',
+            }
+          }
           var network = new vis.Network(container, data, options)
           console.log(network);
         })
