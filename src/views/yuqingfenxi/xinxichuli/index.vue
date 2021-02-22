@@ -110,7 +110,8 @@ export default {
       updateItem: {},
       dialogFormVisible: false,
       form: {},
-      formLabelWidth: '150px'
+      formLabelWidth: '150px',
+      excuteClaed: false
     }
   },
   methods: {
@@ -132,9 +133,9 @@ export default {
       this.loadData();
     },
     showDetail(row) {
-      console.log(row)
+      // console.log(row)
       this.form=row
-      console.log(this.form)
+      // console.log(this.form)
       this.dialogFormVisible = true
     },
     excuteCla() {
@@ -146,7 +147,7 @@ export default {
         yuqingApi.chargeClass()
         this.$message({
           type: 'success',
-          message: '删除成功!'
+          message: '正在执行分类!'
         });
       }).catch(() => {
         this.$message({
@@ -173,10 +174,10 @@ export default {
         this.tableData = result.data.content
         this.page.total = result.data.totalElements
       })
-      if (this.excuteCla){
-        this.excuteCla=false
+      if (this.excuteClaed){
+        this.excuteClaed=false
       }else {
-        this.excuteCla=true
+        this.excuteClaed=true
       }
     },
     updateData(){

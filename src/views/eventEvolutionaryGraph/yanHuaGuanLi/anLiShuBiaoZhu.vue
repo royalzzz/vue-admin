@@ -210,6 +210,7 @@ export default {
         },
       ],
       timer: null,
+      gridData: []
     };
   },
   watch: {
@@ -291,6 +292,12 @@ export default {
                 .then((result) => {
                   var db_nodes = result;
                   this.keyNodes = db_nodes;
+                  // source 0 为案例树
+                  treeApi.findBiaozhuPairBySourceid({source: 0, sourceid: this.sourceid}).then(result => {
+                    console.log("检查新的标注记录是否已经增加")
+                    console.log(result.data);
+                    this.gridData = result.data
+                  })
                 });
             }
           },

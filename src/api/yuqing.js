@@ -47,3 +47,10 @@ export function chargeClass() {
     method: 'get'
   })
 }
+export function getAllYuqingCommentsNumPageable(data) {
+  return request({
+    url: 'isp/yuqingCalu/getAllYuqingCommentsNumPageable',
+    method: 'post',
+    data: data
+  })
+}
