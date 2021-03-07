@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="brat/style-vis.css" />
+    <script src="brat/client/lib/jquery.min.js"></script>
+    <script src="brat/client/lib/jquery.svg.min.js"></script>
+    <script src="brat/client/lib/jquery.svgdom.min.js"></script>
+
+    <script src="brat/client/src/configuration.js"></script>
+    <script src="brat/client/src/util.js"></script>
+    <script src="brat/client/src/annotation_log.js"></script>
+    <script src="brat/client/lib/webfont.js"></script>
+
+    <script src="brat/client/src/dispatcher.js"></script>
+    <script src="brat/client/src/url_monitor.js"></script>
+    <script src="brat/client/src/visualizer.js"></script>
+
+    <script src="./stanford/corenlp-dep.js"></script>
+    <script src="./stanford/corenlp-parseviewer.js"></script>
+</head>
+
+<body style="width:100%;margin:0px;">
+    <div id="test" style="width:90%;margin:0px;"></div>
+</body>
+<script>
+    function refresh() {
+        location.reload();
+    }
+
+    function test(data) {
+        render('test', data);
+    }
+    
+</script>
+
+</html>

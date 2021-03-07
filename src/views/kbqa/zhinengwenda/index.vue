@@ -1,277 +1,181 @@
 <template>
-  <div style="padding:20px;">
-    <el-row :gutter="20">
-      <el-col :span="16">
-        <el-card>
-          <el-row :gutter="20">
-            <div style="height:400px;border-radius:3px;padding:20px;overflow:auto">
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url"/>
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
-                    <div>请问有什么可以帮到您？</div>
-                  </div>
-                </el-col>
-              </el-row>
+	<div style="padding:20px;text-align:center">
+		<div>
+			<img src="@/assets/kbqa/qa.png" style="width:100px;" />
+		</div>
 
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <div style="height:40px;"></div>
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">您</div>
-                    <div>苯是什么？</div>
-                  </div>
-                </el-col>
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2"/>
-                </el-col>
-              </el-row>
+		<el-input size="large" placeholder="请输入问题..." v-model="text" style="width:70%;">
+			<el-button slot="append" icon="el-icon-search" @click="onSubmit"></el-button>
+		</el-input>
 
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url"/>
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
-                    <div>苯（Benzene，C₆H₆）一种碳氢化合物即最简单的芳烃，在常温下是甜味、可燃、有致癌毒性的无色透明液体，并带有强烈的芳香气味。</div>
-                    <div style="margin-top:5px;">
-                      <el-link @click="dialogVisible = true"> >>推理依据</el-link>
-                    </div>
-                  </div>
-                </el-col>
-              </el-row>
+		<el-divider content-position="left"><i class="el-icon-chat-dot-round"></i></el-divider>
 
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <div style="height:40px;"></div>
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">您</div>
-                    <div>苯有毒吗？</div>
-                  </div>
-                </el-col>
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2"/>
-                </el-col>
-              </el-row>
-
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url"/>
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
-                    <div>苯具有毒性。</div>
-                    <div style="margin-top:5px;">
-                      <el-link @click="dialogVisible2 = true"> >>推理依据</el-link>
-                    </div>
-                  </div>
-                </el-col>
-              </el-row>
-
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <div style="height:40px;"></div>
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">您</div>
-                    <div>人体吸入苯有什么危害</div>
-                  </div>
-                </el-col>
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2"/>
-                </el-col>
-              </el-row>
-
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url"/>
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
-                    <div>由于苯的挥发性大，暴露于空气中很容易扩散。人和动物吸入或皮肤接触大量苯进入体内，会引起急性和慢性苯中毒。</div>
-                    <div style="margin-top:5px;">
-                      <el-link> >>推理依据</el-link>
-                    </div>
-                  </div>
-                </el-col>
-              </el-row>
-
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <div style="height:40px;"></div>
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">您</div>
-                    <div>苯用来做什么？</div>
-                  </div>
-                </el-col>
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2"/>
-                </el-col>
-              </el-row>
-
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url"/>
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
-                    <div>对不起，此问题我还不会答案。
-                      <el-link @click="dialogVisible3 = true">[问答反馈]</el-link>
-                    </div>
-                  </div>
-                </el-col>
-              </el-row>
-
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url"/>
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
-                    <div>苯经取代反应、加成反应、氧化反应等生成的一系列化合物可以作为制取塑料、橡胶、纤维、染料、去污剂、杀虫剂等的原料。大约10%的苯用于制造苯系中间体的基本原料。</div>
-                  </div>
-                </el-col>
-              </el-row>
-
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <div style="height:40px;"></div>
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">您</div>
-                    <div>具有致癌性的化学品有哪些？</div>
-                  </div>
-                </el-col>
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url2"/>
-                </el-col>
-              </el-row>
-
-              <el-row :gutter="20" style="margin-bottom: 20px;">
-                <el-col :span="2">
-                  <el-avatar shape="square" :size="40" :fit="fit" :src="url"/>
-                </el-col>
-                <el-col :span="20">
-                  <div style="background:whitesmoke;padding:10px;border-radius:3px;">
-                    <div style="font-size:8pt;color:grey;margin-bottom:5px;">库库智能机器人</div>
-                    <div>甲醇、甲醛、氟气、氢氟酸、钋、钚...</div>
-                  </div>
-                </el-col>
-              </el-row>
-            </div>
-          </el-row>
-          <el-row :gutter="20" style="margin-top:10px;">
-            <el-input v-model="textarea" placeholder="请输入您的问题" :rows="3" type="textarea"/>
-          </el-row>
-          <el-row style="float:right;margin-top:10px;margin-bottom:10px;">
-            <el-button type="primary" plain>发送</el-button>
-          </el-row>
-        </el-card>
-      </el-col>
-      <el-col :span="8">
-        <el-card class="box-card-component" style="margin-left:8px;">
-          <div slot="header" class="box-card-header">
-            <el-image shape="square" :size="100" :fit="fit" :src="url"/>
-          </div>
-          <div style="position:relative;">
-            <div>
-              <el-tag>危化品</el-tag>
-              <el-tag type="success">理化性质</el-tag>
-              <el-tag type="info">防护</el-tag>
-              <el-tag type="warning">应急</el-tag>
-              <el-tag type="danger">危险性</el-tag>
-            </div>
-            <div style="margin-top:20px;">
-              <span>危化品知识</span>
-              <el-progress :percentage="70"/>
-            </div>
-            <div class="progress-item">
-              <span>危险性知识</span>
-              <el-progress :percentage="58"/>
-            </div>
-            <div class="progress-item">
-              <span>防护知识</span>
-              <el-progress :percentage="42"/>
-            </div>
-            <div class="progress-item">
-              <span>应急处理</span>
-              <el-progress :percentage="30"/>
-            </div>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
-    <el-dialog title="推理依据" :visible.sync="dialogVisible">
-      <div style="width:100%;text-align:center;"><img src="@/assets/kbqa/ben.png" alt=""></div>
-      <div style="margin-top:10px;">苯（Benzene，C₆H₆）一种碳氢化合物即最简单的芳烃，在常温下是甜味、可燃、有致癌毒性的无色透明液体，并带有强烈的芳香气味。</div>
-    </el-dialog>
-    <el-dialog title="推理依据" :visible.sync="dialogVisible2">
-      <div style="width:100%;text-align:center;"><img src="@/assets/kbqa/youdu.png" alt=""></div>
-      <div style="margin-top:10px;">苯（Benzene，C₆H₆）- 毒性 => 有毒。</div>
-    </el-dialog>
-    <el-dialog title="问题反馈" :visible.sync="dialogVisible3">
-      <h1>苯用来做什么？</h1>
-      <el-form>
-        <el-form-item label="相似问法">
-          <el-input v-model="text" type="textarea" rows="5"></el-input>
-        </el-form-item>
-        <el-form-item label="答案">
-          <el-input v-model="text2" type="text"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary">提交</el-button>
-        </el-form-item>
-      </el-form>
-    </el-dialog>
-  </div>
+		<div style="text-align:left;" id="container_stanford">
+			<el-collapse accordion v-model="activeName">
+				<el-collapse-item title="问题解析" name="1">
+					<div style="padding:0 5px 5px 5px;">
+						<el-card style="margin-top:5px;padding:5px;" shadow="hover"
+							:body-style="{ padding: '10px' }">
+							<div slot="header" class="clearfix">
+								<span>命名实体识别</span>
+								<el-button style="float: right; padding: 3px 0" type="text">查看帮助</el-button>
+							</div>
+							<el-table :data="tokens">
+								<el-table-column prop="index" label="index">
+								</el-table-column>
+								<el-table-column prop="word" label="word">
+								</el-table-column>
+								<el-table-column prop="originalText" label="originalText">
+								</el-table-column>
+								<el-table-column prop="lemma" label="lemma">
+								</el-table-column>
+								<el-table-column prop="characterOffsetBegin" label="characterOffsetBegin">
+								</el-table-column>
+								<el-table-column prop="characterOffsetEnd" label="characterOffsetEnd">
+								</el-table-column>
+								<el-table-column prop="pos" label="pos">
+								</el-table-column>
+								<el-table-column prop="ner" label="ner">
+								</el-table-column>
+							</el-table>
+						</el-card>
+						<el-card style="margin-top:5px;padding:5px;" shadow="hover"
+							:body-style="{ padding: '10px' }">
+							<div slot="header" class="clearfix">
+								<span>依存句法树</span>
+								<el-button style="float: right; padding: 3px 0" type="text">查看帮助</el-button>
+							</div>
+							<div v-for="tree in trees" :key="tree.id">{{tree}}</div>
+							<iframe id="bdIframe" ref="bdIframe" :src="reportUrl" frameborder="0"
+								style="width: 80%;height:90px;"></iframe>
+							<el-table :data="deps">
+								<el-table-column prop="dep" label="dep">
+								</el-table-column>
+								<el-table-column prop="shortName" label="shortName">
+								</el-table-column>
+								<el-table-column prop="longName" label="longName">
+								</el-table-column>
+								<el-table-column prop="dep" label="dep">
+								</el-table-column>
+								<el-table-column prop="dependent" label="dependent">
+								</el-table-column>
+								<el-table-column prop="dependentGloss" label="dependentGloss">
+								</el-table-column>
+								<el-table-column prop="governor" label="governor">
+								</el-table-column>
+								<el-table-column prop="governorGloss" label="governorGloss">
+								</el-table-column>
+							</el-table>
+						</el-card>
+						<el-card style="margin-top:5px;padding:5px;" shadow="hover"
+							:body-style="{ padding: '10px' }">
+							<div slot="header" class="clearfix">
+								<span>句子依赖图</span>
+								<el-button style="float: right; padding: 3px 0" type="text">查看帮助</el-button>
+							</div>
+							<div v-for="graph in graphs" :key="graph.id">{{graph}}</div>
+						</el-card>
+						<el-card style="margin-top:5px;padding:5px;" shadow="hover"
+							:body-style="{ padding: '10px' }">
+							<div slot="header" class="clearfix">
+								<span>问题类型分析</span>
+								<el-button style="float: right; padding: 3px 0" type="text">查看帮助</el-button>
+							</div>
+							<div>问题类型分类，针对不同问题进行决策</div>
+						</el-card>
+					</div>
+				</el-collapse-item>
+				<el-collapse-item title="问题答案" name="2">
+					答案在此展示。
+				</el-collapse-item>
+			</el-collapse>
+		</div>
+	</div>
 </template>
 
 <script>
+import { analysis } from "@/api/kbqa";
+
 export default {
-  name: 'Zhinengwenda',
-  data() {
-    return {
-      formInline: {
-        user: '',
-        region: ''
-      },
-      text: '',
-      text2: '',
-      dialogVisible: false,
-      dialogVisible2: false,
-      dialogVisible3: false,
-      textarea: '',
-      url: 'https://pic4.zhimg.com/v2-9b1be1d9c2ffc173297fa7562ccb0b12_1200x500.jpg',
-      url2: 'http://www.shejiye.com/uploadfile/icon/2017/0203/shejiyeicondc4fz0bubgs.png',
-      fit: 'scale-down'
-    }
-  },
-  methods: {
-    onSubmit() {
-      console.log('submit!')
-    }
-  }
-}
+	name: "Zhinengwenda",
+	data() {
+		return {
+			reportUrl: "./viewer/index.html",
+			activeName: "2",
+			text: "",
+			tokens: [],
+			trees: "",
+			graphs: "",
+			testData: {},
+			deps: [],
+			timer: {}
+		};
+	},
+	methods: {
+		onSubmit() {
+			analysis(this.text).then((res) => {
+				console.log(res);
+				this.testData = res.data;
+				this.deps = [];
+				this.tokens = [];
+				for (let i = 0; i < this.testData.sentences.length; i++) {
+					this.tokens = this.tokens.concat(this.testData.sentences[i].tokens);
+					this.deps = this.deps.concat(this.testData.sentences[i].basicDependencies)
+				}
+				document.getElementById('bdIframe').contentWindow.location.reload(true);
+				this.timer = setInterval(this.loadView, 1000);
+				
+			});
+		},
+		loadView() {
+			document.getElementById("bdIframe").contentWindow.test(this.testData);
+			clearInterval(this.timer);
+		},
+		tree2json(tree) {
+			let stack = new Array();
+			let start = 0;
+			let content = true;
+			for (let i = 0; i < tree.length; i++) {
+				if (this.isLeft(tree[i])) {
+					start = i + 1;
+				}
+				if (this.isRight(tree[i])) {
+					if (!content) {
+						console.log("出栈 " + stack.pop());
+					} else {
+						console.log("出栈 " + stack.pop() + tree.substring(start, i));
+						content = false;
+					}
+					start = i;
+				}
+				if (this.isContent(tree[i])) {
+					if (
+						!this.isLeft(tree.substring(start, i)) &&
+						!this.isRight(tree.substring(start, i))
+					) {
+						console.log("入栈 " + tree.substring(start, i));
+						stack.push(tree.substring(start, i));
+						content = true;
+					}
+				}
+			}
+		},
+		isLeft(s) {
+			return s === "(" ? true : false;
+		},
+		isRight(s) {
+			return s === ")" ? true : false;
+		},
+		isContent(s) {
+			return s === " " ? true : false;
+		},
+	},
+	mounted() {},
+};
 </script>
 
 <style>
 .el-tag {
-  margin-right: 10px;
+	margin-right: 10px;
 }
 </style>
