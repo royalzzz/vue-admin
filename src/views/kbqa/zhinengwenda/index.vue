@@ -73,7 +73,7 @@
 								<span>句子依赖图</span>
 								<el-button style="float: right; padding: 3px 0" type="text">查看帮助</el-button>
 							</div>
-							<div v-for="graph in graphs" :key="graph.id">{{graph}}</div>
+							
 						</el-card>
 						<el-card style="margin-top:5px;padding:5px;" shadow="hover"
 							:body-style="{ padding: '10px' }">
