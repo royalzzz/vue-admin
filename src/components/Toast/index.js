@@ -12,7 +12,7 @@ Toast.install = function (options, type) {
     options = {
       msg: options
     }
-    if (type != undefined && options != null) {
+    if (type !== undefined && options !== null) {
       options.type = type
     }
   }

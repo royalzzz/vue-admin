@@ -51,7 +51,7 @@
     </el-row>
     <el-dialog title="新闻评论情感倾向" :visible.sync="dialogTimeLineVisible" top="60px" width="60%">
       <div style="overflow:auto;height:450px;overflow-x:hidden">
-        <el-row v-for="(comment, i) in commentsForm" :key="comment.comment_id" :gutter="3">
+        <el-row v-for="(comment) in commentsForm" :key="comment.comment_id" :gutter="3">
           <el-card shadow="hover">
             <p>{{ comment.comment_content }}</p>
             <p>

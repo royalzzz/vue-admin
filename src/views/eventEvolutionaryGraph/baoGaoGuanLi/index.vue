@@ -3,13 +3,12 @@
     <el-form :inline="true" :model="formInline" class="demo-form-inline">
       <el-input v-model="formInline.user" placeholder="关键字搜索" style="width: 850px;"></el-input>
       <el-form-item>
-        <el-button type="primary" icon="el-icon-search" @click="">
+        <el-button type="primary" icon="el-icon-search">
           搜索事故报告
         </el-button>
         <el-button
           class="filter-item" style="margin-left: 10px;"
-          type="primary" icon="el-icon-edit"
-          @click="">
+          type="primary" icon="el-icon-edit">
           事故报告导入
         </el-button>
         <!-- <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">

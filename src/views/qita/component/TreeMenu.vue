@@ -16,7 +16,7 @@
           </div>
           <tree-menu v-show="!item.show" v-if="item.children" :model="item.children"></tree-menu>
           <div>
-            <el-button v-for="(item, i) in keyNodes" :key="i">{{ item.label }}</el-button>
+            <el-button v-for="(k, i) in keyNodes" :key="i">{{ k.label }}</el-button>
           </div>
         </li>
       </ul>
@@ -30,7 +30,7 @@ import Vue from 'vue'
 export default {
   name: 'TreeMenu',
   props: {
-    model: {}
+    model: []
   },
   data() {
     return {

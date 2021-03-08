@@ -53,7 +53,7 @@
               size="small"
               style="margin-top: 10px; margin-left: 10px"
               @click="findByLabelLike">
-              {{ this.selectionText }}
+              {{ selectionText }}
             </el-button>
             <br><br>
 
