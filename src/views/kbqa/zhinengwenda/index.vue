@@ -47,7 +47,7 @@
 							</div>
 							<div v-for="tree in trees" :key="tree.id">{{tree}}</div>
 							<iframe id="bdIframe" ref="bdIframe" :src="reportUrl" frameborder="0"
-								style="width: 80%;height:90px;"></iframe>
+								style="width: 80%;height:180px;"></iframe>
 							<el-table :data="deps">
 								<el-table-column prop="dep" label="dep">
 								</el-table-column>
@@ -113,18 +113,19 @@ export default {
 	},
 	methods: {
 		onSubmit() {
-			analysis(this.text).then((res) => {
+			analysis(this.text).then(res => {
 				console.log(res);
 				this.testData = res.data;
 				this.deps = [];
 				this.tokens = [];
 				for (let i = 0; i < this.testData.sentences.length; i++) {
 					this.tokens = this.tokens.concat(this.testData.sentences[i].tokens);
-					this.deps = this.deps.concat(this.testData.sentences[i].basicDependencies)
+					this.deps = this.deps.concat(
+						this.testData.sentences[i].basicDependencies
+					);
 				}
-				document.getElementById('bdIframe').contentWindow.location.reload(true);
+				document.getElementById("bdIframe").contentWindow.location.reload(true);
 				this.timer = setInterval(this.loadView, 1000);
-				
 			});
 		},
 		loadView() {
@@ -168,9 +169,9 @@ export default {
 		},
 		isContent(s) {
 			return s === " " ? true : false;
-		},
+		}
 	},
-	mounted() {},
+	mounted() {}
 };
 </script>
 

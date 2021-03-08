@@ -304,7 +304,7 @@ $light_gray: #eee;
 .login_page {
 	width: 100%;
 	height: 100%;
-	background: url(https://kg.qust.xin/img/landscape.jpg) 100% 100%;
+	background: url("../../assets/landscape.jpg") 100% 100%;
 }
 .login_form {
 	position: fixed;

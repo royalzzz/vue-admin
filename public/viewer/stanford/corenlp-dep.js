@@ -21,7 +21,7 @@ if (typeof String.prototype.startsWith !== 'function') {
   };
 }
 
-function isInt(value) {
+function isInt (value) {
   return !isNaN(value) && (function (x) { return (x | 0) === x; })(parseFloat(value))
 }
 
@@ -42,7 +42,7 @@ var tokensMap = {
 /**
  * A mapping from part of speech tag to the associated visualization color
  */
-function posColor(posTag) {
+function posColor (posTag) {
   if (posTag.startsWith('N')) {
     return '#A4BCED';
   } else if (posTag.startsWith('V') || posTag.startsWith('M')) {
@@ -73,7 +73,7 @@ function posColor(posTag) {
 /**
  * A mapping from named entity tag to the associated visualization color
  */
-function nerColor(nerTag) {
+function nerColor (nerTag) {
   if (nerTag === 'PERSON') {
     return '#FFCCAA';
   } else if (nerTag === 'ORGANIZATION') {
@@ -118,11 +118,11 @@ var d3_category18 = {
   ]
 };
 
-function generateRandomColor() {
+function generateRandomColor () {
   return "#" + Math.random().toString(16).slice(2, 8);
 }
 
-function generateNextColor(i, palette) {
+function generateNextColor (i, palette) {
   if (palette && i < palette.colors.length) {
     return palette.colors[i];
   } else {
@@ -130,7 +130,7 @@ function generateNextColor(i, palette) {
   }
 }
 
-function getTagColor(tag, colorIndex, colors) {
+function getTagColor (tag, colorIndex, colors) {
   var ci = colorIndex[tag];
   if (ci == null) {
     ci = colors.length;
@@ -145,7 +145,7 @@ function getTagColor(tag, colorIndex, colors) {
  */
 var corefColorIndex = {};
 var corefColors = [];
-function corefColor(corefTag) {
+function corefColor (corefTag) {
   if (corefTag === "MENTION") {
     return '#FFE000';
   } else {
@@ -155,7 +155,7 @@ function corefColor(corefTag) {
 
 var speakerColorIndex = {};
 var speakerColors = [];
-function speakerColor(tag) {
+function speakerColor (tag) {
   return getTagColor(tag, speakerColorIndex, speakerColors);
 }
 
@@ -164,7 +164,7 @@ function speakerColor(tag) {
  * A mapping from sentiment value to the associated
  * visualization color
  */
-function sentimentColor(sentiment) {
+function sentimentColor (sentiment) {
   if (sentiment === "VERY POSITIVE") {
     return '#00FF00';
   } else if (sentiment === "POSITIVE") {
@@ -184,7 +184,7 @@ function sentimentColor(sentiment) {
 /**
  * Get a list of annotators, from the annotator option input.
  */
-function annotators() {
+function annotators () {
   var annotators = "tokenize,ssplit";
   if ($('#language').val() === 'de' | $('#language').val() === 'fr' | $('#language').val() === 'es') {
     annotators += ",mwt";
@@ -198,8 +198,8 @@ function annotators() {
 /**
  * Get the input date
  */
-function date() {
-  function f(n) {
+function date () {
+  function f (n) {
     return n < 10 ? '0' + n : n;
   }
   var date = new Date();
@@ -216,7 +216,7 @@ function date() {
 //-----------------------------------------------------------------------------
 // Constituency parser
 //-----------------------------------------------------------------------------
-function ConstituencyParseProcessor() {
+function ConstituencyParseProcessor () {
   var parenthesize = function (input, list) {
     if (list === undefined) {
       return parenthesize(input, []);
@@ -312,7 +312,7 @@ function ConstituencyParseProcessor() {
   }
 }
 
-function addEntityType(name, type, coarseType) {
+function addEntityType (name, type, coarseType) {
   if (typeof coarseType === "undefined") {
     coarseType = type;
   }
@@ -353,7 +353,7 @@ function addEntityType(name, type, coarseType) {
   });
 }
 
-function addRelationType(type, symmetricEdge) {
+function addRelationType (type, symmetricEdge) {
   // Prevent adding duplicates
   if (relationTypesSet[type]) return;
   relationTypesSet[type] = true;
@@ -368,7 +368,7 @@ function addRelationType(type, symmetricEdge) {
   });
 }
 
-function render(divId, data) {
+function render (divId, data) {
 
   posEntities = [];
   nerEntities = [];
@@ -428,7 +428,7 @@ function render(divId, data) {
     /**
      * Generate a POS tagged token id
      */
-    function posID(i) {
+    function posID (i) {
       return 'POS_' + sentI + '_' + i;
     }
     if (tokens.length > 0 && typeof tokens[0].pos !== 'undefined') {
@@ -447,7 +447,7 @@ function render(divId, data) {
     if (parseTree && !useDagre) {
       var parseEntities = [];
       var parseRels = [];
-      function processParseTree(tree, index) {
+      function processParseTree (tree, index) {
         tree.visitIndex = index;
         index++;
         if (tree.isTerminal) {
@@ -478,7 +478,7 @@ function render(divId, data) {
     /**
      * Process a dependency tree from JSON to Brat relations
      */
-    function processDeps(name, deps) {
+    function processDeps (name, deps) {
       var relations = [];
       // Format: [${ID}, ${TYPE}, [[${ARGNAME}, ${TARGET}], [${ARGNAME}, ${TARGET}]]]
       for (var i = 0; i < deps.length; i++) {
@@ -535,7 +535,7 @@ function render(divId, data) {
     }
 
   }  // End sentence loop
-  function embed(container, entities, relations, reverse) {
+  function embed (container, entities, relations, reverse) {
     var text = currentText;
     if (reverse) {
       var length = currentText.length;
@@ -555,4 +555,5 @@ function render(divId, data) {
     }
   }
   embed(divId, posEntities, depsRelations);
+  embed('ner', nerEntities);
 }
