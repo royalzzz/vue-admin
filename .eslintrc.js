@@ -21,12 +21,13 @@ module.exports = {
         "allowFirstLine": false
       }
     }],
+    "vue/attributes-order": 0,
     "vue/html-closing-bracket-newline": ["error", {
       "singleline": "never",
       "multiline": "never"
     }],
     "vue/singleline-html-element-content-newline": 0,
-    "vue/multiline-html-element-content-newline": 1,
+    "vue/multiline-html-element-content-newline": "off",
     "vue/name-property-casing": ["error", "PascalCase"],
     "vue/no-v-html": "off",
     'accessor-pairs': 2,
@@ -57,7 +58,7 @@ module.exports = {
       'after': true
     }],
     'handle-callback-err': [2, '^(err|error)$'],
-    'indent': [2, 2, {
+    'indent': [0, 2, {
       'SwitchCase': 1
     }],
     'jsx-quotes': [2, 'prefer-single'],
@@ -136,7 +137,7 @@ module.exports = {
     'no-sparse-arrays': 2,
     'no-this-before-super': 2,
     'no-throw-literal': 2,
-    'no-trailing-spaces': 2,
+    'no-trailing-spaces': 0,
     'no-undef': 2,
     'no-undef-init': 2,
     'no-unexpected-multiline': 2,
@@ -166,7 +167,7 @@ module.exports = {
       }
     }],
     'padded-blocks': [2, 'never'],
-    'quotes': [2, 'single', {
+    'quotes': [0, 'single', {
       'avoidEscape': true,
       'allowTemplateLiterals': true
     }],

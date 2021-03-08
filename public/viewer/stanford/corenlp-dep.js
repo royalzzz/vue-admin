@@ -368,7 +368,7 @@ function addRelationType (type, symmetricEdge) {
   });
 }
 
-function render (divId, data) {
+function render (divId, data, callback) {
 
   posEntities = [];
   nerEntities = [];
@@ -550,7 +550,9 @@ function render (divId, data) {
     if ($('#' + container).length > 0) {
       Util.embed(container,
         { entity_types: entityTypes, relation_types: relationTypes },
-        { text: text, entities: entities, relations: relations }
+        { text: text, entities: entities, relations: relations },
+        null,
+        callback
       );
     }
   }

@@ -544,14 +544,18 @@ var Util = (function(window, undefined) {
     // docData: the document data (in the format of the result of
     //   http://.../brat/ajax.cgi?action=getDocument&collection=...&document=...
     // returns the embedded visualizer's dispatcher object
-    var embed = function(container, collData, docData, webFontURLs) {
+
+    var embed = function(container, collData, docData, webFontURLs, callback) {
       var dispatcher = new Dispatcher();
+      dispatcher.on('renderOk', callback)
       var visualizer = new Visualizer(dispatcher, container, webFontURLs);
       docData.collection = null;
       dispatcher.post('collectionLoaded', [collData]);
       dispatcher.post('requestRenderData', [docData]);
+      
       return dispatcher;
     };
+
 
     // container: ID or jQuery element
     // collDataURL: the URL of the collection data, or collection data

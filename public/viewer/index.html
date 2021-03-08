@@ -21,20 +21,46 @@
 
     <script src="./stanford/corenlp-dep.js"></script>
     <script src="./stanford/corenlp-parseviewer.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 
-<body style="width:90%;height:180px;margin:0px;">
-    <div id="test"></div>
-    <br>
-    <div id="ner"></div>
+<body>
+    <div id="container_viewer">
+        <div id="test"></div>
+        <br>
+        <div id="ner"></div>
+    </div>
 </body>
 <script>
     function refresh() {
         location.reload();
     }
 
+    function loadDone() {
+        window.parent['loadViewDone']();
+        console.log('finished!!!');
+    }
+
+    function getHeight() {
+        console.log(document.getElementById("container_viewer").style.height);
+        return document.getElementById("container_viewer").style.height;
+    }
+
     function test(data) {
-        render('test', data);
+        console.log('start drawing....');
+        render('test', data, loadDone);
+    }
+
+    window.onload = function check() {
+        console.log(document.documentElement.clientWidth, document.documentElement.clientHeight);
+        document.getElementById("container_viewer").style.width = (document.documentElement.clientWidth - 2) + 'px';
+        document.getElementById("container_viewer").style.height = (document.documentElement.clientHeight - 2) + 'px';
     }
 
 </script>
