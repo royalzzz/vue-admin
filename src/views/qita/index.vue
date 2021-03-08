@@ -1,20 +1,17 @@
 <template>
-
   <div style="padding: 20px">
     <el-input
       v-model="textarea"
       type="textarea"
       :rows="10"
-      placeholder="请输入内容"
-    >
+      placeholder="请输入内容">
     </el-input>
     <el-button
       class="filter-item"
       style="margin-left:89%"
       type="primary"
       icon="el-icon-edit"
-      @click="findByLabelLike"
-    >
+      @click="findByLabelLike">
       添加事故报告
     </el-button>
     <el-button v-for="(item, i) in keyNodes" :key="i">{{ item.label }}</el-button>
@@ -42,7 +39,7 @@
 
 <script>
 import vis from 'vis'
-import {getBiaozhuTree} from '@/api/tree'
+import { getBiaozhuTree } from '@/api/tree'
 
 export default {
   name: '',
@@ -100,8 +97,8 @@ export default {
             delete item.fromNode
             item.to = item.toNode
             delete item.toNode
-          });
-          console.log(result.data.db_edges);
+          })
+          console.log(result.data.db_edges)
 
           var nodes = new vis.DataSet(result.data.db_nodes)
           var edges = new vis.DataSet(result.data.db_edges)
@@ -110,10 +107,10 @@ export default {
             nodes: nodes,
             edges: edges
           }
-          console.log(data);
+          console.log(data)
           var options = {}
           var network = new vis.Network(container, data, options)
-          console.log(network);
+          console.log(network)
         })
     },
     findByLabelLike() {

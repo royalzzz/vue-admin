@@ -10,10 +10,9 @@
         tag="span"
         class="tags-view-item"
         @click.middle.native="!isAffix(tag)?closeSelectedTag(tag):''"
-        @contextmenu.prevent.native="openMenu(tag,$event)"
-      >
+        @contextmenu.prevent.native="openMenu(tag,$event)">
         {{ tag.title }}
-        <span v-if="!isAffix(tag)" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)"/>
+        <span v-if="!isAffix(tag)" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)"></span>
       </router-link>
     </scroll-pane>
     <ul v-show="visible" :style="{left:left+'px',top:top+'px'}" class="contextmenu">
@@ -30,7 +29,7 @@ import ScrollPane from './ScrollPane'
 import path from 'path'
 
 export default {
-  components: {ScrollPane},
+  components: { ScrollPane },
   data() {
     return {
       visible: false,
@@ -81,7 +80,7 @@ export default {
             fullPath: tagPath,
             path: tagPath,
             name: route.name,
-            meta: {...route.meta}
+            meta: { ...route.meta }
           })
         }
         if (route.children) {
@@ -103,7 +102,7 @@ export default {
       }
     },
     addTags() {
-      const {name} = this.$route
+      const { name } = this.$route
       if (name) {
         this.$store.dispatch('tagsView/addView', this.$route)
       }
@@ -126,7 +125,7 @@ export default {
     },
     refreshSelectedTag(view) {
       this.$store.dispatch('tagsView/delCachedView', view).then(() => {
-        const {fullPath} = view
+        const { fullPath } = view
         this.$nextTick(() => {
           this.$router.replace({
             path: '/redirect' + fullPath
@@ -135,7 +134,7 @@ export default {
       })
     },
     closeSelectedTag(view) {
-      this.$store.dispatch('tagsView/delView', view).then(({visitedViews}) => {
+      this.$store.dispatch('tagsView/delView', view).then(({ visitedViews }) => {
         if (this.isActive(view)) {
           this.toLastView(visitedViews, view)
         }
@@ -148,7 +147,7 @@ export default {
       })
     },
     closeAllTags(view) {
-      this.$store.dispatch('tagsView/delAllViews').then(({visitedViews}) => {
+      this.$store.dispatch('tagsView/delAllViews').then(({ visitedViews }) => {
         if (this.affixTags.some(tag => tag.path === view.path)) {
           return
         }
@@ -164,7 +163,7 @@ export default {
         // you can adjust it according to your needs.
         if (view.name === 'Dashboard') {
           // to reload home page
-          this.$router.replace({path: '/redirect' + view.fullPath})
+          this.$router.replace({ path: '/redirect' + view.fullPath })
         } else {
           this.$router.push('/')
         }

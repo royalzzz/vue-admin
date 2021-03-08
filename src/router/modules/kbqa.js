@@ -62,13 +62,13 @@ const kbqa = {
       path: 'zhinengwenda',
       component: () => import('@/views/kbqa/zhinengwenda/index'),
       name: 'zhinengwenda',
-      meta: { title: '智能问答', icon: 'message', affix: true },
+      meta: { title: '智能问答', icon: 'message', affix: true }
     },
     {
       path: 'zhishichaxun',
       component: () => import('@/views/kbqa/zhinengwenda/search'),
       name: 'zhishichaxun',
-      meta: { title: '智能查询', icon: 'search', affix: true },
+      meta: { title: '智能查询', icon: 'search', affix: true }
     },
     {
       path: 'shujulaiyuan',

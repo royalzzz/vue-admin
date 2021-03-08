@@ -7,8 +7,7 @@
       :list="list"
       v-bind="$attrs"
       class="board-column-content"
-      :set-data="setData"
-    >
+      :set-data="setData">
       <div v-for="element in list" :key="element.id" class="board-item">
         {{ element.name }} {{ element.id }}
       </div>

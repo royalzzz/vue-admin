@@ -13,19 +13,19 @@ Toast.install = function (options, type) {
       msg: options
     }
     if (type != undefined && options != null) {
-      options.type = type;
+      options.type = type
     }
   }
 
-  let instance = new ToastTip({
+  const instance = new ToastTip({
     data: options
-  }).$mount();
+  }).$mount()
 
-  document.body.appendChild(instance.$el);
+  document.body.appendChild(instance.$el)
 
   Vue.nextTick(() => {
-    instance.visible = true;
-  });
+    instance.visible = true
+  })
 }
 
-export default Toast;
+export default Toast

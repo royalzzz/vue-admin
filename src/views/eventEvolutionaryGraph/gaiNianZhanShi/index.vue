@@ -1,18 +1,13 @@
 <template>
-
   <div style="padding: 20px">
-
-
-
     <div>
-
     </div>
     <el-card shadow="always" style="height: 770px">
       <div style="width: 20%">
         <el-progress :percentage="percentage" :color="customColorMethod" type="line" :show-text="showText" style="width: 28%"></el-progress>
-        <el-button-group >
-          <el-button icon="el-icon-minus" @click="decrease"  size="mini"></el-button>
-          <el-button icon="el-icon-plus" @click="increase"  size="mini"></el-button>
+        <el-button-group>
+          <el-button icon="el-icon-minus" size="mini" @click="decrease"></el-button>
+          <el-button icon="el-icon-plus" size="mini" @click="increase"></el-button>
         </el-button-group>
       </div>
       <!-- <img src="@/assets/eventEvolutionaryGraph/fanghucuoshi.png" width="100%"> -->
@@ -23,7 +18,7 @@
 
 <script>
 import vis from 'vis'
-import {getBiaozhuTree} from '@/api/tree'
+import { getBiaozhuTree } from '@/api/tree'
 
 export default {
   name: '',
@@ -34,10 +29,10 @@ export default {
       edges: [],
       showNodes: [],
       showEdges: [],
-      level1node:[],
-      level2node:[],
-      level3node:[],
-      level4node:[],
+      level1node: [],
+      level2node: [],
+      level3node: [],
+      level4node: [],
       percentage: 0,
       textarea: '',
       keyNodes: [],
@@ -79,81 +74,84 @@ export default {
       immediate: true
     },
     percentage(val, oldVal) {
-      if (val===25) {
-        console.log("选择第一批次数据")
+      if (val === 25) {
+        console.log('选择第一批次数据')
         this.showEdges = []
         this.showNodes = []
         this.edges.forEach((item, index, arr) => {
-          //do something});
-          if (item['level']===1){
+          // do something});
+          if (item['level'] === 1) {
             this.showEdges.push(item)
           }
-        });
-        this.nodes.forEach((item, index, arr)=>{
+        })
+        this.nodes.forEach((item, index, arr) => {
           if (this.level1node.indexOf(item['id']) > -1) {
             this.showNodes.push(item)
             // console.log(item)
           }
         })
-        this.showTree();
+        this.showTree()
         // 选择第一批次数据
-      }else if (val===50) {
-        console.log("选择两批数据")
+      } else if (val === 50) {
+        console.log('选择两批数据')
         this.showEdges = []
         this.showNodes = []
         this.edges.forEach((item, index, arr) => {
-          //do something});
-          if ((item['level']===1)||(item['level']===2)){
+          // do something});
+          if ((item['level'] === 1) || (item['level'] === 2)) {
             this.showEdges.push(item)
           }
-        });
-        this.nodes.forEach((item, index, arr)=>{
-          if ((this.level1node.indexOf(item['id']) > -1)||(this.level2node.indexOf(item['id']) > -1)) {
+        })
+        this.nodes.forEach((item, index, arr) => {
+          if ((this.level1node.indexOf(item['id']) > -1) || (this.level2node.indexOf(item['id']) > -1)) {
             this.showNodes.push(item)
           }
         })
-        this.showTree();
+        this.showTree()
         // 选择两批数据
-      }else if (val===75) {
-        console.log("选择三批数据")
+      } else if (val === 75) {
+        console.log('选择三批数据')
         this.showEdges = []
         this.showNodes = []
         this.edges.forEach((item, index, arr) => {
-          //do something});
-          if ((item['level']===1)||(item['level']===2)||(item['level']===3)){
+          // do something});
+          if ((item['level'] === 1) || (item['level'] === 2) || (item['level'] === 3)) {
             this.showEdges.push(item)
           }
-        });
-        this.nodes.forEach((item, index, arr)=>{
-          if ((this.level1node.indexOf(item['id']) > -1)||(this.level2node.indexOf(item['id']) > -1)||(this.level3node.indexOf(item['id']) > -1)) {
+        })
+        this.nodes.forEach((item, index, arr) => {
+          if ((this.level1node.indexOf(item['id']) > -1) || (this.level2node.indexOf(item['id']) > -1) || (this.level3node.indexOf(item['id']) > -1)) {
             this.showNodes.push(item)
           }
         })
-        this.showTree();
+        this.showTree()
         // 选择三批数据
-      }else if (val===100){
-        console.log("选择全部数据")
+      } else if (val === 100) {
+        console.log('选择全部数据')
         this.showEdges = []
         this.showNodes = []
         this.edges.forEach((item, index, arr) => {
-          //do something});
+          // do something});
           this.showEdges.push(item)
-        });
-        this.nodes.forEach((item, index, arr)=>{
+        })
+        this.nodes.forEach((item, index, arr) => {
           this.showNodes.push(item)
         })
         // console.log(this.showNodes)
         // console.log(this.showEdges)
-        this.showTree();
+        this.showTree()
         // 选择全部数据
-      }else {
-        console.log("不选择数据")
+      } else {
+        console.log('不选择数据')
         // 不选择数据
       }
       // console.log(this.showNodes)
       // console.log(this.showEdges)
       // console.log(this.level1node)
     }
+  },
+  mounted() {
+    this.getTree()
   },
   methods: {
     handleCreate() {
@@ -167,7 +165,7 @@ export default {
             delete item.fromNode
             item.to = item.toNode
             delete item.toNode
-          });
+          })
           this.nodes = result.data.db_nodes
           this.edges = result.data.db_edges
           // console.log(result.data.db_edges);
@@ -187,26 +185,26 @@ export default {
           // }
           // var network = new vis.Network(container, data, options)
           this.edges.forEach((item, index, arr) => {
-            if (item['level']===1){
+            if (item['level'] === 1) {
               this.level1node.push(item['from'])
               this.level1node.push(item['to'])
-            } else if (item['level']===2){
+            } else if (item['level'] === 2) {
               this.level2node.push(item['from'])
               this.level2node.push(item['to'])
-            } else if (item['level']===3){
+            } else if (item['level'] === 3) {
               this.level3node.push(item['from'])
               this.level3node.push(item['to'])
             } else {
               this.level4node.push(item['from'])
               this.level4node.push(item['to'])
             }
-          });
+          })
           this.level1node = this.newArr(this.level1node)
           this.level2node = this.newArr(this.level2node)
           this.level3node = this.newArr(this.level3node)
           this.level4node = this.newArr(this.level4node)
-          this.showEdges=this.edges
-          this.showNodes=this.nodes
+          this.showEdges = this.edges
+          this.showNodes = this.nodes
           this.showTree()
           // console.log(this.edges);
           // console.log(this.nodes);
@@ -217,7 +215,7 @@ export default {
         })
     },
     // 数组去重
-    newArr(arr){ return Array.from(new Set(arr))},
+    newArr(arr) { return Array.from(new Set(arr)) },
     findByLabelLike() {
       this.$store.dispatch('tree/findByLabelLike', this.textarea)
         .then(result => {
@@ -235,24 +233,23 @@ export default {
     },
     customColorMethod(percentage) {
       if (percentage < 26) {
-        return '#909399';
+        return '#909399'
       } else if (percentage < 51) {
-        return '#e6a23c';
+        return '#e6a23c'
       } else {
-        return '#67c23a';
+        return '#67c23a'
       }
     },
     increase() {
-      this.percentage += 25;
+      this.percentage += 25
       if (this.percentage > 100) {
-        this.percentage = 100;
+        this.percentage = 100
       }
-
     },
     decrease() {
-      this.percentage -= 25;
+      this.percentage -= 25
       if (this.percentage < 0) {
-        this.percentage = 0;
+        this.percentage = 0
       }
     },
     showTree() {
@@ -334,9 +331,6 @@ export default {
       }
       var network = new vis.Network(container, data, options)
     }
-  },
-  mounted() {
-    this.getTree();
   }
 }
 </script>

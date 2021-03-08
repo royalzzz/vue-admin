@@ -9,8 +9,10 @@
         <el-table-column prop="accident_class" label="类型" width="200"></el-table-column>
         <el-table-column label="热度">
           <template slot-scope="scope">
-            <el-progress :text-inside="true" :stroke-width="26" :percentage="scope.row.percentage"
-                         status="exception"></el-progress>
+            <el-progress
+              :text-inside="true" :stroke-width="26"
+              :percentage="scope.row.percentage"
+              status="exception"></el-progress>
           </template>
         </el-table-column>
       </el-table>

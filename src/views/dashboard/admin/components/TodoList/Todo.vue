@@ -5,10 +5,9 @@
         :checked="todo.done"
         class="toggle"
         type="checkbox"
-        @change="toggleTodo( todo)"
-      >
-      <label @dblclick="editing = true" v-text="todo.text"/>
-      <button class="destroy" @click="deleteTodo( todo )"/>
+        @change="toggleTodo( todo)">
+      <label @dblclick="editing = true" v-text="todo.text"></label>
+      <button class="destroy" @click="deleteTodo( todo )"></button>
     </div>
     <input
       v-show="editing"
@@ -17,8 +16,7 @@
       class="edit"
       @keyup.enter="doneEdit"
       @keyup.esc="cancelEdit"
-      @blur="doneEdit"
-    >
+      @blur="doneEdit">
   </li>
 </template>
 
@@ -26,7 +24,7 @@
 export default {
   name: 'Todo',
   directives: {
-    focus(el, {value}, {context}) {
+    focus(el, { value }, { context }) {
       if (value) {
         context.$nextTick(() => {
           el.focus()
@@ -51,15 +49,15 @@ export default {
     deleteTodo(todo) {
       this.$emit('deleteTodo', todo)
     },
-    editTodo({todo, value}) {
-      this.$emit('editTodo', {todo, value})
+    editTodo({ todo, value }) {
+      this.$emit('editTodo', { todo, value })
     },
     toggleTodo(todo) {
       this.$emit('toggleTodo', todo)
     },
     doneEdit(e) {
       const value = e.target.value.trim()
-      const {todo} = this
+      const { todo } = this
       if (!value) {
         this.deleteTodo({
           todo

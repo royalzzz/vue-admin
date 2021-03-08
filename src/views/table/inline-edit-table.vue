@@ -21,7 +21,7 @@
 
       <el-table-column width="100px" label="Importance">
         <template slot-scope="{row}">
-          <svg-icon v-for="n in + row.importance" :key="n" icon-class="star" class="meta-item__icon"/>
+          <svg-icon v-for="n in + row.importance" :key="n" icon-class="star" class="meta-item__icon" />
         </template>
       </el-table-column>
 
@@ -36,14 +36,13 @@
       <el-table-column min-width="300px" label="Title">
         <template slot-scope="{row}">
           <template v-if="row.edit">
-            <el-input v-model="row.title" class="edit-input" size="small"/>
+            <el-input v-model="row.title" class="edit-input" size="small" />
             <el-button
               class="cancel-btn"
               size="small"
               icon="el-icon-refresh"
               type="warning"
-              @click="cancelEdit(row)"
-            >
+              @click="cancelEdit(row)">
               cancel
             </el-button>
           </template>
@@ -58,8 +57,7 @@
             type="success"
             size="small"
             icon="el-icon-circle-check-outline"
-            @click="confirmEdit(row)"
-          >
+            @click="confirmEdit(row)">
             Ok
           </el-button>
           <el-button
@@ -67,8 +65,7 @@
             type="primary"
             size="small"
             icon="el-icon-edit"
-            @click="row.edit=!row.edit"
-          >
+            @click="row.edit=!row.edit">
             Edit
           </el-button>
         </template>
@@ -78,7 +75,7 @@
 </template>
 
 <script>
-import {fetchList} from '@/api/article'
+import { fetchList } from '@/api/article'
 
 export default {
   name: 'InlineEditTable',
@@ -108,7 +105,7 @@ export default {
   methods: {
     async getList() {
       this.listLoading = true
-      const {data} = await fetchList(this.listQuery)
+      const { data } = await fetchList(this.listQuery)
       const items = data.items
       this.list = items.map(v => {
         this.$set(v, 'edit', false) // https://vuejs.org/v2/guide/reactivity.html

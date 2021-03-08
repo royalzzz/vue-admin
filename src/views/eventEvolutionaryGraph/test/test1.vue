@@ -2,8 +2,7 @@
   <div>
     <el-input
       v-model="filterText"
-      placeholder="输入关键字进行过滤"
-    >
+      placeholder="输入关键字进行过滤">
     </el-input>
     <el-tree
       ref="tree"
@@ -11,8 +10,7 @@
       :data="data"
       :props="defaultProps"
       default-expand-all
-      :filter-node-method="filterNode"
-    >
+      :filter-node-method="filterNode">
     </el-tree>
   </div>
 </template>>

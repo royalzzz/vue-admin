@@ -3,7 +3,7 @@
     <el-row :gutter="20">
       <div class="grid-content">
         <el-col :span="12">
-          <el-input v-model="input3" placeholder="请输入要搜索的新闻报道" class="input-with-select"/>
+          <el-input v-model="input3" placeholder="请输入要搜索的新闻报道" class="input-with-select" />
         </el-col>
         <el-button icon="el-icon-search" type="primary">搜索</el-button>
       </div>
@@ -12,22 +12,21 @@
       <el-col :span="24">
         <div class="grid-content">
           <el-table :data="tableData" border>
-            <el-table-column fixed prop="id" label="新闻id" width="80"/>
+            <el-table-column fixed prop="id" label="新闻id" width="80" />
             <el-table-column prop="news_title" label="新闻标题" width="300">
               <template slot-scope="scope">
-                <a :href="scope.row.news_link" target="_blank" class="buttonText">{{scope.row.news_title}}</a>
+                <a :href="scope.row.news_link" target="_blank" class="buttonText">{{ scope.row.news_title }}</a>
               </template>
             </el-table-column>
-<!--            <el-table-column prop="news_accident_title" label="所属事故" width="250"/>-->
-            <el-table-column prop="news_comments_num" label="评论数量" width="100"/>
+            <!--            <el-table-column prop="news_accident_title" label="所属事故" width="250"/>-->
+            <el-table-column prop="news_comments_num" label="评论数量" width="100" />
             <el-table-column label="评论舆论倾向" width="200">
               <template slot-scope="scope">
                 <el-tooltip
                   class="item"
                   effect="dark"
                   content="(1为最积极  0为最消极)"
-                  placement="top-start"
-                >
+                  placement="top-start">
                   <el-button type="text">{{ scope.row.news_comments_tendency }}</el-button>
                 </el-tooltip>
               </template>
@@ -39,10 +38,13 @@
               </template>
             </el-table-column>
           </el-table>
-          <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
-                         :current-page="page.pageNumber + 1" :page-sizes="[5, 10, 20, 30, 100]" :page-size="page.pageSize"
-                         background layout="total, sizes, prev, pager, next, jumper" :total="page.total"
-                         @next-click="nextPage" @prev-click="prevPage">
+          <el-pagination
+            :current-page="page.pageNumber + 1" :page-sizes="[5, 10, 20, 30, 100]"
+            :page-size="page.pageSize" background
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="page.total" @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            @next-click="nextPage" @prev-click="prevPage">
           </el-pagination>
         </div>
       </el-col>
@@ -51,11 +53,11 @@
       <div style="overflow:auto;height:450px;overflow-x:hidden">
         <el-row v-for="(comment, i) in commentsForm" :key="comment.comment_id" :gutter="3">
           <el-card shadow="hover">
-            <p>{{comment.comment_content}}</p>
+            <p>{{ comment.comment_content }}</p>
             <p>
               感情倾向：
-              <el-link type="danger">{{comment.emotion}}</el-link>
-              。 （<i>积极占比：{{comment.positive_probs}} </i>）
+              <el-link type="danger">{{ comment.emotion }}</el-link>
+              。 （<i>积极占比：{{ comment.positive_probs }} </i>）
               <el-button type="danger" size="small" style="float:right">删除</el-button>
             </p>
           </el-card>
@@ -71,7 +73,7 @@
 </template>
 
 <script>
-import * as yuqingApi from "@/api/yuqing";
+import * as yuqingApi from '@/api/yuqing'
 
 export default {
   name: 'Huagongshigufenlei',
@@ -131,7 +133,7 @@ export default {
       ],
       commentsForm: [],
       dialogTimeLineVisible: false,
-      page:{
+      page: {
         pageSize: 10,
         pageNumber: 0,
         total: 0
@@ -141,8 +143,12 @@ export default {
         s_key: '化工爆炸,化工泄露,化工中毒,化工火灾',
         s_date: '',
         s_time: ''
-      },
+      }
     }
+  },
+  mounted() {
+    this.initTime()
+    this.loadData()
   },
   methods: {
     showDetail(row) {
@@ -153,60 +159,59 @@ export default {
       this.dialogTimeLineVisible = true
     },
     nextPage() {
-      this.page.pageNumber += 1;
-      this.loadData();
+      this.page.pageNumber += 1
+      this.loadData()
     },
     prevPage() {
-      this.page.pageNumber -= 1;
-      this.loadData();
+      this.page.pageNumber -= 1
+      this.loadData()
     },
     handleSizeChange(size) {
-      this.page.pageSize = size;
-      this.page.pageNumber = 0;
-      this.loadData();
+      this.page.pageSize = size
+      this.page.pageNumber = 0
+      this.loadData()
     },
     handleCurrentChange(current) {
-      this.page.pageNumber = current - 1;
-      this.loadData();
+      this.page.pageNumber = current - 1
+      this.loadData()
     },
     initTime() {
-      var now   = new Date();
-      var monthn = now.getMonth()+1;
-      var yearn  = now.getFullYear();
-      var dayn = now.getDate();
-      var h = now.getHours()+1;
-      var m =now.getMinutes();
-      var s = now.getSeconds();
-      this.sform.s_date = yearn+"-"+monthn+"-"+dayn+" "+h+":"+m+":"+s;
+      var now = new Date()
+      var monthn = now.getMonth() + 1
+      var yearn = now.getFullYear()
+      var dayn = now.getDate()
+      var h = now.getHours() + 1
+      var m = now.getMinutes()
+      var s = now.getSeconds()
+      this.sform.s_date = yearn + '-' + monthn + '-' + dayn + ' ' + h + ':' + m + ':' + s
     },
-    loadData(){
-      yuqingApi.getAllYuqingCommentsNumPageable(this.page).then((result)=>{
-
-        for(var i in result.data.content){
+    loadData() {
+      yuqingApi.getAllYuqingCommentsNumPageable(this.page).then((result) => {
+        for (var i in result.data.content) {
           var time = new Date(parseInt(result.data.content[i].news_timeStamp) * 1000)
           // var time = new Date(result.data.content[i].news_timeStamp);
-          var y = time.getFullYear(); //getFullYear方法以四位数字返回年份
-          var M = time.getMonth() + 1; // getMonth方法从 Date 对象返回月份 (0 ~ 11)，返回结果需要手动加一
-          var d = time.getDate(); // getDate方法从 Date 对象返回一个月中的某一天 (1 ~ 31)
-          var h = time.getHours(); // getHours方法返回 Date 对象的小时 (0 ~ 23)
-          var m = time.getMinutes(); // getMinutes方法返回 Date 对象的分钟 (0 ~ 59)
-          var s = time.getSeconds(); // getSeconds方法返回 Date 对象的秒数 (0 ~ 59)
+          var y = time.getFullYear() // getFullYear方法以四位数字返回年份
+          var M = time.getMonth() + 1 // getMonth方法从 Date 对象返回月份 (0 ~ 11)，返回结果需要手动加一
+          var d = time.getDate() // getDate方法从 Date 对象返回一个月中的某一天 (1 ~ 31)
+          var h = time.getHours() // getHours方法返回 Date 对象的小时 (0 ~ 23)
+          var m = time.getMinutes() // getMinutes方法返回 Date 对象的分钟 (0 ~ 59)
+          var s = time.getSeconds() // getSeconds方法返回 Date 对象的秒数 (0 ~ 59)
           // result.data.content[i].news_date  = nene;
-          result.data.content[i].news_date  = y + '-' + M + '-' + d + ' ' + h + ':' + m + ':' + s;
-          if (result.data.content[i].news_comments==='[]'){
-            result.data.content[i].news_comments = []    // 新闻评论
-            result.data.content[i].news_comments_num = 0   // 评论数量
-            result.data.content[i].news_comments_tendency = 0   // 评论总体倾向
-          }else {
-            var comments =  eval(result.data.content[i].news_comments);
+          result.data.content[i].news_date = y + '-' + M + '-' + d + ' ' + h + ':' + m + ':' + s
+          if (result.data.content[i].news_comments === '[]') {
+            result.data.content[i].news_comments = [] // 新闻评论
+            result.data.content[i].news_comments_num = 0 // 评论数量
+            result.data.content[i].news_comments_tendency = 0 // 评论总体倾向
+          } else {
+            var comments = eval(result.data.content[i].news_comments)
             console.log(comments, result.data.content[i].news_comments)
-            result.data.content[i].news_comments = comments    // 新闻评论
-            result.data.content[i].news_comments_num = comments.length   // 评论数量
+            result.data.content[i].news_comments = comments // 新闻评论
+            result.data.content[i].news_comments_num = comments.length // 评论数量
             var news_comments_tendency = 0.0
             for (var j in result.data.content[i].news_comments) {
               news_comments_tendency += result.data.content[i].news_comments[j].positive_probs
             }
-            result.data.content[i].news_comments_tendency = (news_comments_tendency/comments.length).toFixed(4)   // 评论总体倾向
+            result.data.content[i].news_comments_tendency = (news_comments_tendency / comments.length).toFixed(4) // 评论总体倾向
           }
         }
         // console.log(result.data.content)
@@ -215,10 +220,6 @@ export default {
         this.page.total = result.data.totalElements
       })
     }
-  },
-  mounted() {
-    this.initTime();
-    this.loadData();
   }
 }
 </script>

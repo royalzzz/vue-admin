@@ -8,7 +8,7 @@
         </el-button>
       </el-form-item>
     </el-form>
-    <el-table :data="anlishu" max-height="560px" style="width: 100%" v-loading="loading">
+    <el-table v-loading="loading" :data="anlishu" max-height="560px" style="width: 100%">
       <el-table-column
         fixed
         prop="_id"
@@ -26,31 +26,35 @@
         width="120">
         <template slot-scope="scope">
           <el-button
-            @click="detail(scope.row);showTree = true"
             type="text"
-            size="small">
+            size="small"
+            @click="detail(scope.row);showTree = true">
             查看
           </el-button>
         </template>
       </el-table-column>
     </el-table>
 
-    <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
-                   :current-page="page.pageNumber + 1" :page-sizes="[5, 10, 20, 30, 100]" :page-size="page.pageSize"
-                   background layout="total, sizes, prev, pager, next, jumper" :total="page.total"
-                   @next-click="nextPage" @prev-click="prevPage">
+    <el-pagination
+      :current-page="page.pageNumber + 1" :page-sizes="[5, 10, 20, 30, 100]"
+      :page-size="page.pageSize" background
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="page.total" @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      @next-click="nextPage" @prev-click="prevPage">
     </el-pagination>
 
-    <el-drawer title="查看案例树" :visible.sync="showTree" direction="rtl" size="50%"
-               style="height: auto; overflow-x: auto">
+    <el-drawer
+      title="查看案例树" :visible.sync="showTree"
+      direction="rtl" size="50%"
+      style="height: auto; overflow-x: auto">
       <el-tree :visible.sync="showTree" :data="tftTree" default-expand-all :expand-on-click-node="false"></el-tree>
     </el-drawer>
-
   </div>
 </template>
 
 <script>
-import {getEventTftPageable} from "@/api/tree";
+import { getEventTftPageable } from '@/api/tree'
 
 export default {
   data() {
@@ -59,7 +63,7 @@ export default {
       anlishu: [],
       tftTree: [],
       showTree: false,
-      page:{
+      page: {
         pageSize: 10,
         pageNumber: 0,
         total: 0
@@ -67,46 +71,44 @@ export default {
       loading: false
     }
   },
+  mounted() {
+    this.loadData()
+  },
   methods: {
     detail(row) {
       console.log(row)
       this.tftTree = [JSON.parse(row._data)]
       console.log(this.tftTree)
-
     },
     nextPage() {
-      this.page.pageNumber += 1;
-      this.loadData();
+      this.page.pageNumber += 1
+      this.loadData()
     },
     prevPage() {
-      this.page.pageNumber -= 1;
-      this.loadData();
+      this.page.pageNumber -= 1
+      this.loadData()
     },
     handleSizeChange(size) {
-      this.page.pageSize = size;
-      this.page.pageNumber = 0;
-      this.loadData();
+      this.page.pageSize = size
+      this.page.pageNumber = 0
+      this.loadData()
     },
     handleCurrentChange(current) {
-      this.page.pageNumber = current - 1;
-      this.loadData();
+      this.page.pageNumber = current - 1
+      this.loadData()
     },
     loadData() {
-      this.loading = true;
+      this.loading = true
       getEventTftPageable(this.page).then((result) => {
         console.log(result)
-        this.page.total = result.data.totalElements;
-        this.anlishu = result.data.content;
-        this.loading = false;
-      });
-    },
-  },
-  mounted() {
-    this.loadData();
+        this.page.total = result.data.totalElements
+        this.anlishu = result.data.content
+        this.loading = false
+      })
+    }
   }
 }
 </script>
-
 
 <style>
 .el-tree-node__content:hover {

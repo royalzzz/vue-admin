@@ -1,7 +1,7 @@
 import axios from 'axios'
-import {MessageBox, Message} from 'element-ui'
+import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
-import {getToken} from '@/utils/auth'
+import { getToken } from '@/utils/auth'
 
 // create an axios instance
 const service = axios.create({
@@ -81,9 +81,9 @@ service.interceptors.response.use(
       }
 
       if (res.code === 20001) {
-          store.dispatch('user/resetToken').then(() => {
-            location.reload()
-          })
+        store.dispatch('user/resetToken').then(() => {
+          location.reload()
+        })
       }
 
       return Promise.reject(new Error(res.message || 'Error'))

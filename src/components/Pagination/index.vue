@@ -9,13 +9,12 @@
       :total="total"
       v-bind="$attrs"
       @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-    />
+      @current-change="handleCurrentChange" />
   </div>
 </template>
 
 <script>
-import {scrollTo} from '@/utils/scroll-to'
+import { scrollTo } from '@/utils/scroll-to'
 
 export default {
   name: 'Pagination',
@@ -75,13 +74,13 @@ export default {
   },
   methods: {
     handleSizeChange(val) {
-      this.$emit('pagination', {page: this.currentPage, limit: val})
+      this.$emit('pagination', { page: this.currentPage, limit: val })
       if (this.autoScroll) {
         scrollTo(0, 800)
       }
     },
     handleCurrentChange(val) {
-      this.$emit('pagination', {page: val, limit: this.pageSize})
+      this.$emit('pagination', { page: val, limit: this.pageSize })
       if (this.autoScroll) {
         scrollTo(0, 800)
       }

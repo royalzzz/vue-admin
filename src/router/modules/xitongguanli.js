@@ -17,13 +17,13 @@ const xitongguanli = {
       component: () => import('@/layout/components/Empty'),
       name: 'yonghuguanli',
       alwaysShow: true,
-      meta: {title: '用户管理', icon: 'el-icon-user', affix: true}
+      meta: { title: '用户管理', icon: 'el-icon-user', affix: true }
     },
     {
       path: 'renwuguanli',
       component: () => import('@/views/xitongguanli/index'),
       name: 'renwuguanli',
-      meta: {title: '任务管理', icon: 'el-icon-loading', affix: true}
+      meta: { title: '任务管理', icon: 'el-icon-loading', affix: true }
     }
   ]
 }

@@ -3,11 +3,11 @@ import request from '@/utils/request'
 
 // 设置爬虫的参数
 export function setCrawlerParams(data) {
-  const {s_key, s_date, s_time} = data
+  const { s_key, s_date, s_time } = data
   return request({
     url: '/isp/yuqing/setCrawlerParams',
     method: 'post',
-    params: {s_key, s_date, s_time}
+    params: { s_key, s_date, s_time }
     // params: { data, token }
   })
 }
@@ -21,7 +21,7 @@ export function getAllYuqingOriginnewsPageable(data) {
 }
 export function getYuqingOriginnewsWithClaPageable(data) {
   return request({
-    url:'/isp/yuqing/getYuqingOriginnewsWithClaPageable',
+    url: '/isp/yuqing/getYuqingOriginnewsWithClaPageable',
     method: 'post',
     data: data
   })
@@ -29,7 +29,7 @@ export function getYuqingOriginnewsWithClaPageable(data) {
 
 export function getYuqingOriginnewsWithoutClaPageable(data) {
   return request({
-    url:'/isp/yuqing/getYuqingOriginnewsWithoutClaPageable',
+    url: '/isp/yuqing/getYuqingOriginnewsWithoutClaPageable',
     method: 'post',
     data: data
   })

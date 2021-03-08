@@ -78,6 +78,6 @@ export function analysis(text) {
   return request({
     url: '/isp/kbqa/stanford/example',
     method: 'post',
-    params:{text: text}
+    params: { text: text }
   })
 }

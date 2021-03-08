@@ -19,4 +19,6 @@ This will automatically open http://localhost:9527
 ```bash
 # build for production environment
 npm run build:prod
+
+npm run lint-fix
 ```
