@@ -27,14 +27,8 @@
         <template slot-scope="scope">
           <el-button
             type="text"
-<<<<<<< HEAD
             size="small"><i class="el-icon-view"></i>
             查看详细
-=======
-            size="small"
-            @click="detail(scope.row);showTree = true">
-            查看
->>>>>>> 7f780a4e7deaa97a58f0163477c4ec32482575ed
           </el-button>
         </template>
       </el-table-column>
