@@ -73,7 +73,7 @@
 								<span>句子依赖图</span>
 								<el-button style="float: right; padding: 3px 0" type="text">查看帮助</el-button>
 							</div>
-							
+							<div v-for="graph in graphs" :key="graph.id">{{graph}}</div>
 						</el-card>
 						<el-card style="margin-top:5px;padding:5px;" shadow="hover"
 							:body-style="{ padding: '10px' }">
@@ -118,11 +118,13 @@ export default {
 				this.testData = res.data;
 				this.deps = [];
 				this.tokens = [];
+				this.graphs = [];
 				for (let i = 0; i < this.testData.sentences.length; i++) {
 					this.tokens = this.tokens.concat(this.testData.sentences[i].tokens);
 					this.deps = this.deps.concat(
 						this.testData.sentences[i].basicDependencies
 					);
+					this.graphs = this.graphs.concat(this.testData.sentences[i].kbqaStanfordGraphs);
 				}
 				document.getElementById("bdIframe").contentWindow.location.reload(true);
 				this.timer = setInterval(this.loadView, 1000);
