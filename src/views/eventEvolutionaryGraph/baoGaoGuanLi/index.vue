@@ -17,11 +17,7 @@
       </el-form-item>
     </el-form>
 
-<<<<<<< HEAD
-    <el-table :data="tableData"  stripe style="width: 100%" v-loading="loading">
-=======
-    <el-table v-loading="loading" :data="tableData" border max-height="560px" style="width: 100%">
->>>>>>> 7f780a4e7deaa97a58f0163477c4ec32482575ed
+    <el-table v-loading="loading" :data="tableData" stripe style="width: 100%">
       <el-table-column fixed prop="id" label="编号" width="50"></el-table-column>
       <el-table-column prop="title" label="事故报告标题" width="200"></el-table-column>
       <el-table-column prop="content" label="事故报告内容" width="840">

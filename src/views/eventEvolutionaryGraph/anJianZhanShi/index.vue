@@ -17,17 +17,17 @@
       </el-table-column>
       <el-table-column
         prop="_events"
-        label="内容"
-        width="1000">
+        label="内容">
       </el-table-column>
       <el-table-column
         fixed="right"
         label="操作"
         width="120">
-        <template slot-scope="scope">
+        <template slot-scope="">
           <el-button
             type="text"
-            size="small"><i class="el-icon-view"></i>
+            size="small">
+            <i class="el-icon-view"></i>
             查看详细
           </el-button>
         </template>
