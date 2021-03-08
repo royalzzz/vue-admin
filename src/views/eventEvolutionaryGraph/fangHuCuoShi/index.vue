@@ -4,16 +4,14 @@
       <el-input
         v-model="formInline.user"
         placeholder="关键字搜索"
-        style="width: 850px"
-      ></el-input>
+        style="width: 850px"></el-input>
       <el-form-item>
         <el-button
           class="filter-item"
           style="margin-left: 10px"
           type="primary"
           icon="el-icon-edit"
-          @click="handleCreate"
-        >
+          @click="handleCreate">
           事件防护措施搜索
         </el-button>
         <!-- <el-button v-waves :loading="downloadLoading" class="filter-item" type="primary" icon="el-icon-download" @click="handleDownload">
@@ -26,15 +24,14 @@
         <el-card shadow="always">
           <img
             src="@/assets/eventEvolutionaryGraph/fanghucuoshi.png"
-            width="100%"
-          >
+            width="100%">
         </el-card>
       </el-col>
       <el-col :span="7">
         <el-card shadow="hover">
           <el-table :data="tableData" width="100" margin-top="10px">
-            <el-table-column prop="date" label="属性名" width="80"/>
-            <el-table-column prop="name" label="属性值"/>
+            <el-table-column prop="date" label="属性名" width="80" />
+            <el-table-column prop="name" label="属性值" />
           </el-table>
         </el-card>
       </el-col>

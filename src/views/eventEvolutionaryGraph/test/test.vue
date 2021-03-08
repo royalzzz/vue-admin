@@ -5,8 +5,7 @@
     node-key="id"
     default-expand-all
     :default-checked-keys="[5]"
-    :props="defaultProps"
-  >
+    :props="defaultProps">
   </el-tree>
 </template>>
 

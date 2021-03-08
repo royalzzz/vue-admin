@@ -10,14 +10,12 @@
             :visible.sync="table"
             direction="rtl"
             size="50%"
-            style="height: auto; overflow-x: auto"
-          >
+            style="height: auto; overflow-x: auto">
             <el-table :data="eventtft">
               <el-table-column
                 property="_id"
                 label="id"
-                width="100"
-              ></el-table-column>
+                width="100"></el-table-column>
               <el-table-column property="_events" label="案例内容">
                 <template slot-scope="scope">
                   <el-tooltip :content="scope.row._events" placement="left">
@@ -30,8 +28,8 @@
                   <el-button
                     type="text"
                     size="small"
-                    @click="handleClick(scope.row)"
-                  >选择
+                    @click="handleClick(scope.row)">
+                    选择
                   </el-button>
                 </template>
               </el-table-column>
@@ -42,8 +40,7 @@
               :data="testdata"
               default-expand-all
               :expand-on-click-node="false"
-              @node-click="findByLabelLike"
-            ></el-tree>
+              @node-click="findByLabelLike"></el-tree>
           </div>
         </el-card>
       </el-col>
@@ -59,8 +56,8 @@
                 plain
                 size="small"
                 style="margin-top: 10px; margin-left: 10px"
-                @click="addBiaozhuPair"
-              >{{ item.label }}
+                @click="addBiaozhuPair">
+                {{ item.label }}
               </el-button>
               <br>
             </div>
@@ -74,13 +71,11 @@
                 plain
                 size="small"
                 style="margin-top: 10px; margin-left: 10px"
-                @click="addBiaozhuPair"
-              >{{ item.label }}
+                @click="addBiaozhuPair">
+                {{ item.label }}
               </el-button>
             </div>
-
           </div>
-
         </el-card>
       </el-col>
     </el-row>
@@ -115,7 +110,7 @@ export default {
                       gradeId: '',
                       label: '罐内碱渣上面浮着一层汽油，汽油挥发'
                     },
-                    {andor: '', children: [], gradeId: '', label: '空气'}
+                    { andor: '', children: [], gradeId: '', label: '空气' }
                   ],
                   gradeId: 'IA7',
                   label: 'A7$罐内气体达到爆炸极限'
@@ -180,7 +175,7 @@ export default {
                     {
                       andor: 'undefined',
                       children: [
-                        {andor: '', children: [], gradeId: '', label: '罐壁'}
+                        { andor: '', children: [], gradeId: '', label: '罐壁' }
                       ],
                       gradeId: '',
                       label: '放电部位'

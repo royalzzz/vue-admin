@@ -3,7 +3,7 @@
     <el-row :gutter="20">
       <div class="grid-content">
         <el-col :span="12">
-          <el-input v-model="input3" placeholder="请输入要搜索的事故" class="input-with-select"/>
+          <el-input v-model="input3" placeholder="请输入要搜索的事故" class="input-with-select" />
         </el-col>
         <el-button icon="el-icon-search" type="primary">搜索</el-button>
       </div>
@@ -11,12 +11,21 @@
     <el-row>
       <el-col :span="24">
         <div class="grid-content">
+<<<<<<< HEAD
           <el-table :data="tableData" stripe>
             <el-table-column fixed prop="id" label="事故id" width="80"/>
             <el-table-column prop="accident_title" label="事故名称" width="300"/>
             <el-table-column prop="accident_news_num" label="新闻数量" width="100"/>
             <el-table-column prop="accident_comments_num" label="评论数量" width="100"/>
             <el-table-column prop="accident_date" label="发生时间" width="100"/>
+=======
+          <el-table :data="tableData" border>
+            <el-table-column fixed prop="id" label="事故id" width="80" />
+            <el-table-column prop="accident_title" label="事故名称" width="300" />
+            <el-table-column prop="accident_news_num" label="新闻数量" width="100" />
+            <el-table-column prop="accident_comments_num" label="评论数量" width="100" />
+            <el-table-column prop="accident_date" label="发生时间" width="100" />
+>>>>>>> 7f780a4e7deaa97a58f0163477c4ec32482575ed
             <el-table-column label="操作">
               <template>
                 <el-button type="text" size="small" @click="dialogTimeLineVisible = true"><i class="el-icon-view"></i>查看微观数据统计</el-button>

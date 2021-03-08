@@ -1,56 +1,56 @@
 <template>
-	<div>
-		<transition name="fade">
-			<div class="toast" v-if="visible">
-				<!-- <div class="toast title">{{title}}</div>
+  <div>
+    <transition name="fade">
+      <div v-if="visible" class="toast">
+        <!-- <div class="toast title">{{title}}</div>
 				<div class="toast msg">{{msg}}</div>-->
-				<i v-bind:class="icon" v-bind:style="{ color: color, fontSize: 50 + 'px'}"></i>
-				<div class="msg">{{msg}}</div>
-			</div>
-		</transition>
-	</div>
+        <i :class="icon" :style="{ color: color, fontSize: 50 + 'px'}"></i>
+        <div class="msg">{{ msg }}</div>
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script>
 export default {
-	name: "FaultTree",
-	data() {
-		return {
-			visible: false,
-			type: "",
-			msg: "",
-			duration: 3000,
-			icon: "el-icon-circle-check",
-			color: "grey",
-		};
-	},
-	mounted() {
-		if (this.type === "success") {
-			this.icon = "el-icon-circle-check";
-			this.color = "green";
-		} else if (this.type === "error") {
-			this.icon = "el-icon-circle-close";
-			this.color = "red";
-		} else if (this.type === "unlink") {
-			this.icon = "unlink";
-			this.color = "orange";
-		} else if (this.type === "sorry") {
-			this.icon = "frown outline";
-			this.color = "orange";
-		} else {
-			this.icon = "info";
-			this.color = "blue";
-		}
-		this.close();
-	},
-	methods: {
-		close() {
-			window.setTimeout(() => {
-				this.visible = false;
-			}, this.duration);
-		},
-	},
-};
+  name: 'FaultTree',
+  data() {
+    return {
+      visible: false,
+      type: '',
+      msg: '',
+      duration: 3000,
+      icon: 'el-icon-circle-check',
+      color: 'grey'
+    }
+  },
+  mounted() {
+    if (this.type === 'success') {
+      this.icon = 'el-icon-circle-check'
+      this.color = 'green'
+    } else if (this.type === 'error') {
+      this.icon = 'el-icon-circle-close'
+      this.color = 'red'
+    } else if (this.type === 'unlink') {
+      this.icon = 'unlink'
+      this.color = 'orange'
+    } else if (this.type === 'sorry') {
+      this.icon = 'frown outline'
+      this.color = 'orange'
+    } else {
+      this.icon = 'info'
+      this.color = 'blue'
+    }
+    this.close()
+  },
+  methods: {
+    close() {
+      window.setTimeout(() => {
+        this.visible = false
+      }, this.duration)
+    }
+  }
+}
 </script>
 <style>
 .toast {

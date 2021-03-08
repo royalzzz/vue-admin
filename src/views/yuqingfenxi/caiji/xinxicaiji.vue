@@ -1,9 +1,9 @@
 <template>
   <div class="grid-content bg-purple-dark">
-    <el-form :inline="true" :model="sform" class="demo-form-inline" ref="sform">
+    <el-form ref="sform" :inline="true" :model="sform" class="demo-form-inline">
       <el-col :span="10">
-        <el-form-item label="采集关键字" >
-            <el-input v-model="sform.s_key" placeholder="以英文,分隔" style="width: 400px"/>
+        <el-form-item label="采集关键字">
+          <el-input v-model="sform.s_key" placeholder="以英文,分隔" style="width: 400px" />
         </el-form-item>
       </el-col>
       <el-col :span="6">
@@ -13,23 +13,22 @@
             type="datetime"
             placeholder="选择日期时间"
             default-time="12:00:00"
-            value-format="yyyy-MM-dd HH:mm:ss" format="yyyy-MM-dd HH:mm:ss" >
+            value-format="yyyy-MM-dd HH:mm:ss" format="yyyy-MM-dd HH:mm:ss">
           </el-date-picker>
         </el-form-item>
       </el-col>
 
       <el-col :span="6">
-      <el-form-item label="时间间隔">
-        <el-select v-model="sform.s_time" placeholder="请选择">
-          <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          >
-          </el-option>
-        </el-select>
-      </el-form-item>
+        <el-form-item label="时间间隔">
+          <el-select v-model="sform.s_time" placeholder="请选择">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
       </el-col>
       <el-form-item>
         <el-button type="primary" @click="setCrawlerParams">设置</el-button>
@@ -39,14 +38,14 @@
       <el-col :span="24">
         <div class="grid-content bg-purple-light">
           <div class="grid-content">
-            <el-table :data="tableData" border max-height="585px" style="width: 100%" v-loading="loading">
-              <el-table-column fixed prop="id" label="id" width="80"/>
-              <el-table-column fixed prop="news_date" label="日期" width="150"/>
-              <el-table-column prop="news_title" label="报道标题" width="350"/>
-              <el-table-column prop="news_site" label="来源" width="100"/>
+            <el-table v-loading="loading" :data="tableData" border max-height="585px" style="width: 100%">
+              <el-table-column fixed prop="id" label="id" width="80" />
+              <el-table-column fixed prop="news_date" label="日期" width="150" />
+              <el-table-column prop="news_title" label="报道标题" width="350" />
+              <el-table-column prop="news_site" label="来源" width="100" />
               <el-table-column prop="news_link" label="来源链接" width="350">
                 <template slot-scope="scope">
-                  <a :href="scope.row.news_link" target="_blank" class="buttonText">{{scope.row.news_link}}</a>
+                  <a :href="scope.row.news_link" target="_blank" class="buttonText">{{ scope.row.news_link }}</a>
                 </template>
               </el-table-column>
               <el-table-column label="操作">
@@ -57,10 +56,13 @@
                 </template>
               </el-table-column>
             </el-table>
-            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
-                           :current-page="page.pageNumber + 1" :page-sizes="[5, 10, 20, 30, 100]" :page-size="page.pageSize"
-                           background layout="total, sizes, prev, pager, next, jumper" :total="page.total"
-                           @next-click="nextPage" @prev-click="prevPage">
+            <el-pagination
+              :current-page="page.pageNumber + 1" :page-sizes="[5, 10, 20, 30, 100]"
+              :page-size="page.pageSize" background
+              layout="total, sizes, prev, pager, next, jumper"
+              :total="page.total" @size-change="handleSizeChange"
+              @current-change="handleCurrentChange"
+              @next-click="nextPage" @prev-click="prevPage">
             </el-pagination>
           </div>
         </div>
@@ -70,28 +72,28 @@
       <el-form :model="form">
         <el-form-item label="报道名称和分类：" :label-width="formLabelWidth">
           <el-col :span="16">
-            <el-input v-model="form.news_title" autocomplete="off"/>
+            <el-input v-model="form.news_title" autocomplete="off" />
           </el-col>
           <el-col :span="6">
-            <el-input v-model="form.news_class" autocomplete="off"/>
+            <el-input v-model="form.news_class" autocomplete="off" />
           </el-col>
         </el-form-item>
         <el-form-item label="发布时间和来源：" :label-width="formLabelWidth">
           <el-col :span="16">
-            <el-date-picker v-model="form.news_date" autocomplete="off" type="date" value="form.news_data"/>
+            <el-date-picker v-model="form.news_date" autocomplete="off" type="date" value="form.news_data" />
           </el-col>
           <el-col :span="6">
-            <el-input v-model="form.news_site" autocomplete="off"/>
+            <el-input v-model="form.news_site" autocomplete="off" />
           </el-col>
         </el-form-item>
         <el-form-item label="报道链接：" :label-width="formLabelWidth">
           <el-col :span="22">
-            <el-input v-model="form.news_link" autocomplete="off"/>
+            <el-input v-model="form.news_link" autocomplete="off" />
           </el-col>
         </el-form-item>
         <el-form-item label="详细内容：" :label-width="formLabelWidth">
           <el-col :span="22">
-            <el-input v-model="form.news_content" autocomplete="off" type="textarea" :rows="10"/>
+            <el-input v-model="form.news_content" autocomplete="off" type="textarea" :rows="10" />
           </el-col>
         </el-form-item>
       </el-form>
@@ -104,7 +106,7 @@
 </template>
 
 <script>
-import * as yuqingApi from "@/api/yuqing";
+import * as yuqingApi from '@/api/yuqing'
 export default {
   name: 'Xinxicaiji',
   data() {
@@ -170,75 +172,75 @@ export default {
         s_time: ''
       },
       formLabelWidth: '150px',
-      page:{
+      page: {
         pageSize: 10,
         pageNumber: 0,
         total: 0
       },
-      loading: false,
+      loading: false
     }
+  },
+  mounted() {
+    this.initTime()
+    this.loadData()
   },
   methods: {
     nextPage() {
-      this.page.pageNumber += 1;
-      this.loadData();
+      this.page.pageNumber += 1
+      this.loadData()
     },
     prevPage() {
-      this.page.pageNumber -= 1;
-      this.loadData();
+      this.page.pageNumber -= 1
+      this.loadData()
     },
     handleSizeChange(size) {
-      this.page.pageSize = size;
-      this.page.pageNumber = 0;
-      this.loadData();
+      this.page.pageSize = size
+      this.page.pageNumber = 0
+      this.loadData()
     },
     handleCurrentChange(current) {
-      this.page.pageNumber = current - 1;
-      this.loadData();
+      this.page.pageNumber = current - 1
+      this.loadData()
     },
     setCrawlerParams() {
-      console.log(this.sform);
+      console.log(this.sform)
       this.$store.dispatch('yuqing/setCrawlerParams', this.sform)
         .then(result => {
-          console.log(result);
+          console.log(result)
         })
         .catch(() => {
           this.loading = false
         })
     },
     initTime() {
-      var now   = new Date();
-      var monthn = now.getMonth()+1;
-      var yearn  = now.getFullYear();
-      var dayn = now.getDate();
-      var h = now.getHours()+1;
-      var m =now.getMinutes();
-      var s = now.getSeconds();
-      this.sform.s_date = yearn+"-"+monthn+"-"+dayn+" "+h+":"+m+":"+s;
+      var now = new Date()
+      var monthn = now.getMonth() + 1
+      var yearn = now.getFullYear()
+      var dayn = now.getDate()
+      var h = now.getHours() + 1
+      var m = now.getMinutes()
+      var s = now.getSeconds()
+      this.sform.s_date = yearn + '-' + monthn + '-' + dayn + ' ' + h + ':' + m + ':' + s
     },
-    loadData(){
-      yuqingApi.getAllYuqingOriginnewsPageable(this.page).then((result)=>{
-        for(var i in result.data.content){
+    loadData() {
+      yuqingApi.getAllYuqingOriginnewsPageable(this.page).then((result) => {
+        for (var i in result.data.content) {
           var time = new Date(parseInt(result.data.content[i].news_timeStamp) * 1000)
           // var time = new Date(result.data.content[i].news_timeStamp);
-          var y = time.getFullYear(); //getFullYear方法以四位数字返回年份
-          var M = time.getMonth() + 1; // getMonth方法从 Date 对象返回月份 (0 ~ 11)，返回结果需要手动加一
-          var d = time.getDate(); // getDate方法从 Date 对象返回一个月中的某一天 (1 ~ 31)
-          var h = time.getHours(); // getHours方法返回 Date 对象的小时 (0 ~ 23)
-          var m = time.getMinutes(); // getMinutes方法返回 Date 对象的分钟 (0 ~ 59)
-          var s = time.getSeconds(); // getSeconds方法返回 Date 对象的秒数 (0 ~ 59)
+          var y = time.getFullYear() // getFullYear方法以四位数字返回年份
+          var M = time.getMonth() + 1 // getMonth方法从 Date 对象返回月份 (0 ~ 11)，返回结果需要手动加一
+          var d = time.getDate() // getDate方法从 Date 对象返回一个月中的某一天 (1 ~ 31)
+          var h = time.getHours() // getHours方法返回 Date 对象的小时 (0 ~ 23)
+          var m = time.getMinutes() // getMinutes方法返回 Date 对象的分钟 (0 ~ 59)
+          var s = time.getSeconds() // getSeconds方法返回 Date 对象的秒数 (0 ~ 59)
           // result.data.content[i].news_date  = nene;
-          result.data.content[i].news_date  = y + '-' + M + '-' + d + ' ' + h + ':' + m + ':' + s;
+          result.data.content[i].news_date = y + '-' + M + '-' + d + ' ' + h + ':' + m + ':' + s
         }
         // console.log(result.data.content)
         this.tableData = result.data.content
         this.page.total = result.data.totalElements
       })
     }
-  },
-  mounted() {
-    this.initTime();
-    this.loadData();
   }
 }
 </script>

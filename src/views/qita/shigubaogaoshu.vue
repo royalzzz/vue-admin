@@ -3,36 +3,32 @@
     <el-row :gutter="12">
       <el-col :span="12">
         <el-card shadow="always" style="height: 650px">
-          <el-button type="text" @click="table = true">选择事故报告
-          </el-button
-          >
-          <br/><br/>
+          <el-button type="text" @click="table = true">
+            选择事故报告
+          </el-button>
+          <br><br>
           <el-drawer
             title="选择事故报告"
             :visible.sync="table"
             direction="rtl"
             size="50%"
-            style="height: auto; overflow-x: auto"
-          >
+            style="height: auto; overflow-x: auto">
             <el-table :data="accidentreport">
               <el-table-column
                 property="id"
                 label="id"
-                width="150"
-              ></el-table-column>
+                width="150"></el-table-column>
               <el-table-column
                 property="title"
-                label="事故标题"
-              ></el-table-column>
+                label="事故标题"></el-table-column>
               <el-table-column fixed="right" label="操作" width="100">
                 <template slot-scope="scope">
                   <el-button
                     type="text"
                     size="small"
-                    @click="handleClick(scope.row)"
-                  >查看
-                  </el-button
-                  >
+                    @click="handleClick(scope.row)">
+                    查看
+                  </el-button>
                 </template>
               </el-table-column>
             </el-table>
@@ -42,8 +38,7 @@
               v-model="textarea"
               type="textarea"
               :rows="25"
-              :placeholder="textarea"
-            >
+              :placeholder="textarea">
             </el-input>
           </div>
         </el-card>
@@ -51,19 +46,18 @@
       <el-col :span="12">
         <el-card shadow="always" style="height: 650px">
           <div style="height: 600px; overflow: auto">
-            <span> 选中事件为： </span><br/>
+            <span> 选中事件为： </span><br>
             <el-button
               type="warning"
               plain
               size="small"
               style="margin-top: 10px; margin-left: 10px"
-              @click="findByLabelLike"
-            >{{ this.selectionText }}
-            </el-button
-            >
-            <br/><br/>
+              @click="findByLabelLike">
+              {{ selectionText }}
+            </el-button>
+            <br><br>
 
-            <span> 当前事件推荐的标注节点： </span><br/>
+            <span> 当前事件推荐的标注节点： </span><br>
             <el-button
               v-for="(item, i) in keyNodes"
               :key="i"
@@ -71,12 +65,11 @@
               plain
               size="small"
               style="margin-top: 10px; margin-left: 10px"
-              @click="addBiaozhuPair"
-            >{{ item.label }}
-            </el-button
-            >
-            <br/><br/>
-            <span>标准树全部节点：</span><br/><br/>
+              @click="addBiaozhuPair">
+              {{ item.label }}
+            </el-button>
+            <br><br>
+            <span>标准树全部节点：</span><br><br>
             <div>
               <el-button
                 v-for="(item, i) in Nodes"
@@ -85,10 +78,9 @@
                 plain
                 size="small"
                 style="margin-top: 10px; margin-left: 10px"
-                @click="addBiaozhuPair"
-              >{{ item.label }}
-              </el-button
-              >
+                @click="addBiaozhuPair">
+                {{ item.label }}
+              </el-button>
             </div>
           </div>
         </el-card>
@@ -98,194 +90,194 @@
 </template>
 
 <script>
-import vis from "vis";
+import vis from 'vis'
 
 export default {
-  name: "",
+  name: '',
   data() {
     return {
       // 标记事件
-      selectionText: "",
+      selectionText: '',
       selectionStart: 0,
       selectionEnd: 0,
       //
-      select: "",
+      select: '',
       Nodes: [],
       keyNodes: [],
       redirect: undefined,
       otherQuery: {},
-      textarea: "",
+      textarea: '',
       table: false,
       loading: false,
       accidentreport: [
         {
-          id: "2016-05-04",
-          title: "上海市普陀区金沙江路 1518 弄",
+          id: '2016-05-04',
+          title: '上海市普陀区金沙江路 1518 弄'
         },
         {
-          id: "2016-05-04",
-          title: "上海市普陀区金沙江路 1518 弄",
+          id: '2016-05-04',
+          title: '上海市普陀区金沙江路 1518 弄'
         },
         {
-          id: "2016-05-04",
-          title: "上海市普陀区金沙江路 1518 弄",
-        },
+          id: '2016-05-04',
+          title: '上海市普陀区金沙江路 1518 弄'
+        }
       ],
-      timer: null,
-    };
+      timer: null
+    }
   },
   watch: {
     $route: {
       handler: function (route) {
-        const query = route.query;
+        const query = route.query
         if (query) {
-          this.redirect = query.redirect;
-          this.otherQuery = this.getOtherQuery(query);
+          this.redirect = query.redirect
+          this.otherQuery = this.getOtherQuery(query)
         }
       },
-      immediate: true,
+      immediate: true
     },
     keyNodes: {
       handler: function (keyNodes) {
       },
-      immediate: true,
+      immediate: true
     },
     textarea: {
       handler: function (textarea) {
         // console.log(textarea);
       },
-      immediate: true,
-    },
+      immediate: true
+    }
   },
   created() {
-    this.getAllNode();
-    this.getAccidentReport();
+    this.getAllNode()
+    this.getAccidentReport()
   },
   mounted() {
-    window.addEventListener("click", this.selecttext);
+    window.addEventListener('click', this.selecttext)
   },
   methods: {
     handleCreate() {
-      console.log("handleCreate!");
+      console.log('handleCreate!')
     },
     getTree() {
-      this.$store.dispatch("tree/getBiaozhuTree").then((result) => {
-        console.log(result);
-        var nodes = new vis.DataSet(result.db_nodes);
-        var edges = new vis.DataSet(result.db_edges);
-        var container = document.getElementById("mynetwork");
+      this.$store.dispatch('tree/getBiaozhuTree').then((result) => {
+        console.log(result)
+        var nodes = new vis.DataSet(result.db_nodes)
+        var edges = new vis.DataSet(result.db_edges)
+        var container = document.getElementById('mynetwork')
         var data = {
           nodes: nodes,
-          edges: edges,
-        };
-        var options = {};
+          edges: edges
+        }
+        var options = {}
         // var network = new vis.Network(container, data, options)
-        vis.Network(container, data, options);
-      });
+        vis.Network(container, data, options)
+      })
     },
     findByLabelLike(data) {
       // console.log(data.label);
-      this.select = this.selectionText;
+      this.select = this.selectionText
       this.$store
-        .dispatch("tree/findByLabelLike", this.selectionText)
+        .dispatch('tree/findByLabelLike', this.selectionText)
         .then((result) => {
-          var db_nodes = result;
-          this.keyNodes = db_nodes;
-        });
+          var db_nodes = result
+          this.keyNodes = db_nodes
+        })
     },
     //
     addBiaozhuPair(event) {
-      console.log(this.select);
-      console.log(event.target.innerText);
+      console.log(this.select)
+      console.log(event.target.innerText)
 
       this.$alert(
-        this.select + "*****" + event.target.innerText,
-        "是否提交标注",
+        this.select + '*****' + event.target.innerText,
+        '是否提交标注',
         {
-          confirmButtonText: "提交",
+          confirmButtonText: '提交',
           callback: (action) => {
-            console.log(action);
-            if (action === "confirm") {
+            console.log(action)
+            if (action === 'confirm') {
               this.$store
-                .dispatch("tree/addBiaozhuPair", {
+                .dispatch('tree/addBiaozhuPair', {
                   anli: this.select,
-                  biaozhun: event.target.innerText,
+                  biaozhun: event.target.innerText
                 })
                 .then((result) => {
-                  var db_nodes = result;
-                  this.keyNodes = db_nodes;
-                });
+                  var db_nodes = result
+                  this.keyNodes = db_nodes
+                })
             }
-          },
+          }
         }
-      );
+      )
     },
     getAllNode() {
-      this.$store.dispatch("tree/findByLabelLike", "").then((result) => {
-        var db_nodes = result;
-        this.Nodes = db_nodes;
-      });
+      this.$store.dispatch('tree/findByLabelLike', '').then((result) => {
+        var db_nodes = result
+        this.Nodes = db_nodes
+      })
     },
     getAccidentReport() {
-      this.$store.dispatch("tree/getAccidentReport").then((result) => {
-        var db_AccidentReport = result;
-        this.accidentreport = db_AccidentReport;
-      });
+      this.$store.dispatch('tree/getAccidentReport').then((result) => {
+        var db_AccidentReport = result
+        this.accidentreport = db_AccidentReport
+      })
     },
     handleClose(done) {
       if (this.loading) {
-        return;
+        return
       }
-      this.$confirm("确定要提交表单吗？")
+      this.$confirm('确定要提交表单吗？')
         .then((_) => {
-          this.loading = true;
+          this.loading = true
           this.timer = setTimeout(() => {
-            done();
+            done()
             // 动画关闭需要一定的时间
             setTimeout(() => {
-              this.loading = false;
-            }, 400);
-          }, 2000);
+              this.loading = false
+            }, 400)
+          }, 2000)
         })
         .catch((_) => {
-        });
+        })
     },
     handleClick(row) {
       // console.log(row.data);
-      this.table = false;
-      this.textarea = row.content;
+      this.table = false
+      this.textarea = row.content
     },
     selecttext() {
-      const selectionText = document.getSelection().toString();
+      const selectionText = document.getSelection().toString()
       if (
         selectionText.length > 0
         // &&this.accidentReport.content.indexOf(selectionText) >= 0
       ) {
-        this.selectionText = selectionText;
-        this.selectionStart = document.getSelection().anchorOffset;
-        this.selectionEnd = document.getSelection().focusOffset;
+        this.selectionText = selectionText
+        this.selectionStart = document.getSelection().anchorOffset
+        this.selectionEnd = document.getSelection().focusOffset
         if (this.selectionEnd < this.selectionStart) {
-          const tmp = this.selectionEnd;
-          this.selectionEnd = this.selectionStart;
-          this.selectionStart = tmp;
+          const tmp = this.selectionEnd
+          this.selectionEnd = this.selectionStart
+          this.selectionStart = tmp
         }
       } else {
-        this.selectionText = "";
-        this.selectionStart = 0;
-        this.selectionEnd = 0;
+        this.selectionText = ''
+        this.selectionStart = 0
+        this.selectionEnd = 0
       }
       // console.log(selectionText);
     },
     getOtherQuery(query) {
       return Object.keys(query).reduce((acc, cur) => {
-        if (cur !== "redirect") {
-          acc[cur] = query[cur];
+        if (cur !== 'redirect') {
+          acc[cur] = query[cur]
         }
-        return acc;
-      }, {});
-    },
-  },
-};
+        return acc
+      }, {})
+    }
+  }
+}
 </script>
 
 <style>

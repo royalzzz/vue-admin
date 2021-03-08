@@ -13,8 +13,7 @@
               range-separator="至"
               start-placeholder="开始月份"
               end-placeholder="结束月份"
-              :picker-options="pickerOptions"
-            ></el-date-picker>
+              :picker-options="pickerOptions"></el-date-picker>
             <el-button icon="el-icon-search" type="primary">搜索</el-button>
           </div>
         </el-col>
@@ -28,8 +27,7 @@
               <img
                 src="@/assets/yuqingfenxi/huagong.jpg"
                 class="image"
-                style="float:left; width:10%;"
-              >
+                style="float:left; width:10%;">
               <h2 style="float:right;width:88%;">2020年7月：化工事故舆情宏观数据统计</h2>
               <p style="float:right;width:88%;">
                 生成时间：2020 年 8 月 3 日
@@ -45,8 +43,7 @@
               <img
                 src="@/assets/yuqingfenxi/huagong.jpg"
                 class="image"
-                style="float:left; width:10%;"
-              >
+                style="float:left; width:10%;">
               <h2 style="float:right;width:88%;">2020年6月：化工事故舆情宏观数据统计</h2>
               <p style="float:right;width:88%;">
                 生成时间：2020 年 7 月 3 日
@@ -62,8 +59,7 @@
               <img
                 src="@/assets/yuqingfenxi/huagong.jpg"
                 class="image"
-                style="float:left; width:10%;"
-              >
+                style="float:left; width:10%;">
               <h2 style="float:right;width:88%;">2020年5月：化工事故舆情宏观数据统计</h2>
               <p style="float:right;width:88%;">
                 生成时间：2020 年 6 月 3 日
@@ -79,8 +75,7 @@
               <img
                 src="@/assets/yuqingfenxi/huagong.jpg"
                 class="image"
-                style="float:left; width:10%;"
-              >
+                style="float:left; width:10%;">
               <h2 style="float:right;width:88%;">2020年4月：化工事故舆情宏观数据统计</h2>
               <p style="float:right;width:88%;">
                 生成时间：2020 年 5 月 3 日
@@ -112,8 +107,7 @@
                     :text-inside="true"
                     :stroke-width="26"
                     :percentage="scope.row.percentage"
-                    status="exception"
-                  ></el-progress>
+                    status="exception"></el-progress>
                 </template>
               </el-table-column>
             </el-table>
@@ -128,15 +122,14 @@
             <div style="width:100%;geight:1000px">
               <el-row>
                 <h3>每日新增新闻、评论数量</h3>
-                <line-chart :chart-data="lineChartData"/>
+                <line-chart :chart-data="lineChartData" />
               </el-row>
               <el-row>
                 <h3>新闻来源数量占比</h3>
                 <div align="center">
                   <img
                     src="@/assets/yuqingfenxi/bingzhuangtu1.jpg"
-                    style="width:50%;padding:auto auto;"
-                  >
+                    style="width:50%;padding:auto auto;">
                 </div>
               </el-row>
             </div>
@@ -168,8 +161,10 @@
                 <el-table-column prop="accident_sensitive" label="敏感指数" width="100"></el-table-column>
                 <el-table-column label="">
                   <template slot-scope="scope">
-                    <el-progress :text-inside="true" :stroke-width="26" :percentage="scope.row.accident_sensitive"
-                                 status="exception"></el-progress>
+                    <el-progress
+                      :text-inside="true" :stroke-width="26"
+                      :percentage="scope.row.accident_sensitive"
+                      status="exception"></el-progress>
                   </template>
                 </el-table-column>
               </el-table>
@@ -487,7 +482,7 @@ export default {
     handleSetLineChartData(type) {
       this.lineChartData = lineChartData[type]
     },
-    tableRowClassName({row, rowIndex}) {
+    tableRowClassName({ row, rowIndex }) {
       if (rowIndex === 1) {
         return 'warning-row'
       } else if (rowIndex === 3) {

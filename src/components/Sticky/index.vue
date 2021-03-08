@@ -2,8 +2,7 @@
   <div :style="{height:height+'px',zIndex:zIndex}">
     <div
       :class="className"
-      :style="{top:(isSticky ? stickyTop +'px' : ''),zIndex:zIndex,position:position,width:width,height:height+'px'}"
-    >
+      :style="{top:(isSticky ? stickyTop +'px' : ''),zIndex:zIndex,position:position,width:width,height:height+'px'}">
       <slot>
         <div>sticky</div>
       </slot>

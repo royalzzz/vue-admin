@@ -4,7 +4,7 @@
       <el-col :span="12">
         <div class="grid-content">
           <el-col :span="12">
-            <el-input v-model="input3" placeholder="请输入要搜索的新闻" class="input-with-select"/>
+            <el-input v-model="input3" placeholder="请输入要搜索的新闻" class="input-with-select" />
           </el-col>
           <el-button icon="el-icon-search" type="primary">搜索</el-button>
         </div>
@@ -47,8 +47,7 @@
               autocomplete="off"
               type="date"
               value="form.news_data"
-              :disabled="true"
-            ></el-date-picker>
+              :disabled="true"></el-date-picker>
           </el-col>
           <el-col :span="6">
             <el-input v-model="form.news_site" autocomplete="off" :disabled="true"></el-input>
@@ -66,8 +65,7 @@
               autocomplete="off"
               type="textarea"
               :rows="10"
-              :disabled="true"
-            ></el-input>
+              :disabled="true"></el-input>
           </el-col>
         </el-form-item>
       </el-form>
@@ -85,12 +83,12 @@ export default {
   data() {
     return {
       options: [
-        {value: '选项1', label: '全部'},
-        {value: '选项2', label: '爆炸'},
-        {value: '选项3', label: '火灾'},
-        {value: '选项4', label: '中毒'},
-        {value: '选项5', label: '泄露'},
-        {value: '选项6', label: '其他'}
+        { value: '选项1', label: '全部' },
+        { value: '选项2', label: '爆炸' },
+        { value: '选项3', label: '火灾' },
+        { value: '选项4', label: '中毒' },
+        { value: '选项5', label: '泄露' },
+        { value: '选项6', label: '其他' }
       ],
       // value: '全部',
       tableData: [
