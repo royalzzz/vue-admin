@@ -9,7 +9,7 @@
       </el-form-item>
     </el-form>
 
-    <el-table :data="tableData" border style="width: 100%">
+    <el-table :data="tableData" stripe style="width: 100%">
       <el-table-column fixed prop="ID" label="编号" width="100"></el-table-column>
       <el-table-column prop="cas" label="CAS编号" width="120"></el-table-column>
       <el-table-column prop="chemical" label="化学品" width="120"></el-table-column>
@@ -17,8 +17,8 @@
       <el-table-column prop="from" label="爬取来源"></el-table-column>
       <el-table-column fixed="right" label="操作">
         <template slot-scope="scope">
-          <el-button type="primary" size="small" @click="handleClick(scope.row)">编辑</el-button>
-          <el-button type="danger" size="small">删除</el-button>
+          <el-button type="text" size="small" @click="handleClick(scope.row)"><i class="el-icon-edit"></i>编辑</el-button>
+          <el-button type="text" size="small"><i class="el-icon-delete"></i>删除</el-button>
         </template>
       </el-table-column>
     </el-table>

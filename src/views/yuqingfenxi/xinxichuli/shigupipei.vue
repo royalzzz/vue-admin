@@ -13,7 +13,7 @@
     <el-row>
       <el-col :span="24">
         <div class="grid-content">
-          <el-table :data="tableData" border>
+          <el-table :data="tableData" stripe>
             <el-table-column fixed prop="id" label="id" width="80"/>
             <el-table-column prop="accident_title" label="事故名称" width="350"/>
             <el-table-column prop="accident_date_start" label="发生日期" width="150"/>
@@ -21,8 +21,8 @@
             <el-table-column prop="accident_class" label="分类" width="80"/>
             <el-table-column label="操作">
               <template>
-                <el-button type="primary" size="small" @click="dialogTimeLineVisible = true">查看|编辑</el-button>
-                <el-button type="danger" size="small">删除</el-button>
+                <el-button type="text" size="small" @click="dialogTimeLineVisible = true"><i class="el-icon-edit"></i>编辑</el-button>
+                <el-button type="text" size="small"><i class="el-icon-delete"></i>删除</el-button>
               </template>
             </el-table-column>
           </el-table>

@@ -11,15 +11,15 @@
     <el-row>
       <el-col :span="24">
         <div class="grid-content">
-          <el-table :data="tableData" border>
+          <el-table :data="tableData" stripe>
             <el-table-column fixed prop="id" label="新闻id" width="80"/>
             <el-table-column prop="news_title" label="新闻标题" width="380"/>
             <el-table-column prop="news_abstruct" label="摘要文本" width="300"/>
             <el-table-column prop="news_date" label="发布日期" width="200"/>
             <el-table-column label="操作">
               <template>
-                <el-button type="primary" size="small" @click="dialogTimeLineVisible = true">查看编辑摘要</el-button>
-                <el-button type="danger" size="small">删除</el-button>
+                <el-button type="text" size="small" @click="dialogTimeLineVisible = true"><i class="el-icon-view"></i>查看编辑摘要</el-button>
+                <el-button type="text" size="small"><i class="el-icon-delete"></i>删除</el-button>
               </template>
             </el-table-column>
           </el-table>

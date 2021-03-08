@@ -11,7 +11,7 @@
     <el-row>
       <el-col :span="24">
         <div class="grid-content">
-          <el-table :data="tableData" border>
+          <el-table :data="tableData" stripe>
             <el-table-column fixed prop="id" label="事故id" width="80"/>
             <el-table-column prop="accident_title" label="事故名称" width="300"/>
             <el-table-column prop="accident_news_num" label="新闻数量" width="100"/>
@@ -19,8 +19,8 @@
             <el-table-column prop="accident_date" label="发生时间" width="100"/>
             <el-table-column label="操作">
               <template>
-                <el-button type="primary" size="small" @click="dialogTimeLineVisible = true">查看微观数据统计</el-button>
-                <el-button type="danger" size="small">删除</el-button>
+                <el-button type="text" size="small" @click="dialogTimeLineVisible = true"><i class="el-icon-view"></i>查看微观数据统计</el-button>
+                <el-button type="text" size="small"><i class="el-icon-delete"></i>删除</el-button>
               </template>
             </el-table-column>
           </el-table>

@@ -28,8 +28,8 @@
           <el-button
             @click="detail(scope.row);showTree = true"
             type="text"
-            size="small">
-            查看
+            size="small"><i class="el-icon-view"></i>
+            查看详细
           </el-button>
         </template>
       </el-table-column>

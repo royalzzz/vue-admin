@@ -13,7 +13,7 @@
     <el-row>
       <el-col :span="24">
         <div class="grid-content">
-          <el-table :data="tableData" border>
+          <el-table :data="tableData" stripe>
             <el-table-column fixed prop="id" label="id" width="80"></el-table-column>
             <el-table-column prop="news_title" label="报道标题" width="300"></el-table-column>
             <el-table-column prop="news_link" label="来源链接" width="350"></el-table-column>
@@ -22,8 +22,8 @@
             <el-table-column prop="news_class" label="分类" width="50"></el-table-column>
             <el-table-column label="操作">
               <template>
-                <el-button type="success" size="small" @click="dialogFormVisible = true">编辑</el-button>
-                <el-button type="danger" size="small">删除</el-button>
+                <el-button type="text" size="small" @click="dialogFormVisible = true"><i class="el-icon-edit"></i>编辑</el-button>
+                <el-button type="text" size="small"><i class="el-icon-delete"></i>删除</el-button>
               </template>
             </el-table-column>
           </el-table>

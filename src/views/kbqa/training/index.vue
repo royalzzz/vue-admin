@@ -3,7 +3,7 @@
     <el-tabs v-model="activeName">
       <el-tab-pane label="超参设置" name="first">
         <el-button type="primary" @click="dialogFormVisible = true">新建超参配置</el-button>
-        <el-table :data="tableData" border style="width: 100%;margin-top:20px;">
+        <el-table :data="tableData" stripe style="width: 100%;margin-top:20px;">
           <el-table-column fixed prop="ID" label="编号" width="120"></el-table-column>
           <el-table-column prop="name" label="配置名" width="200"></el-table-column>
           <el-table-column prop="lr" label="学习率" width="120"></el-table-column>
@@ -12,8 +12,8 @@
           <el-table-column prop="window" label="窗口大小"></el-table-column>
           <el-table-column fixed="right" label="操作">
             <template slot-scope="scope">
-              <el-button type="primary" size="small" @click="handleClick(scope.row)">编辑</el-button>
-              <el-button type="danger" size="small">删除</el-button>
+              <el-button type="text" size="small" @click="handleClick(scope.row)"><i class="el-icon-edit"></i>编辑</el-button>
+              <el-button type="text" size="small"><i class="el-icon-delete"></i>删除</el-button>
             </template>
           </el-table-column>
         </el-table>

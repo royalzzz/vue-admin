@@ -16,7 +16,7 @@
       </el-form-item>
     </el-form>
 
-    <el-table :data="tableData" border max-height="560px" style="width: 100%" v-loading="loading">
+    <el-table :data="tableData"  stripe style="width: 100%" v-loading="loading">
       <el-table-column fixed prop="id" label="编号" width="50"></el-table-column>
       <el-table-column prop="title" label="事故报告标题" width="200"></el-table-column>
       <el-table-column prop="content" label="事故报告内容" width="840">
@@ -28,8 +28,8 @@
       </el-table-column>
       <el-table-column fixed="right" label="操作">
         <template slot-scope="scope">
-          <el-button type="primary" size="small" @click="editReport(scope.row);showEdit = true">编辑</el-button>
-          <el-button type="danger" size="small" @click="removeReport(scope.row)">删除</el-button>
+          <el-button type="text" size="small" @click="editReport(scope.row);showEdit = true"><i class="el-icon-edit"></i>编辑</el-button>
+          <el-button type="text" size="small" @click="removeReport(scope.row)"><i class="el-icon-delete"></i>删除</el-button>
         </template>
       </el-table-column>
     </el-table>
