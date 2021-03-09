@@ -11,7 +11,7 @@
     <el-row>
       <el-col :span="24">
         <div class="grid-content">
-          <el-table :data="tableData" border>
+          <el-table :data="tableData" stripe>
             <el-table-column fixed prop="id" label="新闻id" width="80" />
             <el-table-column prop="news_title" label="新闻标题" width="300">
               <template slot-scope="scope">
@@ -51,17 +51,30 @@
     </el-row>
     <el-dialog title="新闻评论情感倾向" :visible.sync="dialogTimeLineVisible" top="60px" width="60%">
       <div style="overflow:auto;height:450px;overflow-x:hidden">
-        <el-row v-for="(comment) in commentsForm" :key="comment.comment_id" :gutter="3">
+
+        <el-row v-for="(comment, i) in commentsForm.slice((currpage-1)*eachpage,currpage*eachpage)" v-if="!comment.hasOwnProperty('del')":key="comment.comment_id" :gutter="3">
           <el-card shadow="hover">
             <p>{{ comment.comment_content }}</p>
             <p>
               感情倾向：
-              <el-link type="danger">{{ comment.emotion }}</el-link>
-              。 （<i>积极占比：{{ comment.positive_probs }} </i>）
-              <el-button type="danger" size="small" style="float:right">删除</el-button>
+              <el-link type="danger">{{comment.emotion}}</el-link>
+              。 （<i>积极占比：{{comment.positive_probs}} </i>）
+              <el-button type="danger" size="small" @click="delComment(commentsForm, i)" style="float:right">删除</el-button>
             </p>
           </el-card>
         </el-row>
+        <div style="float:right;margin-right:50px;">
+          <div style="float:right;margin-right:50px;">
+            <el-button v-if="currpage>1" @click="currpage--">上一页</el-button>&nbsp&nbsp&nbsp
+            <span>{{currpage}}</span>/<span>{{pagesum}}</span>&nbsp&nbsp&nbsp
+            <el-button v-if="currpage<pagesum" @click="currpage++">下一页</el-button>
+          </div>
+<!--          <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"-->
+<!--                         :current-page="currpage + 1" :page-sizes="[10, 30, 100]" :page-size="eachpage"-->
+<!--                         background layout="total, sizes, prev, pager, next, jumper" :total="pagesum"-->
+<!--                         @next-click="nextPage" @prev-click="prevPage">-->
+<!--          </el-pagination>-->
+        </div>
       </div>
 
       <div slot="footer" class="dialog-footer">
@@ -79,6 +92,10 @@ export default {
   name: 'Huagongshigufenlei',
   data() {
     return {
+      pagesum:-1,
+      currpage:1,
+      eachpage:10,
+      input3: '',
       reverse: false,
       activities: [
         {
@@ -143,20 +160,29 @@ export default {
         s_key: '化工爆炸,化工泄露,化工中毒,化工火灾',
         s_date: '',
         s_time: ''
-      }
+      },
+      workId: -1,
     }
   },
-  mounted() {
-    this.initTime()
-    this.loadData()
-  },
   methods: {
+    delComment(commentsForm, i){
+      commentsForm[i].del = "1"   // 增加被删除字段
+      // console.log(JSON.stringify(commentsForm))
+      // console.log(this.workId)
+      yuqingApi.delComment({commentsForm: JSON.stringify(commentsForm), workId: this.workId}).then(res=>{
+        // console.log(res)
+        this.loadData()
+      })
+    },
     showDetail(row) {
       // this.form=row
       // console.log(this.form)
-      this.commentsForm = row.news_comments
+      this.workId = row.id
+      this.commentsForm = row.news_unDelComments
       console.log(this.commentsForm)
+      this.pagesum = Math.ceil(this.commentsForm.length/this.eachpage)  // 向上取整
       this.dialogTimeLineVisible = true
+
     },
     nextPage() {
       this.page.pageNumber += 1
@@ -197,29 +223,44 @@ export default {
           var m = time.getMinutes() // getMinutes方法返回 Date 对象的分钟 (0 ~ 59)
           var s = time.getSeconds() // getSeconds方法返回 Date 对象的秒数 (0 ~ 59)
           // result.data.content[i].news_date  = nene;
-          result.data.content[i].news_date = y + '-' + M + '-' + d + ' ' + h + ':' + m + ':' + s
-          if (result.data.content[i].news_comments === '[]') {
-            result.data.content[i].news_comments = [] // 新闻评论
-            result.data.content[i].news_comments_num = 0 // 评论数量
-            result.data.content[i].news_comments_tendency = 0 // 评论总体倾向
-          } else {
-            var comments = eval(result.data.content[i].news_comments)
-            console.log(comments, result.data.content[i].news_comments)
-            result.data.content[i].news_comments = comments // 新闻评论
-            result.data.content[i].news_comments_num = comments.length // 评论数量
+          result.data.content[i].news_date  = y + '-' + M + '-' + d + ' ' + h + ':' + m + ':' + s;
+          if (result.data.content[i].news_comments==='[]'){
+            result.data.content[i].news_comments = []    // 新闻评论
+            result.data.content[i].news_comments_num = 0   // 评论数量
+            result.data.content[i].news_comments_tendency = 0   // 评论总体倾向
+          }else {
+            var comments =  eval(result.data.content[i].news_comments);
+            var unDelComments = []
+            // console.log(comments, result.data.content[i].news_comments)
+            for (var j in comments) {
+              if (!comments[j].hasOwnProperty("del")){
+                unDelComments.push(comments[j])
+              }
+            }
+            result.data.content[i].news_comments = comments    // 新闻评论
+            result.data.content[i].news_unDelComments = unDelComments    // 新闻评论
+            result.data.content[i].news_comments_num = unDelComments.length   // 评论数量
             var news_comments_tendency = 0.0
             for (var j in result.data.content[i].news_comments) {
               news_comments_tendency += result.data.content[i].news_comments[j].positive_probs
+            }
+            result.data.content[i].news_comments_tendency = (news_comments_tendency/unDelComments.length).toFixed(4)   // 评论总体倾向
+            if (unDelComments.length===0){
+              result.data.content[i].news_comments_tendency=0.0
             }
             result.data.content[i].news_comments_tendency = (news_comments_tendency / comments.length).toFixed(4) // 评论总体倾向
           }
         }
         // console.log(result.data.content)
         this.tableData = result.data.content
-        console.log(this.tableData)
+        // console.log(this.tableData)
         this.page.total = result.data.totalElements
       })
     }
+  },
+  mounted() {
+    this.initTime();
+    this.loadData();
   }
 }
 </script>
