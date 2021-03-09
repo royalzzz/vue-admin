@@ -17,8 +17,9 @@
     </el-input>
 
     <!-- <el-divider content-position="left"><i class="el-icon-chat-dot-round"></i></el-divider> -->
+    <div style="width:100%;" id="div_width"></div>
 
-    <div id="container_stanford" style="text-align: left; padding-top: 100px">
+    <div id="container_stanford" style="text-align: left; padding-top: 100px" v-show="resShow">
       <el-card style="margin-top: 20px">
         <h2 style="color: SteelBlue;">问题答案</h2>
       </el-card>
@@ -73,13 +74,16 @@
             </el-table-column>
           </el-table>
         </div>
-        <div style="width:100%;" id="div_width"></div>
+        
         <div v-show="graphs.length != 0">
           <h4 style="color:LightSlateGray">句子依赖图</h4>
           <div id="mountNode"></div>
           <div v-for="graph in graphs" :key="graph.id">{{ graph }}</div>
         </div>
 
+        <div>
+          <h4 style="color:LightSlateGray">问题类型分析</h4>
+        </div>
       </el-card>
     </div>
   </div>
@@ -94,6 +98,7 @@ export default {
   name: 'Zhinengwenda',
   data() {
     return {
+      resShow: false,
       loading: true,
       reportUrl: './viewer/index.html',
       text: '',
@@ -132,6 +137,7 @@ export default {
       console.log('width=' + document.getElementById('div_width').offsetWidth)
       this.loading = true
       analysis(this.text).then((res) => {
+        this.resShow = true
         console.log(res)
         this.testData = res.data
         this.deps = []
